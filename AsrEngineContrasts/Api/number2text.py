@@ -138,52 +138,74 @@ class ReplaceCharacter():
     def Number2Text(self,text):
         text = self.cn2dig(text).lower()
         # print(text)
+        return self.otherReplace(text)
+    def otherReplace(self,text):
+        if '+' in text:
+            text=text.replace("+", "加")
+        if '-' in text:
+            text=text.replace("-", "减")
+        if '×' in text:
+            text=text.replace("×", "乘")
+        if '÷' in text:
+            text=text.replace("÷", "除以")
+        if '=' in text:
+            text = text.replace("=", "等于")
+
+        if '/' in text:
+            a = re.compile("\d+/\d+")
+            c = a.findall(text)
+            for i in c:
+                t=i.split('/')
+                text = text.replace(i, "{}分之{}".format(t[1],t[0]))
+        if ':' in text:
+                a = re.compile("\d+:\d+")
+                c = a.findall(text)
+                for i in c:
+                    t=i.split(':')
+                    if t[1] == '00':
+                        text = text.replace(i, t[0]+'点')
+                    else:
+                        text = text.replace(i, i.replace(':','.'))
+        if '.' in text :
+            a1 = re.compile("\d+.\d+分")
+            c = a1.findall(text)
+            for i in c:
+                    text = text.replace(i, i.replace('分', ''))
+        if '点钟' in text :
+            a1 = re.compile("\d+点钟+")
+            c = a1.findall(text)
+            for i in c:
+                text = text.replace(i, i.replace('钟', ''))
         return text
 
 if __name__ == '__main__':
-    import xlrd
-    import openpyxl
-    ws=openpyxl.Workbook()
-    ws_sheet=ws.create_sheet('result',-1)
-    ta=xlrd.open_workbook(r'D:\MyData\ex_kangyong\Desktop\reuslt_finally.xlsx')
-    sheet=ta.sheet_by_name('Sheet')
-    num=sheet.nrows
+
     n2t=ReplaceCharacter()
-    for i in range(num):
-        data = sheet.row_values(i)
-        if i==0:
-            ws_sheet.append(data)
-            continue
-        result= Counter([n2t.Number2Text(data[1]),n2t.Number2Text(data[2]),n2t.Number2Text(data[2])])
-        items=list(result.items())
-        text=''
-        if len(items) == 1:
-            key=items[0][0]
-            if key:
-                text = '完全相同非空'
-            else:
-                text='完全相同空值'
-        elif len(items) == 2:
-            key = items[0][0]
-            value = items[0][1]
-            key1 = items[1][0]
-            value1 = items[1][1]
-            max_key=''
-            if value > value1:
-                max_key=key
-            else:
-                max_key = key1
-            if max_key:
-                text = '有两个相同且不为空'
-            else:
-                text = '有两个相同的空值'
-        elif len(items) == 3:
-            text = '完全不相同'
+    d=n2t.otherReplace('订3:00的闹钟')
+    print(d)
+    d=n2t.otherReplace('定1个2:50的闹钟')
+    print(d)
+    d=n2t.otherReplace('999+99等于多少')
+
+    print(d)
+    d = n2t.otherReplace('明天早上7:00')
+    print(d)
+    d = n2t.otherReplace('14-3+2等于几')
+    print(d)
+    d = n2t.otherReplace('不是晚上8:20闹钟上午8:22')
+    print(d)
+    d = n2t.otherReplace('明天上午6:40叫我起床')
+    print(d)
+    d = n2t.otherReplace('13.32分的时候提醒我')
+    print(d)
+    d = n2t.otherReplace('下午5点钟提醒我')
+    print(d)
+    d = n2t.otherReplace('下午5:00提醒我')
+    print(d)
+    # a = re.compile("\d+.\d+分")
+    # c = a.findall('13.32分的时候提醒我')
+    # print(c)
 
 
-
-
-        ws_sheet.append([n2t.Number2Text(data[0]),n2t.Number2Text(data[1]),n2t.Number2Text(data[2]),n2t.Number2Text(data[2]),text])
-    ws.save(r'D:\MyData\ex_kangyong\Desktop\reuslt_finally_2.2_1.xlsx')
 
 

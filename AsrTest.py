@@ -6,13 +6,13 @@ from threading import Thread
 
 import openpyxl
 
-from AsrContrasts import ReplaceCharacter
-from AsrContrasts.AsrEngineDB import EngineDb
-from AsrContrasts.Api.SbcApi import SbcWebSocketApp, SbcClient
-from AsrContrasts.Api.XfApi import XfClient
-from AsrContrasts.Api.Orion import OrionAsr
+from AsrEngineContrasts import ReplaceCharacter
+from AsrEngineContrasts.AsrEngineDB import EngineDb
+from AsrEngineContrasts.Api.SbcApi import SbcWebSocketApp, SbcClient
+from AsrEngineContrasts.Api.XfApi import XfClient
+from AsrEngineContrasts.Api.Orion import OrionAsr
 from multiprocessing import Process, Queue
-
+from AsrEngineContrasts.SBC import Sbc as SbcRunClient
 # from queue import Queue
 que = Queue()
 
@@ -146,16 +146,17 @@ def save(taskname):
     num = 0
     while True:
         msg = que.get()
-        print('提交数量：', num, taskname, msg)
+        print('{}提交数据：{}'.format(taskname,msg))
+        # print('提交数量：', num, taskname, msg)
         if msg == 'over':
-            sql.commit()
+            # sql.commit()
             break
         sql.save_asr_result(msg.get('filename'), msg.get('type')
                             , msg.get('text'), taskname)
-        num = num + 1
-        if num >= 10:
-            sql.commit()
-            num = 0
+        # num = num + 1
+        # if num >= 10:
+        #     sql.commit()
+        #     num = 0
 
 
 def run_asr(data_list=None, taskname=None):
@@ -167,7 +168,7 @@ def run_asr(data_list=None, taskname=None):
     #     sql.create_table(table)
     # else:
     #     table = tablename
-    if taskname:
+    if not taskname:
         table = 'AsrEngineResult{}'.format(time.strftime('%Y%m%d%H%M%S', time.localtime()))
     # sql.select_table(table)
     print(time.sleep(2))
@@ -176,8 +177,8 @@ def run_asr(data_list=None, taskname=None):
     dir = '/mnt/20200831_wav/wav'
     # dir ='/data0/code/testwav/pcm'
     p_list = []
-    # p_list.append(Process(target=SbcRun, args=(dir, data_list,)))
-    # p_list.append(Process(target=XfRun, args=(dir, data_list,)))
+    p_list.append(Process(target=SbcRun, args=(dir, data_list,)))
+    p_list.append(Process(target=XfRun, args=(dir, data_list,)))
     p_list.append(Process(target=OrionRun, args=(dir, data_list,)))
     for p in p_list:
         p.start()
@@ -189,7 +190,7 @@ def run_asr(data_list=None, taskname=None):
 
 def get_result():
     sql = EngineDb()
-    table = 'AsrEngineResult20200909105212'
+    table = 'AsrEngineResult20200911173923'
     # sql.select_table()
     group = sql.group()
     print(group)
@@ -217,28 +218,34 @@ def get_result():
 
     # print(t)
     while True:
-        res = sql.filename(table, 10000, index)
+        res = sql.results(table, 10000, index)
         if not res:
             break
+
+        index=index+1
         for i in res:
-            print(i)
-            data = sql.asr_result(i[0])
-            datalist = []
-            xf = '该音频未测试！！'
-            sbc = '该音频未测试！！'
-            lh = '该音频未测试！！'
-            filename = ''
-            for n in data:
-                filename = n.filename
-
-                if n.category == 'sbc':
-                    sbc = n.text
-                if n.category == 'xf':
-                    xf = n.text
-
-                if n.category == 'lh':
-                    lh = n.text
-            # 'sbc', 'lh', 'xf'
+            # print(i.__dict__)
+            # data = sql.asr_result(i[0])
+            # datalist = []
+            # xf = '该音频未测试！！'
+            # sbc = '该音频未测试！！'
+            # lh = '该音频未测试！！'
+            # filename = ''
+            # for n in data:
+            #     filename = n.filename
+            #
+            #     if n.category == 'sbc':
+            #         sbc = n.text
+            #     if n.category == 'xf':
+            #         xf = n.text
+            #
+            #     if n.category == 'lh':
+            #         lh = n.text
+            # # 'sbc', 'lh', 'xf'
+            filename=i.filename
+            xf = i.xf
+            sbc = i.sbc
+            lh =i.lh
             re_data = [n2t.Number2Text(sbc), n2t.Number2Text(lh), n2t.Number2Text(xf)]
             result = Counter(re_data)
             items = list(result.items())
@@ -330,13 +337,29 @@ def get_result():
     #             text = '完全不相同'
     #     sheet.append([filename, *re_data, text])
     #     print(re_data)
-    ta.save('reuslt_finally_9-10_1.xlsx')
+    ta.save('reuslt_finally_9-15_4.xlsx')
+def insertcase():
+    sql = EngineDb()
+    file = open('D:\MyData\ex_kangyong\Desktop\wavfile.log', 'r')
+    data = file.readlines()
+    datalist = []
+    for i in data:
+        if len(i):
+            datalist.append({'filename':i.rstrip('\n'),'dict_assert':"{}",'suiteid':10})
+            if len(datalist) == 5000:
+                sql.insertcase(datalist)
+                datalist=[]
+    sql.insertcase(datalist)
+
 
 
 if __name__ == '__main__':
     get_result()
+    # insertcase()
     #     data_list='''e10f1ef9ee4188fb9354651a48be98f8_20200831161944_e3758539-12de-4182-b104-69d103b5cf5d.wav
     # e86c7e26-7716-4fea-9406-501fe4621d35_20200831131932_801775b8-513a-4513-b3ff-4b3f7f9fdd6b.wav
     # b4c3115b-6d0b-4d3a-a881-e0d7455976de_20200831114507_c00ebde6-9057-4af1-915d-1bbc12068fd8.wav'''.splitlines()
     #     dir = '/home/kangyong/Data/wav'
     # run_asr()
+    # sbc = SbcRunClient('2020914_test', '/mnt/20200831_wav')
+    # sbc.start()

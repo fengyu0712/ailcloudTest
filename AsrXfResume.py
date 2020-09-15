@@ -1,5 +1,5 @@
 
-from AsrEngineContrasts.SBC import Sbc as SbcRunClient
+from AsrEngineContrasts.XunFei import XunFei as XunFeiClient
 
 
 
@@ -12,5 +12,6 @@ if __name__ == '__main__':
     # b4c3115b-6d0b-4d3a-a881-e0d7455976de_20200831114507_c00ebde6-9057-4af1-915d-1bbc12068fd8.wav'''.splitlines()
     #     dir = '/home/kangyong/Data/wav'
     # run_asr()
-    sbc = SbcRunClient('AsrEngineResult20200911173923', '/mnt/20200831_wav')
+    # sbc = XunFeiClient('AsrEngineResult20200911173923', '/mnt/20200831_wav')
+    sbc = XunFeiClient('2020914_test', '/mnt/20200831_wav')
     sbc.resume()

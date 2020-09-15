@@ -2,10 +2,10 @@ import json
 import os
 import time
 
-from AsrContrasts.Api.Orion import OrionAsr
-from AsrContrasts.AsrEngineDB import EngineDb
+from AsrEngineContrasts.Api.Orion import OrionAsr
+from AsrEngineContrasts.AsrEngineDB import EngineDb
 import uuid
-from AsrContrasts.public.RedisTaskManage import Manager
+from AsrEngineContrasts.public.RedisTaskManage import Manager
 from threading import Thread
 
 

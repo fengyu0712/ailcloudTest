@@ -6,7 +6,7 @@ from sqlalchemy import Column, Integer, String, Text, func
 from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
-from AsrContrasts.Api.number2text import ReplaceCharacter
+from AsrEngineContrasts.Api.number2text import ReplaceCharacter
 Base = declarative_base()
 
 

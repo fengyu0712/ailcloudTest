@@ -1,5 +1,5 @@
 
-from AsrContrasts.LeiHu import LeiHu as LeiHuClient
+from AsrEngineContrasts.LeiHu import LeiHu as LeiHuClient
 
 
 
