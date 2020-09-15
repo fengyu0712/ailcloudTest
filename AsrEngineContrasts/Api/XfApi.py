@@ -184,6 +184,9 @@ if __name__ == "__main__":
     #     xf = XfLogConnectClient()
     #     xf.start()
     socket = XfClient()
-    whole_wavpath = r'/home/kangyong/Data/wav/993ea1f5-5558-43e4-9baa-c9b043534e2b_20200831204743_8fa3168e-4840-4f52-b16a-0b88801bc08a.wav'
-    result = socket.run(whole_wavpath)
+    # whole_wavpath = r'/home/kangyong/Data/wav/993ea1f5-5558-43e4-9baa-c9b043534e2b_20200831204743_8fa3168e-4840-4f52-b16a-0b88801bc08a.wav'
+    # result = socket.run(whole_wavpath)
+    path = '/mnt/20200831_wav/wav'
+    filename = ''
+    result = socket.run(os.path.join(path, filename))
     print(result)

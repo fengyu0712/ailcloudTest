@@ -92,51 +92,44 @@ class OrionAsr():
                 # print("error:", ret)
                 # print('cmd:',commeline)
                 wav_path = wav_path.replace(".pcm", ".wav")
+                if os.path.exists(logpath):
+                    os.remove(logpath)
                 return {'filename': os.path.basename(wav_path), 'type': 'lh', 'text': ''}
         except Exception as e:
             #           print("猎户asr错误",e)
             wav_path = wav_path.replace(".pcm", ".wav")
+            if os.path.exists(logpath):
+                os.remove(logpath)
             return {'filename': os.path.basename(wav_path), 'type': 'lh', 'text': ''}
 
 
 if __name__ == "__main__":
     # OrionAsr().run("D:/audio_file/wav音频/全品类/019/019M20_07_45_0001.wav","")
+    # URL = "wss://speech-test.ainirobot.com/ws/streaming-asr"
+    # c = OrionAsr(URL)
+    # # t=c.run('/run/media/centos/report/pcm/cyangfp_000001.pcm','/run/media/centos/HD/PycharmProjects/Web_Nlu/dev_nlu/Web_Nlu/AsrClient/public/log')
+    # # t=c.run(r'/home/kangyong/Data/wav/875ebfe7-ec5f-4a60-b995-f94c6bad5c3a_20200831082740_0b3d9fec-abed-4aa8-ba5a-0300bf797ed2.wav','/home/kangyong/Data')
+    # print(os.getcwd())
+    # # print(t)
+    # dir = '/home/kangyong/Data/pcm'
+    # input_dir = dir + r'/*.pcm'
+    # list_im = glob.glob(input_dir)
+    # wss = openpyxl.Workbook()
+    # sheet = wss.create_sheet(title='result', index=-1)
+    # for i in list_im:
+    #     # print('>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>')
+    #     wavpath = r'/home/kangyong/Data/wav/993ea1f5-5558-43e4-9baa-c9b043534e2b_20200831204743_8fa3168e-4840-4f52-b16a-0b88801bc08a.wav'
+    #
+    #     # t=c.run(r'/home/kangyong/Data/wav/006baaa1-1387-4ae2-b771-1ef2f64a0e4f_20200831114419_bfa12807-7534-48e5-9d80-57a19850764e.wav','/home/kangyong/Data')
+    #     # print(t)
+    #     r = c.run(wavpath, 'home/kangyong/Data/PythonProject/AsrResult/AarContrasts')
+    #     print(r)
+    #     # sheet.append([os.path.basename(i),json.dumps(r,ensure_ascii=False)])
+    #     print('????????????????????????????????????????')
+    #     break
     URL = "wss://speech-test.ainirobot.com/ws/streaming-asr"
     c = OrionAsr(URL)
-    # t=c.run('/run/media/centos/report/pcm/cyangfp_000001.pcm','/run/media/centos/HD/PycharmProjects/Web_Nlu/dev_nlu/Web_Nlu/AsrClient/public/log')
-    # t=c.run(r'/home/kangyong/Data/wav/875ebfe7-ec5f-4a60-b995-f94c6bad5c3a_20200831082740_0b3d9fec-abed-4aa8-ba5a-0300bf797ed2.wav','/home/kangyong/Data')
-    print(os.getcwd())
-    # print(t)
-    dir = '/home/kangyong/Data/pcm'
-    input_dir = dir + r'/*.pcm'
-    list_im = glob.glob(input_dir)
-    wss = openpyxl.Workbook()
-    sheet = wss.create_sheet(title='result', index=-1)
-    for i in list_im:
-        # print('>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>')
-        wavpath = r'/home/kangyong/Data/wav/993ea1f5-5558-43e4-9baa-c9b043534e2b_20200831204743_8fa3168e-4840-4f52-b16a-0b88801bc08a.wav'
-
-        # t=c.run(r'/home/kangyong/Data/wav/006baaa1-1387-4ae2-b771-1ef2f64a0e4f_20200831114419_bfa12807-7534-48e5-9d80-57a19850764e.wav','/home/kangyong/Data')
-        # print(t)
-        r = c.run(wavpath, 'home/kangyong/Data/PythonProject/AsrResult/AarContrasts')
-        print(r)
-        # sheet.append([os.path.basename(i),json.dumps(r,ensure_ascii=False)])
-        print('????????????????????????????????????????')
-        break
-    # wss.save('result_lu.xlsx')
-    # filepath='result_lu.xlsx'
-    # tables=xlrd.open_workbook(filepath)
-    # sheet=tables.sheet_by_index(0)
-    # num=sheet.nrows
-    # from AarContrasts import Sqlite
-    # sql=Sqlite()
-    # # sql.create_table('result_2')
-    # sql.select_table('result_1')
-    #
-    # for i in range(num):
-    #     data1=sheet.row_values(i)
-    #     data = json.loads(data1[1])
-    #     print(data)
-    #     print(data1[0].replace('.pcm','.wav'),data.get('type'),data.get('text'))
-    #     sql.save_asr_result(data1[0].replace('.pcm','.wav'),data.get('type'),data.get('text'))
-    # sql.commit()
+    path = '/mnt/20200831_wav/pcm'
+    filename = ''
+    result = c.run(os.path.join(path, filename),os.getcwd())
+    print(result)

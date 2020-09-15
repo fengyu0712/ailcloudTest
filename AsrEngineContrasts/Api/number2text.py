@@ -136,7 +136,7 @@ class ReplaceCharacter():
         else:
             return False
     def Number2Text(self,text):
-        text = self.cn2dig(text)
+        text = self.cn2dig(text).lower()
         # print(text)
         return text
 

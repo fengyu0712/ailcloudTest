@@ -134,7 +134,7 @@ class SbcClient():
                     break
                 time.sleep(0.1)
         ws.send('', ABNF.OPCODE_BINARY)
-        time.sleep(0.1)
+        time.sleep(0.2)
         result=ws.recv()
         return self.on_message(result)
 
@@ -146,7 +146,6 @@ class SbcClient():
         if 'eof' in message:
             text = mJson['text']
             text = text.replace(" ", "")
-        print(self.file, text)
         return text
 if __name__ == "__main__":
     # dir = r'D:\soft\wav\20200831_wav'
@@ -157,5 +156,7 @@ if __name__ == "__main__":
     # ws.run_forever()
     # wst.save('result_1.xlsx')
     sbc=SbcClient()
-    t=sbc.run('/home/kangyong/Data/wav/e86c7e26-7716-4fea-9406-501fe4621d35_20200831131932_801775b8-513a-4513-b3ff-4b3f7f9fdd6b.wav')
+    path='/mnt/20200831_wav/wav'
+    filename=''
+    t=sbc.run(os.path.join(path,filename))
     print(t)
