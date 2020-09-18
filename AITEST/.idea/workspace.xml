@@ -1,0 +1,732 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="e33044be-f19b-4376-a969-957e143815cb" name="Default Changelist" comment="预约时间转换函数">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/demo10.py" beforeDir="false" afterPath="$PROJECT_DIR$/demo/demo10.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/demo13_1.py" beforeDir="false" afterPath="$PROJECT_DIR$/demo/demo13_1.py" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CoverageDataManager">
+    <SUITE FILE_PATH="coverage/AITEST$read_xls_news.coverage" NAME="read_xls_news Coverage Results" MODIFIED="1577094293784" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/common" />
+    <SUITE FILE_PATH="coverage/AITEST$pytest_in_test_E2Redis_py.coverage" NAME="pytest in test_E2Redis.py Coverage Results" MODIFIED="1585189627048" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/testcase/TestAiYun/redis_case" />
+    <SUITE FILE_PATH="coverage/AITEST$pytest_in_demo12_py.coverage" NAME="pytest in demo12.py Coverage Results" MODIFIED="1583889748820" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/demo" />
+    <SUITE FILE_PATH="coverage/AITEST$pytest_in_test_pytestAI_py.coverage" NAME="pytest in test_StrideAC.py Coverage Results" MODIFIED="1576572770252" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/testcase/TestAiYun" />
+    <SUITE FILE_PATH="coverage/AITEST$myredis.coverage" NAME="myredis Coverage Results" MODIFIED="1577408252784" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/common" />
+    <SUITE FILE_PATH="coverage/AITEST$pytest_in_test_StrideAcRredis_py.coverage" NAME="pytest in test_StrideAcRredis.py Coverage Results" MODIFIED="1585214908544" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/testcase/TestAiYun/redis_case" />
+    <SUITE FILE_PATH="coverage/AITEST$1.coverage" NAME="1 Coverage Results" MODIFIED="1574157440962" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/demo/redis" />
+    <SUITE FILE_PATH="coverage/AITEST$demo8.coverage" NAME="demo8 Coverage Results" MODIFIED="1582867284397" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/demo" />
+    <SUITE FILE_PATH="coverage/AITEST$demo10.coverage" NAME="demo10 Coverage Results" MODIFIED="1584924766700" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/demo" />
+    <SUITE FILE_PATH="coverage/AITEST$pytest_in_test_all_ws_new1122_py.coverage" NAME="pytest in test_all_ws_new1122.py Coverage Results" MODIFIED="1575960229650" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/testcase/WS_Test" />
+    <SUITE FILE_PATH="coverage/AITEST$pytest_in_test_StrideAC_py.coverage" NAME="pytest in test_StrideAC.py Coverage Results" MODIFIED="1577696601436" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/testcase/TestAiYun/xls_case" />
+    <SUITE FILE_PATH="coverage/AITEST$pytest_in_test_FCRedis_py.coverage" NAME="pytest in test_FCRedis.py Coverage Results" MODIFIED="1585189799202" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/testcase/TestAiYun/redis_case" />
+    <SUITE FILE_PATH="coverage/AITEST$pytest_in_test_websocket1_py.coverage" NAME="pytest in test_websocket1.py Coverage Results" MODIFIED="1566355110423" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/testcase/WS_Test" />
+    <SUITE FILE_PATH="coverage/AITEST$pytest_in_test_FC_py.coverage" NAME="pytest in test_FC.py Coverage Results" MODIFIED="1577686491322" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/testcase/TestAiYun/xls_case" />
+    <SUITE FILE_PATH="coverage/AITEST$pytest_in_test_JJ_py.coverage" NAME="pytest in test_JJ.py Coverage Results" MODIFIED="1568704823886" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/testcase" />
+    <SUITE FILE_PATH="coverage/AITEST$pytest_in_test_all_ws_new22_py.coverage" NAME="pytest in test_all_ws_new22.py Coverage Results" MODIFIED="1574239419415" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/testcase/WS_Test" />
+    <SUITE FILE_PATH="coverage/AITEST$demo5.coverage" NAME="demo5 Coverage Results" MODIFIED="1583915892148" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/demo" />
+    <SUITE FILE_PATH="coverage/AITEST$redisTOxls.coverage" NAME="redisTOxls Coverage Results" MODIFIED="1577093062985" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/testcase/TestAiYun/redis_case" />
+    <SUITE FILE_PATH="coverage/AITEST$demo2.coverage" NAME="demo2 Coverage Results" MODIFIED="1576548394404" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/demo" />
+    <SUITE FILE_PATH="coverage/AITEST$pytest_for_test_pytestAI_TestAC.coverage" NAME="pytest for test_pytestAI.TestAC Coverage Results" MODIFIED="1576042135266" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/testcase/TestAiYun" />
+    <SUITE FILE_PATH="coverage/AITEST$write_xls_new.coverage" NAME="write_xls_new Coverage Results" MODIFIED="1583919649490" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/common" />
+    <SUITE FILE_PATH="coverage/AITEST$pytest_in_test_ECRedis_py.coverage" NAME="pytest in test_ECRedis.py Coverage Results" MODIFIED="1585189777029" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/testcase/TestAiYun/redis_case" />
+    <SUITE FILE_PATH="coverage/AITEST$openpyxl_updata.coverage" NAME="openpyxl_updata Coverage Results" MODIFIED="1566357813004" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/common" />
+    <SUITE FILE_PATH="coverage/AITEST$pytest_in_test_StrideAC_redis_py.coverage" NAME="pytest in test_StrideAcRredis.py Coverage Results" MODIFIED="1576807559599" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/testcase/TestAiYun/.pytest_cache" />
+    <SUITE FILE_PATH="coverage/AITEST$demo14.coverage" NAME="demo14 Coverage Results" MODIFIED="1584533123117" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/demo" />
+    <SUITE FILE_PATH="coverage/AITEST$mysql.coverage" NAME="mysql Coverage Results" MODIFIED="1575960389264" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/common" />
+    <SUITE FILE_PATH="coverage/AITEST$demo0.coverage" NAME="demo0 Coverage Results" MODIFIED="1579059626486" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/demo" />
+    <SUITE FILE_PATH="coverage/AITEST$Parsejson.coverage" NAME="Parsejson Coverage Results" MODIFIED="1579060152053" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/common" />
+    <SUITE FILE_PATH="coverage/AITEST$demo6.coverage" NAME="demo6 Coverage Results" MODIFIED="1576553844388" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/demo" />
+    <SUITE FILE_PATH="coverage/AITEST$demo13.coverage" NAME="demo13 Coverage Results" MODIFIED="1585097792100" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/demo" />
+    <SUITE FILE_PATH="coverage/AITEST$request_api.coverage" NAME="request_api Coverage Results" MODIFIED="1576551457016" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/AITEST$pytest_in_test_ricecooker_py.coverage" NAME="pytest in test_ricecooker.py Coverage Results" MODIFIED="1577353827182" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/testcase/TestAiYun/xls_case" />
+    <SUITE FILE_PATH="coverage/AITEST$pytest_in_test_EARedis_py.coverage" NAME="pytest in test_EARedis.py Coverage Results" MODIFIED="1585189662201" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/testcase/TestAiYun/redis_case" />
+    <SUITE FILE_PATH="coverage/AITEST$Assert.coverage" NAME="Assert Coverage Results" MODIFIED="1579060063503" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/common" />
+    <SUITE FILE_PATH="coverage/AITEST$http_request.coverage" NAME="http_request Coverage Results" MODIFIED="1572677686334" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/common" />
+    <SUITE FILE_PATH="coverage/AITEST$zhengze.coverage" NAME="zhengze Coverage Results" MODIFIED="1577414546550" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/common" />
+    <SUITE FILE_PATH="coverage/AITEST$__init____1_.coverage" NAME="__init__ (1) Coverage Results" MODIFIED="1578914841925" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/testcase" />
+    <SUITE FILE_PATH="coverage/AITEST$pytest_in_test_pytestAI_py__1_.coverage" NAME="pytest in test_pytestAI.py (1) Coverage Results" MODIFIED="1576034286840" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/testcase/TestAiYun" />
+    <SUITE FILE_PATH="coverage/AITEST$conf.coverage" NAME="conf Coverage Results" MODIFIED="1576566058502" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/common" />
+    <SUITE FILE_PATH="coverage/AITEST$pipinstall.coverage" NAME="pipinstall Coverage Results" MODIFIED="1577088181254" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/AITEST$runprocess.coverage" NAME="runprocess Coverage Results" MODIFIED="1577093511470" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/testrunner" />
+    <SUITE FILE_PATH="coverage/AITEST$http_request_new.coverage" NAME="http_request_new Coverage Results" MODIFIED="1585131114787" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/common" />
+    <SUITE FILE_PATH="coverage/AITEST$changeChineseNumToArab.coverage" NAME="changeChineseNumToArab Coverage Results" MODIFIED="1577517455076" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/common" />
+    <SUITE FILE_PATH="coverage/AITEST$timeConversion1V.coverage" NAME="timeConversion1V Coverage Results" MODIFIED="1578725921047" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/common" />
+    <SUITE FILE_PATH="coverage/AITEST$demo15.coverage" NAME="demo15 Coverage Results" MODIFIED="1584536451412" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/demo" />
+    <SUITE FILE_PATH="coverage/AITEST$timeConversion.coverage" NAME="timeConversion Coverage Results" MODIFIED="1578732938147" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/common" />
+    <SUITE FILE_PATH="coverage/AITEST$demo7.coverage" NAME="demo7 Coverage Results" MODIFIED="1583993655023" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/demo" />
+    <SUITE FILE_PATH="coverage/AITEST$demo12.coverage" NAME="demo12 Coverage Results" MODIFIED="1584770851633" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/demo" />
+    <SUITE FILE_PATH="coverage/AITEST$__init__.coverage" NAME="__init__ Coverage Results" MODIFIED="1584769244621" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/AITEST$demo00.coverage" NAME="demo00 Coverage Results" MODIFIED="1584326876494" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/demo" />
+    <SUITE FILE_PATH="coverage/AITEST$log.coverage" NAME="log Coverage Results" MODIFIED="1583900804374" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/common" />
+    <SUITE FILE_PATH="coverage/AITEST$pytest_in_test_StrideAC001_py.coverage" NAME="pytest in test_StrideAC001.py Coverage Results" MODIFIED="1576727044029" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/testcase/TestAiYun" />
+    <SUITE FILE_PATH="coverage/AITEST$Appointment.coverage" NAME="Appointment Coverage Results" MODIFIED="1584772898055" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/common" />
+    <SUITE FILE_PATH="coverage/AITEST$RedisLock.coverage" NAME="RedisLock Coverage Results" MODIFIED="1574237462950" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/demo/redis" />
+    <SUITE FILE_PATH="coverage/AITEST$pytest_for_test_pytestAI_TestAC_test_HB.coverage" NAME="pytest for test_pytestAI.TestAC.test_HB Coverage Results" MODIFIED="1576042040380" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/testcase/TestAiYun" />
+    <SUITE FILE_PATH="coverage/AITEST$pytest_in_test_all_ws_new_redis_py.coverage" NAME="pytest in test_all_ws_new_redis.py Coverage Results" MODIFIED="1574240814350" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/testcase/WS_Test" />
+    <SUITE FILE_PATH="coverage/AITEST$pytest_in_test_StrideAcRredis02_py.coverage" NAME="pytest in test_StrideAcRredis02.py Coverage Results" MODIFIED="1578643577725" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/testcase/TestAiYun/redis_case" />
+    <SUITE FILE_PATH="coverage/AITEST$dmo5.coverage" NAME="dmo5 Coverage Results" MODIFIED="1583920843300" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/demo" />
+    <SUITE FILE_PATH="coverage/AITEST$T_websocket.coverage" NAME="T_websocket Coverage Results" MODIFIED="1572936949025" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/common" />
+    <SUITE FILE_PATH="coverage/AITEST$write_xls.coverage" NAME="write_xls Coverage Results" MODIFIED="1577094032389" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/common" />
+    <SUITE FILE_PATH="coverage/AITEST$RedisLock1.coverage" NAME="RedisLock1 Coverage Results" MODIFIED="1574238043195" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/demo/redis" />
+    <SUITE FILE_PATH="coverage/AITEST$runtest.coverage" NAME="runtest Coverage Results" MODIFIED="1585189413222" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/testrunner" />
+    <SUITE FILE_PATH="coverage/AITEST$pytest_in_test_StrideAcRredis01_py.coverage" NAME="pytest in test_StrideAcRredis01.py Coverage Results" MODIFIED="1576821165659" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/testcase/TestAiYun/redis_case" />
+    <SUITE FILE_PATH="coverage/AITEST$pytest_in_test_all_ws_new111_py.coverage" NAME="pytest in test_all_ws_new111.py Coverage Results" MODIFIED="1574239441949" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/testcase/WS_Test" />
+    <SUITE FILE_PATH="coverage/AITEST$demo3.coverage" NAME="demo3 Coverage Results" MODIFIED="1578564859580" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/demo" />
+    <SUITE FILE_PATH="coverage/AITEST$demo11.coverage" NAME="demo11 Coverage Results" MODIFIED="1584683636889" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/demo" />
+    <SUITE FILE_PATH="coverage/AITEST$demo4.coverage" NAME="demo4 Coverage Results" MODIFIED="1585131308389" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/demo" />
+    <SUITE FILE_PATH="coverage/AITEST$pytest_in_request_api_py.coverage" NAME="pytest in request_api.py Coverage Results" MODIFIED="1569466974667" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/demo" />
+    <SUITE FILE_PATH="coverage/AITEST$pytest_in_test_all_ws_new_py.coverage" NAME="pytest in test_all_ws_new.py Coverage Results" MODIFIED="1568707141501" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/testcase/WS_Test" />
+    <SUITE FILE_PATH="coverage/AITEST$demo12__1_.coverage" NAME="demo12 (1) Coverage Results" MODIFIED="1583920028182" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/demo" />
+    <SUITE FILE_PATH="coverage/AITEST$demo51.coverage" NAME="demo51 Coverage Results" MODIFIED="1583916256579" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/demo" />
+    <SUITE FILE_PATH="coverage/AITEST$__init____2_.coverage" NAME="__init__ (2) Coverage Results" MODIFIED="1578969104176" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/testcase/TestAiYun/xls_case" />
+    <SUITE FILE_PATH="coverage/AITEST$pytest_in_demo0_py.coverage" NAME="pytest in demo0.py Coverage Results" MODIFIED="1579053532678" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/demo" />
+    <SUITE FILE_PATH="coverage/AITEST$Traversing_path.coverage" NAME="Traversing_path Coverage Results" MODIFIED="1582869275551" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/common" />
+    <SUITE FILE_PATH="coverage/AITEST$demo16.coverage" NAME="demo16 Coverage Results" MODIFIED="1585101582523" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/demo" />
+    <SUITE FILE_PATH="coverage/AITEST$demo9.coverage" NAME="demo9 Coverage Results" MODIFIED="1578358554255" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/demo" />
+    <SUITE FILE_PATH="coverage/AITEST$redis.coverage" NAME="redis Coverage Results" MODIFIED="1576734978664" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/common" />
+  </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_DATA_SOURCES" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <option name="HIDDEN_KINDS">
+      <set />
+    </option>
+    <expand>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="@111.231.233.115" type="feb32156:DbDataSourceImpl" />
+      </path>
+    </expand>
+    <select />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>nlu_text</find>
+      <find>date_str</find>
+      <find>self.date_str</find>
+      <find>test_time</find>
+      <find>result_text</find>
+      <find>self.text</find>
+      <find>mp3</find>
+      <find>2020-03-10 09:34</find>
+      <find>09:34:47</find>
+      <find>test</find>
+      <find>filter_str</find>
+      <find>levelname</find>
+      <find>col</find>
+      <find>tts = jsonpath.jsonpath(Response, &quot;$..text&quot;)[0]</find>
+      <find>'1'</find>
+      <find>n</find>
+      <find>time_list</find>
+      <find>21:04:15.340</find>
+      <find>i + 1</find>
+      <find>mcrc_multi_wakeup_get_wakeup_flag</find>
+      <find>.LOG</find>
+      <find>info</find>
+      <find>result</find>
+      <find>result0</find>
+      <find>local variable 'result0' referenced before assignment</find>
+      <find>else</find>
+      <find>Process finished with exit code -1073741571 (0xC00000FD)</find>
+      <find>\[(.+?)\]\(m_aicloud_end.*VAD END</find>
+      <find>\[(.+?)\]\(m_cloud_speech_trans_ack.*ASR</find>
+      <find>err</find>
+    </findStrings>
+    <replaceStrings>
+      <replace>common</replace>
+      <replace>pre_data</replace>
+      <replace>nlu_text</replace>
+      <replace>self.text</replace>
+      <replace>date_str</replace>
+      <replace>tts</replace>
+      <replace>self.tts</replace>
+      <replace>find_str</replace>
+      <replace>data_list</replace>
+      <replace>x</replace>
+    </replaceStrings>
+    <dirStrings>
+      <dir>E:\AITEST\common</dir>
+      <dir>E:\AITEST</dir>
+    </dirStrings>
+  </component>
+  <component name="ProjectId" id="1gO1TFhxQjNL7aWTcoKdJCXl3uc" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="DatabaseDriversLRU" value="mysql&#10;redshift&#10;mariadb" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="database.console.LAST_STATE" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../ws" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\AITEST\TestResult\oldData" />
+      <recent name="E:\AITEST\demo\wakeup_log" />
+      <recent name="E:\AITEST\demo" />
+      <recent name="E:\AITEST\testcase\TestAiYun\xls_case" />
+      <recent name="E:\AITEST\testcase\TestAiYun\1" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="G:\python\AITEST\demo" />
+      <recent name="E:\AITEST\demo" />
+      <recent name="E:\AITEST\TestResult" />
+      <recent name="E:\AITEST\Log" />
+      <recent name="E:\AITEST\common" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Python.pipinstall">
+    <configuration name="Traversing_path" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="AITEST" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/common" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/common/Traversing_path.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="demo0" type="PythonConfigurationType" factoryName="Python">
+      <module name="AITEST" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/demo" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/demo/demo0.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="demo10" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="AITEST" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/demo" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/demo/demo10.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="demo13" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="AITEST" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/demo" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/demo/demo13.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="demo13_1" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="AITEST" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/demo" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/demo/demo13_1.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="demo5" type="PythonConfigurationType" factoryName="Python">
+      <module name="AITEST" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/demo" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="E:\AITEST\demo\demo51.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="pipinstall" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="AITEST" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/pipinstall.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="request_api" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
+      <module name="AITEST" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="D:\Program Files\Python36\python.exe" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/demo/request_api.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="pytest in test_E2Redis.py" type="tests" factoryName="py.test" nameIsGenerated="true">
+      <module name="AITEST" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/testcase/TestAiYun/redis_case" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="_new_keywords" value="&quot;&quot;" />
+      <option name="_new_parameters" value="&quot;&quot;" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;$PROJECT_DIR$/testcase/TestAiYun/redis_case/test_E2Redis.py&quot;" />
+      <option name="_new_targetType" value="&quot;PATH&quot;" />
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Python.Traversing_path" />
+      <item itemvalue="Python.demo0" />
+      <item itemvalue="Python.demo10" />
+      <item itemvalue="Python.demo13" />
+      <item itemvalue="Python.demo13_1" />
+      <item itemvalue="Python.demo5" />
+      <item itemvalue="Python.pipinstall" />
+      <item itemvalue="Python.request_api" />
+      <item itemvalue="Python tests.pytest in test_E2Redis.py" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.pipinstall" />
+        <item itemvalue="Python.demo13_1" />
+        <item itemvalue="Python.demo10" />
+        <item itemvalue="Python.demo13" />
+        <item itemvalue="Python.Traversing_path" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="SvnConfiguration" cleanupOnStartRun="true">
+    <configuration>D:\MyData\lijq36\AppData\Roaming\Subversion</configuration>
+    <supportedVersion>125</supportedVersion>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="e33044be-f19b-4376-a969-957e143815cb" name="Default Changelist" comment="" />
+      <created>1566352019075</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1566352019075</updated>
+      <workItem from="1566352021889" duration="3507000" />
+      <workItem from="1566355948757" duration="2003000" />
+      <workItem from="1566541674220" duration="9682000" />
+      <workItem from="1566818207847" duration="91000" />
+      <workItem from="1566889306185" duration="35000" />
+      <workItem from="1568620715209" duration="172000" />
+      <workItem from="1568686372396" duration="19071000" />
+      <workItem from="1568784684473" duration="813000" />
+      <workItem from="1569032764178" duration="2385000" />
+      <workItem from="1569293333532" duration="13164000" />
+      <workItem from="1569723030786" duration="6430000" />
+      <workItem from="1571376683818" duration="52000" />
+      <workItem from="1572226859434" duration="7941000" />
+      <workItem from="1572675545377" duration="7289000" />
+      <workItem from="1572934913985" duration="3638000" />
+      <workItem from="1573623033076" duration="112000" />
+      <workItem from="1574148865502" duration="6530000" />
+      <workItem from="1574236958190" duration="8216000" />
+      <workItem from="1574731173658" duration="1199000" />
+      <workItem from="1575525678749" duration="7163000" />
+      <workItem from="1575958901360" duration="30290000" />
+      <workItem from="1576218554043" duration="10887000" />
+      <workItem from="1576303004247" duration="27000" />
+      <workItem from="1576547250435" duration="27167000" />
+      <workItem from="1576718541482" duration="43695000" />
+      <workItem from="1577079392686" duration="11056000" />
+      <workItem from="1577352710623" duration="10702000" />
+      <workItem from="1577425851834" duration="15423000" />
+      <workItem from="1577496458834" duration="5118000" />
+      <workItem from="1577517130742" duration="7474000" />
+      <workItem from="1577670466416" duration="19418000" />
+      <workItem from="1577699531649" duration="2436000" />
+      <workItem from="1577786794008" duration="1180000" />
+      <workItem from="1577789436416" duration="1599000" />
+      <workItem from="1577930699726" duration="4646000" />
+      <workItem from="1577955352671" duration="2110000" />
+      <workItem from="1578358388485" duration="2491000" />
+      <workItem from="1578561475756" duration="4367000" />
+      <workItem from="1578636138628" duration="32553000" />
+      <workItem from="1578904845965" duration="10324000" />
+      <workItem from="1578965680161" duration="2989000" />
+      <workItem from="1579050133274" duration="3250000" />
+      <workItem from="1579054948268" duration="49000" />
+      <workItem from="1579055038614" duration="5490000" />
+      <workItem from="1579335747637" duration="596000" />
+      <workItem from="1582859658935" duration="595000" />
+      <workItem from="1582861385962" duration="3390000" />
+      <workItem from="1583214362488" duration="509000" />
+      <workItem from="1583215041628" duration="3255000" />
+      <workItem from="1583387795709" duration="13963000" />
+      <workItem from="1583457802391" duration="9370000" />
+      <workItem from="1583476506713" duration="18995000" />
+      <workItem from="1583564941568" duration="3440000" />
+      <workItem from="1583580077857" duration="3001000" />
+      <workItem from="1583737386612" duration="1266000" />
+      <workItem from="1583803801857" duration="24835000" />
+      <workItem from="1583889307851" duration="433000" />
+      <workItem from="1583889796641" duration="9646000" />
+      <workItem from="1583913941998" duration="1062000" />
+      <workItem from="1583915067675" duration="2355000" />
+      <workItem from="1583918891860" duration="17822000" />
+      <workItem from="1583994692559" duration="8313000" />
+      <workItem from="1584069373114" duration="3087000" />
+      <workItem from="1584079674902" duration="16231000" />
+      <workItem from="1584332351069" duration="3154000" />
+      <workItem from="1584347705514" duration="6825000" />
+      <workItem from="1584425528171" duration="156000" />
+      <workItem from="1584425726655" duration="112000" />
+      <workItem from="1584425887757" duration="12215000" />
+      <workItem from="1584512767975" duration="20492000" />
+      <workItem from="1584540636420" duration="15363000" />
+      <workItem from="1584683206686" duration="7183000" />
+      <workItem from="1584755557393" duration="18390000" />
+      <workItem from="1584937359001" duration="5806000" />
+      <workItem from="1585011529218" duration="2319000" />
+      <workItem from="1585021373460" duration="898000" />
+      <workItem from="1585036964398" duration="1430000" />
+      <workItem from="1585043919276" duration="9409000" />
+      <workItem from="1585128854999" duration="2398000" />
+      <workItem from="1585188879632" duration="1462000" />
+      <workItem from="1585214747377" duration="2457000" />
+      <workItem from="1585538514462" duration="50000" />
+      <workItem from="1585538622164" duration="2000" />
+      <workItem from="1585538944162" duration="934000" />
+      <workItem from="1585545583657" duration="21000" />
+      <workItem from="1585805593387" duration="355000" />
+    </task>
+    <task id="LOCAL-00001">
+      <created>1577352846030</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1577352846030</updated>
+    </task>
+    <task id="LOCAL-00002">
+      <created>1577353564982</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1577353564982</updated>
+    </task>
+    <task id="LOCAL-00003">
+      <created>1577411206730</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1577411206730</updated>
+    </task>
+    <task id="LOCAL-00004">
+      <created>1577503556726</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1577503556726</updated>
+    </task>
+    <task id="LOCAL-00005">
+      <created>1577504651944</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1577504651945</updated>
+    </task>
+    <task id="LOCAL-00006">
+      <created>1577675493443</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1577675493443</updated>
+    </task>
+    <task id="LOCAL-00007" summary="预约时间转换函数">
+      <created>1577675987499</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1577675987499</updated>
+    </task>
+    <task id="LOCAL-00008" summary="净化器用例">
+      <created>1577684839041</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1577684839041</updated>
+    </task>
+    <task id="LOCAL-00009" summary="预约时间转换函数--修改十二点为中午">
+      <created>1577685798810</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1577685798810</updated>
+    </task>
+    <task id="LOCAL-00010" summary="净化器脚本和配置文件">
+      <created>1577688679052</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1577688679052</updated>
+    </task>
+    <task id="LOCAL-00011" summary="配置文件增加redis与产品对应关系">
+      <created>1577690386295</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1577690386295</updated>
+    </task>
+    <task id="LOCAL-00012" summary="预约时间转换函数">
+      <created>1577690973211</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1577690973211</updated>
+    </task>
+    <task id="LOCAL-00013" summary="预约时间转换函数">
+      <created>1577696769982</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1577696769982</updated>
+    </task>
+    <task id="LOCAL-00014" summary="allure 添加测试环境&#10;华凌空调用例修改到卧室">
+      <created>1577700508883</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1577700508883</updated>
+    </task>
+    <task id="LOCAL-00015" summary="增加查询烹饪时间的函数&#10;修改电饭煲测试用例，使契合函数">
+      <created>1578916642209</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1578916642209</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
+    <servers />
+  </component>
+  <component name="TestHistory">
+    <history-entry file="pytest_in_test_pytestAI_py - 2020.04.02 at 18h 37m 36s.xml">
+      <configuration name="pytest in test_pytestAI.py" configurationId="tests" />
+    </history-entry>
+    <history-entry file="pytest_in_test_pytestAI_py - 2020.04.02 at 18h 38m 57s.xml">
+      <configuration name="pytest in test_pytestAI.py" configurationId="tests" />
+    </history-entry>
+    <history-entry file="pytest_in_test_pytestAI_py - 2020.04.02 at 18h 40m 03s.xml">
+      <configuration name="pytest in test_pytestAI.py" configurationId="tests" />
+    </history-entry>
+    <history-entry file="pytest_in_test_pytestAI_py - 2020.04.02 at 18h 40m 41s.xml">
+      <configuration name="pytest in test_pytestAI.py" configurationId="tests" />
+    </history-entry>
+    <history-entry file="pytest_in_test_pytestAI_py - 2020.04.02 at 18h 41m 27s.xml">
+      <configuration name="pytest in test_pytestAI.py" configurationId="tests" />
+    </history-entry>
+    <history-entry file="pytest_in_test_pytestAI_py - 2020.04.02 at 18h 43m 18s.xml">
+      <configuration name="pytest in test_pytestAI.py" configurationId="tests" />
+    </history-entry>
+    <history-entry file="pytest_in_test_pytestAI_py - 2020.04.02 at 18h 54m 35s.xml">
+      <configuration name="pytest in test_pytestAI.py" configurationId="tests" />
+    </history-entry>
+    <history-entry file="pytest_in_test_pytestAI_py - 2020.04.02 at 19h 00m 10s.xml">
+      <configuration name="pytest in test_pytestAI.py" configurationId="tests" />
+    </history-entry>
+    <history-entry file="pytest_in_test_pytestAI_py - 2020.04.02 at 19h 03m 03s.xml">
+      <configuration name="pytest in test_pytestAI.py" configurationId="tests" />
+    </history-entry>
+    <history-entry file="pytest_in_test_pytestAI_py - 2020.04.02 at 19h 04m 55s.xml">
+      <configuration name="pytest in test_pytestAI.py" configurationId="tests" />
+    </history-entry>
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="607829000" />
+  </component>
+  <component name="TodoView" selected-index="3">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="UnknownFeatures">
+    <option featureType="com.intellij.fileTypeFactory" implementationName="*.log" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="净化器用例" />
+    <MESSAGE value="预约时间转换函数--修改十二点为中午" />
+    <MESSAGE value="净化器脚本和配置文件" />
+    <MESSAGE value="配置文件增加redis与产品对应关系" />
+    <MESSAGE value="allure 添加测试环境&#10;华凌空调用例修改到卧室" />
+    <MESSAGE value="预约时间转换函数" />
+    <MESSAGE value="增加查询烹饪时间的函数&#10;修改电饭煲测试用例，使契合函数" />
+    <option name="LAST_COMMIT_MESSAGE" value="增加查询烹饪时间的函数&#10;修改电饭煲测试用例，使契合函数" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="580" y="184" key="FileChooserDialogImpl" timestamp="1599186063332">
+      <screen x="0" y="0" width="1600" height="860" />
+    </state>
+    <state x="580" y="184" key="FileChooserDialogImpl/0.0.1600.860@0.0.1600.860" timestamp="1599186063332" />
+    <state width="1579" height="321" key="GridCell.Tab.0.bottom" timestamp="1597979177923">
+      <screen x="0" y="0" width="1600" height="860" />
+    </state>
+    <state width="1579" height="321" key="GridCell.Tab.0.bottom/0.0.1600.860@0.0.1600.860" timestamp="1597979177923" />
+    <state width="1579" height="321" key="GridCell.Tab.0.center" timestamp="1597979177922">
+      <screen x="0" y="0" width="1600" height="860" />
+    </state>
+    <state width="1579" height="321" key="GridCell.Tab.0.center/0.0.1600.860@0.0.1600.860" timestamp="1597979177922" />
+    <state width="1579" height="321" key="GridCell.Tab.0.left" timestamp="1597979177922">
+      <screen x="0" y="0" width="1600" height="860" />
+    </state>
+    <state width="1579" height="321" key="GridCell.Tab.0.left/0.0.1600.860@0.0.1600.860" timestamp="1597979177922" />
+    <state width="1579" height="321" key="GridCell.Tab.0.right" timestamp="1597979177923">
+      <screen x="0" y="0" width="1600" height="860" />
+    </state>
+    <state width="1579" height="321" key="GridCell.Tab.0.right/0.0.1600.860@0.0.1600.860" timestamp="1597979177923" />
+    <state x="301" y="74" key="SettingsEditor" timestamp="1597970941639">
+      <screen x="0" y="0" width="1600" height="860" />
+    </state>
+    <state x="301" y="74" key="SettingsEditor/0.0.1600.860@0.0.1600.860" timestamp="1597970941639" />
+    <state x="717" y="181" width="672" height="678" key="search.everywhere.popup" timestamp="1598579166259">
+      <screen x="0" y="0" width="1600" height="860" />
+    </state>
+    <state x="717" y="181" width="672" height="678" key="search.everywhere.popup/0.0.1600.860@0.0.1600.860" timestamp="1598579166259" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/demo/demo51.py</url>
+          <line>76</line>
+          <option name="timeStamp" value="19" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="Copyright.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
+  </component>
+</project>

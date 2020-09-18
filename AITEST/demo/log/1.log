@@ -1,0 +1,104 @@
+﻿
+[2020-03-16 01:39:01.569](m_aicloud_end:1361) VAD END
+
+2020-03-16 01:39:01.589 [V] src/vad/speech_vad.c#158  start vad engine success: 0xb0d4f2f0, param is: {"pauseTime": 400}
+
+[2020-03-16 01:39:01.774](m_cloud_speech_trans_ack:476) ASR:{
+
+	"code":	200,
+
+	"data":	{
+
+		"asr":	"For what can t. "
+
+	},
+
+	"topic":	"cloud.speech.trans.ack",
+
+	"mid":	"02e8ae67-86ad-4cbf-a799-0e6da4209bf8",
+
+	"sessionId":	"c0e09898-e1e7-4dd1-b029-2e26c461125b",
+
+	"message":	"success"
+
+}
+
+[2020-03-16 01:39:01.808](m_parse_speech_reply_to_tts:676) TTS RECEIVED:{
+
+	"nlu":	{
+
+		"endSession":	true,
+
+		"asr":	"For what can t. ",
+
+		"tts":	{
+
+			"startSeq":	1,
+
+			"data":	[{
+
+					"urlType":	"tts",
+
+					"skillType":	"",
+
+					"autoResume":	false,
+
+					"text":	"暂时还未有null的信息，我会继续学习",
+
+					"seq":	1,
+
+					"url":	"http://tts.dui.ai/runtime/v1/cache/d6bf5aeb-ac7f-49aa-815d-ca7ecc7a6c44?productId=278575322"
+
+				}],
+
+			"type":	"Sort"
+
+		}
+
+	}
+
+}
+
+[2020-03-16 01:39:01.819](io_open_default:115) Opening 'http://tts.dui.ai/runtime/v1/cache/d6bf5aeb-ac7f-49aa-815d-ca7ecc7a6c44?productId=278575322' for reading
+
+[2020-03-16 01:39:01.868](http_connect:1235) Connected, Send request:GET /runtime/v1/cache/d6bf5aeb-ac7f-49aa-815d-ca7ecc7a6c44?productId=278575322 HTTP/1.1
+
+
+User-Agent: Lavf/57.83.100
+
+
+Accept: */*
+
+
+Range: bytes=0-
+
+
+Connection: close
+
+
+Host: tts.dui.ai
+
+
+Icy-MetaData: 1
+
+
+
+
+
+
+
+[2020-03-16 01:39:02.251](http_read_header:1098) Got http/https HEADERS
+
+[2020-03-16 01:39:02.251](http_connect:1278) Got first voice raw data
+
+[2020-03-16 01:39:02.263](SDL_RunAudio:801) Start to play
+
+2020-03-16 01:39:09.393 [V] src/vad/speech_vad.c#158  start vad engine success: 0xb0d4f2f0, param is: {"pauseTime": 400}
+
+[2020-03-16 01:39:09.395](io_open_default:115) Opening '/oem/tts/greeting7.mp3' for reading
+
+[0;35m[mp3 @ 0xae7a7e10] <2020-03-16 01:39:09.399> [0m[0;33mEstimating duration from bitrate, this may be inaccurate
+
+[0m[2020-03-16 01:39:09.408](SDL_RunAudio:801) Start to play
+
+2020-03-16 01:39:10.916 [V] src/vad/speech_vad.c#34  core callback: 1, offset: 26880

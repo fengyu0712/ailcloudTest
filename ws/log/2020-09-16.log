@@ -1,0 +1,1089 @@
+[2020-09-16 17:01:39,821] - FullDuplex_Break.py [Line:29] - [INFO]-[thread:26020]-[process:22352] - =======================全双工链路打断精准率与识别率测试========================
+[2020-09-16 17:01:40,410] - FullDuplex_Break.py [Line:165] - [INFO]-[thread:26020]-[process:22352] - 开始第1条测试：['010001', '电压力锅启动红烧排骨']
+[2020-09-16 17:01:44,509] - FullDuplex_Break.py [Line:76] - [DEBUG]-[thread:26020]-[process:22352] - 
+[2020-09-16 17:01:45,511] - FullDuplex_Break.py [Line:76] - [DEBUG]-[thread:26020]-[process:22352] - 
+[2020-09-16 17:01:46,511] - FullDuplex_Break.py [Line:76] - [DEBUG]-[thread:26020]-[process:22352] - 
+[2020-09-16 17:01:47,513] - FullDuplex_Break.py [Line:106] - [ERROR]-[thread:26020]-[process:22352] - 连续1次未唤醒
+[2020-09-16 17:01:51,269] - FullDuplex_Break.py [Line:76] - [DEBUG]-[thread:26020]-[process:22352] - current:228802.688410
+[0;35m[2020-09-16 17:01:49.736][N](playing2wait_for_speech_begin:<1033>) [0m{
+	"test_output":	{
+		"ev":	"wake up",
+		"text":	"xiao mei xiao mei"
+	}
+} 
+[1;34m[2020-09-16 17:01:49.738][W](do_fsm_run:<129>) [0mcurrent state is STATE_IDLE, handle the msg: TYPE_PROMPT_PLAY
+[0;35m[2020-09-16 17:01:49.738][N](mcrc_prompt_handler:<610>) [0m{
+	"test_output":	{
+		"ev":	"speak request start"
+	}
+} 
+[1;31m[2020-09-16 17:01:49.766][A](mcrc_vad_process:<303>) [0mONESHOT START
+[0;32;31m[2020-09-16 17:01:49.893][F](mcrc_parse_order_trans:<143>) [0mDevice command not hex string
+
+[2020-09-16 17:01:52,271] - FullDuplex_Break.py [Line:76] - [DEBUG]-[thread:26020]-[process:22352] - [0;35m[2020-09-16 17:01:50.968][N](mcrc_prompt_handler:<628>) [0m{
+	"test_output":	{
+		"ev":	"speak end"
+	}
+} 
+[1;34m[2020-09-16 17:01:50.968][W](do_fsm_run:<129>) [0mcurrent state is STATE_PROMPT_PLAYING, handle the msg: TYPE_PROMPT_COMPLETE
+[0;35m[2020-09-16 17:01:51.339][N](mcrc_vad_process:<384>) [0m{
+	"test_output":	{
+		"ev":	"vad end"
+	}
+} 
+[1;34m[2020-09-16 17:01:51.339][W](rws_socket_send_data_priv:<1121>) [0maudio send complete
+[1;33m[2020-09-16 17:01:51.340][E](mcrc_wb_to_buffer:<666>) [0mwb audio end[5076:5050][1;31m[2020-09-16 17:01:51.340][A](mcrc_vad_process:<424>) [0mnormal mode
+
+[2020-09-16 17:01:53,273] - FullDuplex_Break.py [Line:76] - [DEBUG]-[thread:26020]-[process:22352] - 
+[2020-09-16 17:01:54,273] - FullDuplex_Break.py [Line:110] - [ERROR]-[thread:26020]-[process:22352] - 已退出全双工，即将重新进入全双工
+[2020-09-16 17:02:00,110] - FullDuplex_Break.py [Line:76] - [DEBUG]-[thread:26020]-[process:22352] - [0;35m[2020-09-16 17:01:54.578][N](dui_vad_callback:<206>) [0m{
+	"test_output":	{
+		"ev":	"vad start"
+	}
+} 
+[0;35m[2020-09-16 17:01:56.498][N](mcrc_vad_process:<487>) [0m{
+	"test_output":	{
+		"ev":	"vad end"
+	}
+} 
+[1;34m[2020-09-16 17:01:56.499][W](rws_socket_send_data_priv:<1121>) [0maudio send complete
+[1;33m[2020-09-16 17:01:56.500][E](mcrc_wb_to_buffer:<666>) [0mwb audio end[5117:5090][1;31m[2020-09-16 17:01:56.501][A](mcrc_vad_process:<424>) [0mnormal mode
+[0;35m[2020-09-16 17:01:56.796][N](mcrc_state_process:<1226>) [0m{
+	"test_output":	{
+		"ev":	"speech mode",
+		"info":	"full duplex"
+	}
+} 
+[0;35m[2020-09-16 17:01:56.796][N](mcrc_state_process:<1227>) [0mchange to full duplex mode
+[1;34m[2020-09-16 17:01:56.797][W](mcrc_speech_mode_set:<111>) [0mmode:3
+[0;35m[2020-09-16 17:01:56.833][N](mcrc_parse_speech_reply_tts:<2015>) [0m{
+	"test_output":	{
+		"ev":	"online tts",
+		"text":	"打开自然对话",
+		"data":	0
+	}
+} 
+[1;34m[2020-09-16 17:01:56.836][W](do_fsm_run:<129>) [0mcurrent state is STATE_IDLE, handle the msg: TYPE_PROMPT_PLAY
+[0;35m[2020-09-16 17:01:56.837][N](mcrc_prompt_handler:<610>) [0m{
+	"test_output":	{
+		"ev":	"speak request start"
+	}
+} 
+[1;33m[2020-09-16 17:01:57.665][E](mcrc_httpclient_waiting:<415>) [0mi don know:-1
+
+[2020-09-16 17:02:01,111] - FullDuplex_Break.py [Line:76] - [DEBUG]-[thread:26020]-[process:22352] - 
+[2020-09-16 17:02:02,112] - FullDuplex_Break.py [Line:76] - [DEBUG]-[thread:26020]-[process:22352] - 
+[2020-09-16 17:02:03,112] - FullDuplex_Break.py [Line:106] - [ERROR]-[thread:26020]-[process:22352] - 连续3次未唤醒
+[2020-09-16 17:02:03,112] - FullDuplex_Break.py [Line:170] - [ERROR]-[thread:26020]-[process:22352] - 連續三次未喚醒！
+[2020-09-16 17:02:03,112] - FullDuplex_Break.py [Line:165] - [INFO]-[thread:26020]-[process:22352] - 开始第2条测试：['010002', '电压力锅煲汤']
+[2020-09-16 17:02:06,844] - FullDuplex_Break.py [Line:76] - [DEBUG]-[thread:26020]-[process:22352] - [MS]send msg=(0x5:3d)
+
+[2020-09-16 17:02:07,845] - FullDuplex_Break.py [Line:76] - [DEBUG]-[thread:26020]-[process:22352] - [MS]net recv: 0x8005:0x3d.
+[MS_DBG]date:2020.9.16
+[MS_DBG]net time:17:2:6:107
+[MS]get heartbeat from cloud[0x3d]
+
+[2020-09-16 17:02:08,845] - FullDuplex_Break.py [Line:76] - [DEBUG]-[thread:26020]-[process:22352] - 
+[2020-09-16 17:02:09,846] - FullDuplex_Break.py [Line:106] - [ERROR]-[thread:26020]-[process:22352] - 连续1次未唤醒
+[2020-09-16 17:02:13,530] - FullDuplex_Break.py [Line:76] - [DEBUG]-[thread:26020]-[process:22352] - [0;35m[2020-09-16 17:02:08.849][N](mcrc_prompt_handler:<628>) [0m{
+	"test_output":	{
+		"ev":	"speak end"
+	}
+} 
+[1;34m[2020-09-16 17:02:08.850][W](do_fsm_run:<129>) [0mcurrent state is STATE_PROMPT_PLAYING, handle the msg: TYPE_PROMPT_COMPLETE
+[1;34m[2020-09-16 17:02:08.850][W](do_fsm_run:<129>) [0mcurrent state is STATE_IDLE, handle the msg: TYPE_RESUME
+[1;34m[2020-09-16 17:02:08.850][W](do_fsm_run:<133>) [0mwarning: when state is STATE_IDLE, can not handle the msg: TYPE_RESUME
+current:218690.426957
+[0;35m[2020-09-16 17:02:12.009][N](playing2wait_for_wakeup:<978>) [0m{
+	"test_output":	{
+		"ev":	"wake up",
+		"text":	"xiao mei xiao mei"
+	}
+} 
+[1;34m[2020-09-16 17:02:12.010][W](do_fsm_run:<129>) [0mcurrent state is STATE_IDLE, handle the msg: TYPE_PROMPT_PLAY
+[0;35m[2020-09-16 17:02:12.010][N](mcrc_prompt_handler:<610>) [0m{
+	"test_output":	{
+		"ev":	"speak request start"
+	}
+} 
+[0;35m[2020-09-16 17:02:12.012][N](playing2wait_for_wakeup:<1001>) [0m{
+	"test_output":	{
+		"ev":	"mode",
+		"text":	"full duplex mode"
+	}
+} 
+[0;35m[2020-09-16 17:02:12.016][N](playing2wait_for_wakeup:<1006>) [0m{
+	"test_output":	{
+		"ev":	"speech state",
+		"info":	"listen"
+	}
+} 
+
+[2020-09-16 17:02:14,531] - FullDuplex_Break.py [Line:76] - [DEBUG]-[thread:26020]-[process:22352] - [0;35m[2020-09-16 17:02:13.093][N](mcrc_prompt_handler:<628>) [0m{
+	"test_output":	{
+		"ev":	"speak end"
+	}
+} 
+[1;34m[2020-09-16 17:02:13.094][W](do_fsm_run:<129>) [0mcurrent state is STATE_PROMPT_PLAYING, handle the msg: TYPE_PROMPT_COMPLETE
+
+[2020-09-16 17:02:15,532] - FullDuplex_Break.py [Line:76] - [DEBUG]-[thread:26020]-[process:22352] - 
+[2020-09-16 17:02:16,532] - FullDuplex_Break.py [Line:110] - [ERROR]-[thread:26020]-[process:22352] - 已退出全双工，即将重新进入全双工
+[2020-09-16 17:02:22,326] - FullDuplex_Break.py [Line:76] - [DEBUG]-[thread:26020]-[process:22352] - cmd id 0xdf -- 0x18 seq 0x9c
+
+[1;33m[2020-09-16 17:02:18.664][E](mcrc_parse_order_control:<243>) [0mUnknown class:fullDuplex
+[0;35m[2020-09-16 17:02:18.667][N](mcrc_parse_speech_reply_tts:<2015>) [0m{
+	"test_output":	{
+		"ev":	"online tts",
+		"text":	"打开自然对话",
+		"data":	0
+	}
+} 
+[1;34m[2020-09-16 17:02:18.670][W](do_fsm_run:<129>) [0mcurrent state is STATE_IDLE, handle the msg: TYPE_PROMPT_PLAY
+[0;35m[2020-09-16 17:02:18.672][N](mcrc_prompt_handler:<610>) [0m{
+	"test_output":	{
+		"ev":	"speak request start"
+	}
+} 
+[1;33m[2020-09-16 17:02:19.494][E](mcrc_httpclient_waiting:<415>) [0mi don know:-1
+
+[2020-09-16 17:02:23,327] - FullDuplex_Break.py [Line:76] - [DEBUG]-[thread:26020]-[process:22352] - 
+[2020-09-16 17:02:24,327] - FullDuplex_Break.py [Line:76] - [DEBUG]-[thread:26020]-[process:22352] - 
+[2020-09-16 17:02:25,328] - FullDuplex_Break.py [Line:106] - [ERROR]-[thread:26020]-[process:22352] - 连续3次未唤醒
+[2020-09-16 17:02:25,328] - FullDuplex_Break.py [Line:170] - [ERROR]-[thread:26020]-[process:22352] - 連續三次未喚醒！
+[2020-09-16 17:02:25,329] - FullDuplex_Break.py [Line:165] - [INFO]-[thread:26020]-[process:22352] - 开始第3条测试：['010003', '电压力锅我要煲汤帮我调好时间二十八分钟']
+[2020-09-16 17:02:29,073] - FullDuplex_Break.py [Line:76] - [DEBUG]-[thread:26020]-[process:22352] - current:217851.837904
+[0;35m[2020-09-16 17:02:27.637][N](playing2wait_for_wakeup:<978>) [0m{
+	"test_output":	{
+		"ev":	"wake up",
+		"text":	"xiao mei xiao mei"
+	}
+} 
+[1;34m[2020-09-16 17:02:27.639][W](do_fsm_run:<129>) [0mcurrent state is STATE_PROMPT_PLAYING, handle the msg: TYPE_PROMPT_PLAY
+[0;35m[2020-09-16 17:02:27.640][N](playing2wait_for_wakeup:<1001>) [0m{
+	"test_output":	{
+		"ev":	"mode",
+		"text":	"full duplex mode"
+	}
+} 
+[0;35m[2020-09-16 17:02:27.643][N](playing2wait_for_wakeup:<1006>) [0m{
+	"test_output":	{
+		"ev":	"speech state",
+		"info":	"listen"
+	}
+} 
+[0;35m[2020-09-16 17:02:27.692][N](mcrc_prompt_handler:<623>) [0m{
+	"test_output":	{
+		"ev":	"speak end"
+	}
+} 
+[0;35m[2020-09-16 17:02:27.692][N](mcrc_prompt_handler:<610>) [0m{
+	"test_output":	{
+		"ev":	"speak request start"
+	}
+} 
+
+[2020-09-16 17:02:30,075] - FullDuplex_Break.py [Line:76] - [DEBUG]-[thread:26020]-[process:22352] - cmd id 0xdf -- 0x18 seq 0x9d
+
+[0;35m[2020-09-16 17:02:28.796][N](mcrc_prompt_handler:<628>) [0m{
+	"test_output":	{
+		"ev":	"speak end"
+	}
+} 
+[1;34m[2020-09-16 17:02:28.797][W](do_fsm_run:<129>) [0mcurrent state is STATE_PROMPT_PLAYING, handle the msg: TYPE_PROMPT_COMPLETE
+
+[2020-09-16 17:02:31,076] - FullDuplex_Break.py [Line:76] - [DEBUG]-[thread:26020]-[process:22352] - 
+[2020-09-16 17:02:32,078] - FullDuplex_Break.py [Line:110] - [ERROR]-[thread:26020]-[process:22352] - 已退出全双工，即将重新进入全双工
+[2020-09-16 17:02:37,890] - FullDuplex_Break.py [Line:76] - [DEBUG]-[thread:26020]-[process:22352] - WPAInstallSharedKey
+
+PeerGroupMsg1Action: AuthMode(WPA2PSK) PairwiseCipher(AES) GroupCipher(AES) 
+
+<=== PeerGroupMsg1Action: send group message 2
+
+[1;33m[2020-09-16 17:02:34.211][E](mcrc_parse_order_control:<243>) [0mUnknown class:fullDuplex
+[0;35m[2020-09-16 17:02:34.213][N](mcrc_parse_speech_reply_tts:<2015>) [0m{
+	"test_output":	{
+		"ev":	"online tts",
+		"text":	"打开自然对话",
+		"data":	0
+	}
+} 
+[1;34m[2020-09-16 17:02:34.217][W](do_fsm_run:<129>) [0mcurrent state is STATE_IDLE, handle the msg: TYPE_PROMPT_PLAY
+[0;35m[2020-09-16 17:02:34.218][N](mcrc_prompt_handler:<610>) [0m{
+	"test_output":	{
+		"ev":	"speak request start"
+	}
+} 
+[1;33m[2020-09-16 17:02:35.177][E](mcrc_httpclient_waiting:<415>) [0mi don know:-1
+
+[2020-09-16 17:02:38,891] - FullDuplex_Break.py [Line:76] - [DEBUG]-[thread:26020]-[process:22352] - 
+[2020-09-16 17:02:39,891] - FullDuplex_Break.py [Line:76] - [DEBUG]-[thread:26020]-[process:22352] - 
+[2020-09-16 17:02:40,891] - FullDuplex_Break.py [Line:106] - [ERROR]-[thread:26020]-[process:22352] - 连续2次未唤醒
+[2020-09-16 17:03:58,919] - FullDuplex_Break.py [Line:29] - [INFO]-[thread:11244]-[process:23256] - =======================全双工链路打断精准率与识别率测试========================
+[2020-09-16 17:04:07,244] - FullDuplex_Break.py [Line:29] - [INFO]-[thread:20964]-[process:14152] - =======================全双工链路打断精准率与识别率测试========================
+[2020-09-16 17:04:07,698] - FullDuplex_Break.py [Line:165] - [INFO]-[thread:20964]-[process:14152] - 开始第1条测试：['010001', '电压力锅启动红烧排骨']
+[2020-09-16 17:04:11,605] - FullDuplex_Break.py [Line:76] - [DEBUG]-[thread:20964]-[process:14152] - current:255438.320831
+[0;35m[2020-09-16 17:04:10.096][N](wait_for_wakeup2wait_for_speech_start:<688>) [0m{
+	"test_output":	{
+		"ev":	"wake up",
+		"text":	"xiao mei xiao mei"
+	}
+} 
+[1;34m[2020-09-16 17:04:10.098][W](do_fsm_run:<129>) [0mcurrent state is STATE_IDLE, handle the msg: TYPE_PROMPT_PLAY
+[0;35m[2020-09-16 17:04:10.099][N](wait_for_wakeup2wait_for_speech_start:<708>) [0m{
+	"test_output":	{
+		"ev":	"mode",
+		"text":	"full duplex mode"
+	}
+} 
+[0;35m[2020-09-16 17:04:10.098][N](mcrc_prompt_handler:<610>) [0m{
+	"test_output":	{
+		"ev":	"speak request start"
+	}
+} 
+
+[2020-09-16 17:04:12,607] - FullDuplex_Break.py [Line:76] - [DEBUG]-[thread:20964]-[process:14152] - [0;35m[2020-09-16 17:04:11.160][N](mcrc_prompt_handler:<628>) [0m{
+	"test_output":	{
+		"ev":	"speak end"
+	}
+} 
+[1;34m[2020-09-16 17:04:11.161][W](do_fsm_run:<129>) [0mcurrent state is STATE_PROMPT_PLAYING, handle the msg: TYPE_PROMPT_COMPLETE
+
+[2020-09-16 17:04:13,608] - FullDuplex_Break.py [Line:76] - [DEBUG]-[thread:20964]-[process:14152] - 
+[2020-09-16 17:04:14,611] - FullDuplex_Break.py [Line:172] - [INFO]-[thread:20964]-[process:14152] - 唤醒成功且进入全双工，即将进入播放前置音频
+[2020-09-16 17:04:16,784] - FullDuplex_Break.py [Line:76] - [DEBUG]-[thread:20964]-[process:14152] - cmd id 0xdf -- 0x18 seq 0xa3
+
+
+[2020-09-16 17:04:17,784] - FullDuplex_Break.py [Line:76] - [DEBUG]-[thread:20964]-[process:14152] - 
+[2020-09-16 17:04:18,784] - FullDuplex_Break.py [Line:131] - [ERROR]-[thread:20964]-[process:14152] - 未满足打断条件[argument of type 'bool' is not iterable]，即将重新重试
+[2020-09-16 17:04:22,507] - FullDuplex_Break.py [Line:76] - [DEBUG]-[thread:20964]-[process:14152] - [1;33m[2020-09-16 17:04:20.580][E](mcrc_parse_order_control:<243>) [0mUnknown class:fullDuplex
+[0;35m[2020-09-16 17:04:20.586][N](mcrc_parse_speech_reply_tts:<2015>) [0m{
+	"test_output":	{
+		"ev":	"online tts",
+		"text":	"打开小天使",
+		"data":	0
+	}
+} 
+[1;34m[2020-09-16 17:04:20.590][W](do_fsm_run:<129>) [0mcurrent state is STATE_IDLE, handle the msg: TYPE_PROMPT_PLAY
+[0;35m[2020-09-16 17:04:20.591][N](mcrc_prompt_handler:<610>) [0m{
+	"test_output":	{
+		"ev":	"speak request start"
+	}
+} 
+current:235769.425779
+[0;35m[2020-09-16 17:04:20.958][N](playing2wait_for_wakeup:<978>) [0m{
+	"test_output":	{
+		"ev":	"wake up",
+		"text":	"xiao mei xiao mei"
+	}
+} 
+[1;34m[2020-09-16 17:04:20.960][W](do_fsm_run:<129>) [0mcurrent state is STATE_PROMPT_PLAYING, handle the msg: TYPE_PROMPT_PLAY
+[0;35m[2020-09-16 17:04:20.960][N](playing2wait_for_wakeup:<1001>) [0m{
+	"test_output":	{
+		"ev":	"mode",
+		"text":	"full duplex mode"
+	}
+} 
+[0;35m[2020-09-16 17:04:20.962][N](playing2wait_for_wakeup:<1006>) [0m{
+	"test_output":	{
+		"ev":	"speech state",
+		"info":	"listen"
+	}
+} 
+
+[2020-09-16 17:04:23,507] - FullDuplex_Break.py [Line:76] - [DEBUG]-[thread:20964]-[process:14152] - 
+[2020-09-16 17:04:24,508] - FullDuplex_Break.py [Line:76] - [DEBUG]-[thread:20964]-[process:14152] - 
+[2020-09-16 17:04:27,694] - FullDuplex_Break.py [Line:76] - [DEBUG]-[thread:20964]-[process:14152] - [0;35m[2020-09-16 17:04:25.101][N](mcrc_prompt_handler:<610>) [0m{
+	"test_output":	{
+		"ev":	"speak request start"
+	}
+} 
+[0;35m[2020-09-16 17:04:25.200][N](mcrc_prompt_handler:<623>) [0m{
+	"test_output":	{
+		"ev":	"speak end"
+	}
+} 
+
+[2020-09-16 17:04:28,695] - FullDuplex_Break.py [Line:76] - [DEBUG]-[thread:20964]-[process:14152] - 
+[2020-09-16 17:04:29,695] - FullDuplex_Break.py [Line:131] - [ERROR]-[thread:20964]-[process:14152] - 未满足打断条件[argument of type 'bool' is not iterable]，即将重新重试
+[2020-09-16 17:04:33,445] - FullDuplex_Break.py [Line:76] - [DEBUG]-[thread:20964]-[process:14152] - 
+[2020-09-16 17:04:34,445] - FullDuplex_Break.py [Line:76] - [DEBUG]-[thread:20964]-[process:14152] - 
+[2020-09-16 17:04:35,446] - FullDuplex_Break.py [Line:76] - [DEBUG]-[thread:20964]-[process:14152] - 
+[2020-09-16 17:04:36,446] - FullDuplex_Break.py [Line:106] - [ERROR]-[thread:20964]-[process:14152] - 连续1次未唤醒
+[2020-09-16 17:04:40,143] - FullDuplex_Break.py [Line:76] - [DEBUG]-[thread:20964]-[process:14152] - current:285439.659208
+[0;35m[2020-09-16 17:04:38.623][N](wait_for_wakeup2wait_for_speech_start:<688>) [0m{
+	"test_output":	{
+		"ev":	"wake up",
+		"text":	"xiao mei xiao mei"
+	}
+} 
+[1;34m[2020-09-16 17:04:38.625][W](do_fsm_run:<129>) [0mcurrent state is STATE_PROMPT_PLAYING, handle the msg: TYPE_PROMPT_PLAY
+[0;35m[2020-09-16 17:04:38.625][N](wait_for_wakeup2wait_for_speech_start:<708>) [0m{
+[0;35m[2020-09-16 17:04:38.626][N](mcrc_prompt_handler:<610>) [0m{
+	"test_output":	{
+		"ev":	"speak request start"
+	}
+} 
+	"test_output":	{
+		"ev":	"mode",
+		"text":	"full duplex mode"
+	}
+} 
+
+[2020-09-16 17:04:41,144] - FullDuplex_Break.py [Line:76] - [DEBUG]-[thread:20964]-[process:14152] - [0;35m[2020-09-16 17:04:39.668][N](mcrc_prompt_handler:<628>) [0m{
+	"test_output":	{
+		"ev":	"speak end"
+	}
+} 
+[1;34m[2020-09-16 17:04:39.669][W](do_fsm_run:<129>) [0mcurrent state is STATE_PROMPT_PLAYING, handle the msg: TYPE_PROMPT_COMPLETE
+
+[2020-09-16 17:04:42,145] - FullDuplex_Break.py [Line:76] - [DEBUG]-[thread:20964]-[process:14152] - [1;33m[2020-09-16 17:04:41.535][E](mcrc_parse_order_control:<243>) [0mUnknown class:fullDuplex
+[0;35m[2020-09-16 17:04:41.540][N](mcrc_parse_speech_reply_tts:<2015>) [0m{
+	"test_output":	{
+		"ev":	"online tts",
+		"text":	"今天",
+		"data":	0
+	}
+} 
+[1;34m[2020-09-16 17:04:41.543][W](do_fsm_run:<129>) [0mcurrent state is STATE_IDLE, handle the msg: TYPE_PROMPT_PLAY
+[0;35m[2020-09-16 17:04:41.544][N](mcrc_prompt_handler:<610>) [0m{
+	"test_output":	{
+		"ev":	"speak request start"
+	}
+} 
+
+[2020-09-16 17:04:45,358] - FullDuplex_Break.py [Line:76] - [DEBUG]-[thread:20964]-[process:14152] - [1;33m[2020-09-16 17:04:42.179][E](mcrc_httpclient_waiting:<415>) [0mi don know:-1
+
+[2020-09-16 17:04:46,359] - FullDuplex_Break.py [Line:76] - [DEBUG]-[thread:20964]-[process:14152] - [1;33m[2020-09-16 17:04:45.081][E](mcrc_parse_order_control:<243>) [0mUnknown class:fullDuplex
+[0;35m[2020-09-16 17:04:45.084][N](mcrc_parse_speech_reply_tts:<2015>) [0m{
+	"test_output":	{
+		"ev":	"online tts",
+		"text":	"打开小天使",
+		"data":	0
+	}
+} 
+[1;34m[2020-09-16 17:04:45.087][W](do_fsm_run:<129>) [0mcurrent state is STATE_PROMPT_PLAYING, handle the msg: TYPE_PROMPT_PLAY
+[0;35m[2020-09-16 17:04:45.199][N](mcrc_prompt_handler:<623>) [0m{
+	"test_output":	{
+		"ev":	"speak end"
+	}
+} 
+[0;35m[2020-09-16 17:04:45.200][N](mcrc_prompt_handler:<610>) [0m{
+	"test_output":	{
+		"ev":	"speak request start"
+	}
+} 
+[1;33m[2020-09-16 17:04:45.750][E](mcrc_httpclient_waiting:<415>) [0mi don know:-1
+
+[2020-09-16 17:04:47,360] - FullDuplex_Break.py [Line:131] - [ERROR]-[thread:20964]-[process:14152] - 未满足打断条件[]，即将重新重试
+[2020-09-16 17:04:53,110] - FullDuplex_Break.py [Line:76] - [DEBUG]-[thread:20964]-[process:14152] - [MS]send msg=(0x5:41)
+[MS]net recv: 0x8005:0x41.
+[MS_DBG]date:2020.9.16
+[MS_DBG]net time:17:4:46:761
+[MS]get heartbeat from cloud[0x41]
+[1;33m[2020-09-16 17:04:50.002][E](mcrc_parse_order_control:<243>) [0mUnknown class:fullDuplex
+[0;35m[2020-09-16 17:04:50.008][N](mcrc_state_process:<1246>) [0m{
+	"test_output":	{
+		"ev":	"speech state",
+		"info":	"idle"
+	}
+} 
+[0;35m[2020-09-16 17:04:50.009][N](mcrc_parse_speech_reply_tts:<2015>) [0m{
+	"test_output":	{
+		"ev":	"online tts",
+		"text":	"故事",
+		"data":	0
+	}
+} 
+[1;34m[2020-09-16 17:04:50.017][W](do_fsm_run:<129>) [0mcurrent state is STATE_PROMPT_PLAYING, handle the msg: TYPE_MEDIA_PLAY
+[0;35m[2020-09-16 17:04:50.130][N](mcrc_prompt_handler:<623>) [0m{
+	"test_output":	{
+		"ev":	"speak end"
+	}
+} 
+[0;35m[2020-09-16 17:04:50.133][N](mcrc_media_handler:<570>) [0m{
+	"test_output":	{
+		"ev":	"speak request start"
+	}
+} 
+[1;33m[2020-09-16 17:04:50.583][E](mcrc_httpclient_waiting:<415>) [0mi don know:-1
+
+[2020-09-16 17:04:54,110] - FullDuplex_Break.py [Line:200] - [INFO]-[thread:20964]-[process:14152] - 用例【['010001', '电压力锅启动红烧排骨']】ASR识别结果：故事
+[2020-09-16 17:04:54,110] - FullDuplex_Break.py [Line:201] - [INFO]-[thread:20964]-[process:14152] - 用例【['010001', '电压力锅启动红烧排骨']】打断测试结果：Pass
+[2020-09-16 17:04:54,111] - FullDuplex_Break.py [Line:205] - [INFO]-[thread:20964]-[process:14152] - 当前一共执行测试【1次】，正常执行【1】，其中ASR识别正确【0次】,打断成功【1次】，识别率为：【0.00%】,打断精准率为：【0.00%】，打断召回率为：【0.00%】
+[2020-09-16 17:04:54,280] - FullDuplex_Break.py [Line:165] - [INFO]-[thread:20964]-[process:14152] - 开始第2条测试：['010002', '电压力锅煲汤']
+[2020-09-16 17:04:57,978] - FullDuplex_Break.py [Line:76] - [DEBUG]-[thread:20964]-[process:14152] - [0;35m[2020-09-16 17:04:53.651][N](mcrc_media_handler:<590>) [0m{
+	"test_output":	{
+		"ev":	"speak end"
+	}
+} 
+[1;34m[2020-09-16 17:04:53.652][W](do_fsm_run:<129>) [0mcurrent state is STATE_MEDIA_PLAYING, handle the msg: TYPE_MEDIA_COMPLETE
+AAAAAAAAAAAAAAAA
+BBBBBBBBBBBBBBBBB
+[1;34m[2020-09-16 17:04:53.652][W](do_fsm_run:<129>) [0mcurrent state is STATE_IDLE, handle the msg: TYPE_MEDIA_PLAY
+[0;35m[2020-09-16 17:04:53.656][N](mcrc_media_handler:<570>) [0m{
+	"test_output":	{
+		"ev":	"speak request start"
+	}
+} 
+[1;33m[2020-09-16 17:04:53.931][E](mcrc_httpclient_waiting:<415>) [0mi don know:-1
+[0;35m[2020-09-16 17:04:57.083][N](mcrc_media_handler:<590>) [0m{
+	"test_output":	{
+		"ev":	"speak end"
+	}
+} 
+[1;34m[2020-09-16 17:04:57.084][W](do_fsm_run:<129>) [0mcurrent state is STATE_MEDIA_PLAYING, handle the msg: TYPE_MEDIA_COMPLETE
+AAAAAAAAAAAAAAAA
+BBBBBBBBBBBBBBBBB
+[1;34m[2020-09-16 17:04:57.084][W](do_fsm_run:<129>) [0mcurrent state is STATE_IDLE, handle the msg: TYPE_MEDIA_PLAY
+[0;35m[2020-09-16 17:04:57.087][N](mcrc_media_handler:<570>) [0m{
+	"test_output":	{
+		"ev":	"speak request start"
+	}
+} 
+
+[2020-09-16 17:04:58,979] - FullDuplex_Break.py [Line:76] - [DEBUG]-[thread:20964]-[process:14152] - 
+[2020-09-16 17:04:59,981] - FullDuplex_Break.py [Line:76] - [DEBUG]-[thread:20964]-[process:14152] - 
+[2020-09-16 17:05:00,982] - FullDuplex_Break.py [Line:106] - [ERROR]-[thread:20964]-[process:14152] - 连续1次未唤醒
+[2020-09-16 17:05:04,676] - FullDuplex_Break.py [Line:76] - [DEBUG]-[thread:20964]-[process:14152] - current:261790.073206
+[0;35m[2020-09-16 17:05:03.203][N](playing2wait_for_wakeup:<978>) [0m{
+	"test_output":	{
+		"ev":	"wake up",
+		"text":	"xiao mei xiao mei"
+	}
+} 
+[1;34m[2020-09-16 17:05:03.204][W](do_fsm_run:<129>) [0mcurrent state is STATE_MEDIA_PLAYING, handle the msg: TYPE_PROMPT_PLAY
+[0;35m[2020-09-16 17:05:03.205][N](playing2wait_for_wakeup:<1001>) [0m{
+	"test_output":	{
+		"ev":	"mode",
+		"text":	"full duplex mode"
+	}
+} 
+[0;35m[2020-09-16 17:05:03.208][N](playing2wait_for_wakeup:<1006>) [0m{
+	"test_output":	{
+		"ev":	"speech state",
+		"info":	"listen"
+	}
+} 
+[0;35m[2020-09-16 17:05:03.250][N](mcrc_media_handler:<575>) [0m{
+	"test_output":	{
+		"ev":	"speak end"
+	}
+} 
+[0;35m[2020-09-16 17:05:03.251][N](mcrc_prompt_handler:<610>) [0m{
+	"test_output":	{
+		"ev":	"speak request start"
+	}
+} 
+
+[2020-09-16 17:05:05,677] - FullDuplex_Break.py [Line:76] - [DEBUG]-[thread:20964]-[process:14152] - [0;35m[2020-09-16 17:05:04.429][N](mcrc_prompt_handler:<628>) [0m{
+	"test_output":	{
+		"ev":	"speak end"
+	}
+} 
+[1;34m[2020-09-16 17:05:04.430][W](do_fsm_run:<129>) [0mcurrent state is STATE_PROMPT_PLAYING, handle the msg: TYPE_PROMPT_COMPLETE
+
+[2020-09-16 17:05:06,678] - FullDuplex_Break.py [Line:76] - [DEBUG]-[thread:20964]-[process:14152] - 
+[2020-09-16 17:05:07,679] - FullDuplex_Break.py [Line:172] - [INFO]-[thread:20964]-[process:14152] - 唤醒成功且进入全双工，即将进入播放前置音频
+[2020-09-16 17:05:09,867] - FullDuplex_Break.py [Line:76] - [DEBUG]-[thread:20964]-[process:14152] - 
+[2020-09-16 17:05:10,868] - FullDuplex_Break.py [Line:76] - [DEBUG]-[thread:20964]-[process:14152] - [1;33m[2020-09-16 17:05:09.829][E](mcrc_parse_order_control:<243>) [0mUnknown class:fullDuplex
+[0;35m[2020-09-16 17:05:09.832][N](mcrc_parse_speech_reply_tts:<2015>) [0m{
+	"test_output":	{
+		"ev":	"online tts",
+		"text":	"打开小天使",
+		"data":	0
+	}
+} 
+[1;34m[2020-09-16 17:05:09.835][W](do_fsm_run:<129>) [0mcurrent state is STATE_MEDIA_PAUSED, handle the msg: TYPE_PROMPT_PLAY
+[0;35m[2020-09-16 17:05:09.836][N](mcrc_prompt_handler:<610>) [0m{
+	"test_output":	{
+		"ev":	"speak request start"
+	}
+} 
+
+[2020-09-16 17:05:11,869] - FullDuplex_Break.py [Line:134] - [INFO]-[thread:20964]-[process:14152] - 符合打断条件
+[2020-09-16 17:05:11,869] - FullDuplex_Break.py [Line:174] - [INFO]-[thread:20964]-[process:14152] - 即将播放音频【E:/ws/002M30_36//002M30_36_010002.wav】
+[2020-09-16 17:05:17,113] - FullDuplex_Break.py [Line:76] - [DEBUG]-[thread:20964]-[process:14152] - [1;33m[2020-09-16 17:05:11.218][E](mcrc_httpclient_waiting:<415>) [0mi don know:-1
+[1;34m[2020-09-16 17:05:15.418][W](do_fsm_run:<129>) [0mcurrent state is STATE_PROMPT_PLAYING, handle the msg: TYPE_RESUME
+[1;34m[2020-09-16 17:05:15.418][W](do_fsm_run:<133>) [0mwarning: when state is STATE_PROMPT_PLAYING, can not handle the msg: TYPE_RESUME
+
+[2020-09-16 17:05:18,115] - FullDuplex_Break.py [Line:76] - [DEBUG]-[thread:20964]-[process:14152] - 
+[2020-09-16 17:05:19,116] - FullDuplex_Break.py [Line:76] - [DEBUG]-[thread:20964]-[process:14152] - [0;35m[2020-09-16 17:05:18.422][N](mcrc_prompt_handler:<628>) [0m{
+	"test_output":	{
+		"ev":	"speak end"
+	}
+} 
+[1;34m[2020-09-16 17:05:18.423][W](do_fsm_run:<129>) [0mcurrent state is STATE_PROMPT_PLAYING, handle the msg: TYPE_PROMPT_COMPLETE
+[1;34m[2020-09-16 17:05:18.423][W](do_fsm_run:<129>) [0mcurrent state is STATE_MEDIA_PAUSED, handle the msg: TYPE_RESUME
+[0;35m[2020-09-16 17:05:18.426][N](mcrc_media_handler:<580>) [0m{
+	"test_output":	{
+		"ev":	"speak request start"
+	}
+} 
+
+[2020-09-16 17:05:20,116] - FullDuplex_Break.py [Line:76] - [DEBUG]-[thread:20964]-[process:14152] - 
+[2020-09-16 17:05:21,117] - FullDuplex_Break.py [Line:76] - [DEBUG]-[thread:20964]-[process:14152] - 
+[2020-09-16 17:05:22,117] - FullDuplex_Break.py [Line:76] - [DEBUG]-[thread:20964]-[process:14152] - 
+[2020-09-16 17:05:23,117] - FullDuplex_Break.py [Line:76] - [DEBUG]-[thread:20964]-[process:14152] - current:258650.219897
+[0;35m[2020-09-16 17:05:21.728][N](playing2wait_for_wakeup:<978>) [0m{
+	"test_output":	{
+		"ev":	"wake up",
+		"text":	"xiao mei xiao mei"
+	}
+} 
+[1;34m[2020-09-16 17:05:21.729][W](do_fsm_run:<129>) [0mcurrent state is STATE_MEDIA_PLAYING, handle the msg: TYPE_PROMPT_PLAY
+[0;35m[2020-09-16 17:05:21.730][N](playing2wait_for_wakeup:<1001>) [0m{
+	"test_output":	{
+		"ev":	"mode",
+		"text":	"full duplex mode"
+	}
+} 
+[0;35m[2020-09-16 17:05:21.732][N](playing2wait_for_wakeup:<1006>) [0m{
+	"test_output":	{
+		"ev":	"speech state",
+		"info":	"listen"
+	}
+} 
+[0;35m[2020-09-16 17:05:21.775][N](mcrc_media_handler:<575>) [0m{
+	"test_output":	{
+		"ev":	"speak end"
+	}
+} 
+[0;35m[2020-09-16 17:05:21.776][N](mcrc_prompt_handler:<610>) [0m{
+	"test_output":	{
+		"ev":	"speak request start"
+	}
+} 
+
+[2020-09-16 17:05:24,118] - FullDuplex_Break.py [Line:200] - [INFO]-[thread:20964]-[process:14152] - 用例【['010002', '电压力锅煲汤']】ASR识别结果：xiao mei xiao mei
+[2020-09-16 17:05:24,119] - FullDuplex_Break.py [Line:201] - [INFO]-[thread:20964]-[process:14152] - 用例【['010002', '电压力锅煲汤']】打断测试结果：Pass
+[2020-09-16 17:05:24,119] - FullDuplex_Break.py [Line:205] - [INFO]-[thread:20964]-[process:14152] - 当前一共执行测试【2次】，正常执行【2】，其中ASR识别正确【0次】,打断成功【2次】，识别率为：【0.00%】,打断精准率为：【0.00%】，打断召回率为：【0.00%】
+[2020-09-16 17:05:24,257] - FullDuplex_Break.py [Line:165] - [INFO]-[thread:20964]-[process:14152] - 开始第3条测试：['010003', '电压力锅我要煲汤帮我调好时间二十八分钟']
+[2020-09-16 17:05:27,951] - FullDuplex_Break.py [Line:76] - [DEBUG]-[thread:20964]-[process:14152] - [0;35m[2020-09-16 17:05:22.937][N](mcrc_prompt_handler:<628>) [0m{
+	"test_output":	{
+		"ev":	"speak end"
+	}
+} 
+[1;34m[2020-09-16 17:05:22.938][W](do_fsm_run:<129>) [0mcurrent state is STATE_PROMPT_PLAYING, handle the msg: TYPE_PROMPT_COMPLETE
+[1;34m[2020-09-16 17:05:24.087][W](do_fsm_run:<129>) [0mcurrent state is STATE_MEDIA_PAUSED, handle the msg: TYPE_STOP
+[0;35m[2020-09-16 17:05:24.090][N](mcrc_media_handler:<580>) [0m{
+	"test_output":	{
+		"ev":	"speak request start"
+	}
+} 
+[1;33m[2020-09-16 17:05:24.125][E](mcrc_parse_order_control:<243>) [0mUnknown class:fullDuplex
+[0;35m[2020-09-16 17:05:24.127][N](mcrc_state_process:<1246>) [0m{
+	"test_output":	{
+		"ev":	"speech state",
+		"info":	"idle"
+	}
+} 
+[0;35m[2020-09-16 17:05:24.130][N](mcrc_parse_speech_reply_tts:<2015>) [0m{
+	"test_output":	{
+		"ev":	"online tts",
+		"text":	"停止播放",
+		"data":	0
+	}
+} 
+[0;35m[2020-09-16 17:05:24.145][N](mcrc_media_handler:<585>) [0m{
+	"test_output":	{
+		"ev":	"speak end"
+	}
+} 
+[1;34m[2020-09-16 17:05:24.146][W](do_fsm_run:<129>) [0mcurrent state is STATE_IDLE, handle the msg: TYPE_PROMPT_PLAY
+[0;35m[2020-09-16 17:05:24.146][N](mcrc_prompt_handler:<610>) [0m{
+	"test_output":	{
+		"ev":	"speak request start"
+	}
+} 
+[1;33m[2020-09-16 17:05:24.424][E](mcrc_httpclient_waiting:<415>) [0mi don know:-1
+[MS]cur-ver:081110002004030101
+[MS]send msg=(0xc1:42)
+[MS]net recv: 0x80c1:0x42.
+[MS]result_md5:
+[e5 08 84 3e c5 a4 e1 7d c6 68 f3 09 c5 86 41 ff ]
+[MS]recv_md5:
+[e5 08 84 3e c5 a4 e1 7d c6 68 f3 09 c5 86 41 ff ]
+[MS]result_md5:
+[f2 57 55 c4 62 f2 13 f2 96 ef 8c 19 dd 26 ab a4 ]
+[MS]recv_md5:
+[00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 ]
+[MS]MD5 error
+
+[MS_DBG]refresh hb tm: 2127863
+[MS_DBG]date:2020.9.16
+[MS_DBG]net time:17:5:25:341
+[MS]sw is newest
+[0;35m[2020-09-16 17:05:26.447][N](mcrc_prompt_handler:<628>) [0m{
+	"test_output":	{
+		"ev":	"speak end"
+	}
+} 
+[1;34m[2020-09-16 17:05:26.447][W](do_fsm_run:<129>) [0mcurrent state is STATE_PROMPT_PLAYING, handle the msg: TYPE_PROMPT_COMPLETE
+[1;34m[2020-09-16 17:05:26.448][W](do_fsm_run:<129>) [0mcurrent state is STATE_IDLE, handle the msg: TYPE_RESUME
+[1;34m[2020-09-16 17:05:26.448][W](do_fsm_run:<133>) [0mwarning: when state is STATE_IDLE, can not handle the msg: TYPE_RESUME
+
+[2020-09-16 17:05:28,952] - FullDuplex_Break.py [Line:76] - [DEBUG]-[thread:20964]-[process:14152] - 
+[2020-09-16 17:05:29,952] - FullDuplex_Break.py [Line:76] - [DEBUG]-[thread:20964]-[process:14152] - 
+[2020-09-16 17:05:30,953] - FullDuplex_Break.py [Line:106] - [ERROR]-[thread:20964]-[process:14152] - 连续1次未唤醒
+[2020-09-16 17:05:34,675] - FullDuplex_Break.py [Line:76] - [DEBUG]-[thread:20964]-[process:14152] - current:243475.087466
+[0;35m[2020-09-16 17:05:33.210][N](playing2wait_for_wakeup:<978>) [0m{
+	"test_output":	{
+		"ev":	"wake up",
+		"text":	"xiao mei xiao mei"
+	}
+} 
+[1;34m[2020-09-16 17:05:33.212][W](do_fsm_run:<129>) [0mcurrent state is STATE_IDLE, handle the msg: TYPE_PROMPT_PLAY
+[0;35m[2020-09-16 17:05:33.213][N](playing2wait_for_wakeup:<1001>) [0m{
+	"test_output":	{
+		"ev":	"mode",
+		"text":	"full duplex mode"
+	}
+} 
+[0;35m[2020-09-16 17:05:33.212][N](mcrc_prompt_handler:<610>) [0m{
+	"test_output":	{
+		"ev":	"speak request start"
+	}
+} 
+[0;35m[2020-09-16 17:05:33.217][N](playing2wait_for_wakeup:<1006>) [0m{
+	"test_output":	{
+		"ev":	"speech state",
+		"info":	"listen"
+	}
+} 
+
+[2020-09-16 17:05:35,676] - FullDuplex_Break.py [Line:76] - [DEBUG]-[thread:20964]-[process:14152] - cmd id 0xdf -- 0x18 seq 0xa4
+
+[0;35m[2020-09-16 17:05:34.285][N](mcrc_prompt_handler:<628>) [0m{
+	"test_output":	{
+		"ev":	"speak end"
+	}
+} 
+[1;34m[2020-09-16 17:05:34.286][W](do_fsm_run:<129>) [0mcurrent state is STATE_PROMPT_PLAYING, handle the msg: TYPE_PROMPT_COMPLETE
+
+[2020-09-16 17:05:36,677] - FullDuplex_Break.py [Line:76] - [DEBUG]-[thread:20964]-[process:14152] - 
+[2020-09-16 17:05:37,677] - FullDuplex_Break.py [Line:172] - [INFO]-[thread:20964]-[process:14152] - 唤醒成功且进入全双工，即将进入播放前置音频
+[2020-09-16 17:05:39,869] - FullDuplex_Break.py [Line:76] - [DEBUG]-[thread:20964]-[process:14152] - 
+[2020-09-16 17:05:40,872] - FullDuplex_Break.py [Line:76] - [DEBUG]-[thread:20964]-[process:14152] - [1;33m[2020-09-16 17:05:39.801][E](mcrc_parse_order_control:<243>) [0mUnknown class:fullDuplex
+[0;35m[2020-09-16 17:05:39.820][N](mcrc_parse_speech_reply_tts:<2015>) [0m{
+	"test_output":	{
+		"ev":	"online tts",
+		"text":	"打开小天使",
+		"data":	0
+	}
+} 
+[1;34m[2020-09-16 17:05:39.823][W](do_fsm_run:<129>) [0mcurrent state is STATE_IDLE, handle the msg: TYPE_PROMPT_PLAY
+[0;35m[2020-09-16 17:05:39.824][N](mcrc_prompt_handler:<610>) [0m{
+	"test_output":	{
+		"ev":	"speak request start"
+	}
+} 
+
+[2020-09-16 17:05:41,872] - FullDuplex_Break.py [Line:134] - [INFO]-[thread:20964]-[process:14152] - 符合打断条件
+[2020-09-16 17:05:41,872] - FullDuplex_Break.py [Line:174] - [INFO]-[thread:20964]-[process:14152] - 即将播放音频【E:/ws/002M30_36//002M30_36_010003.wav】
+[2020-09-16 17:05:49,567] - FullDuplex_Break.py [Line:76] - [DEBUG]-[thread:20964]-[process:14152] - [1;33m[2020-09-16 17:05:40.561][E](mcrc_httpclient_waiting:<415>) [0mi don know:-1
+[1;33m[2020-09-16 17:05:46.619][E](mcrc_parse_order_control:<243>) [0mUnknown class:fullDuplex
+[0;35m[2020-09-16 17:05:46.622][N](mcrc_parse_speech_reply_tts:<2015>) [0m{
+	"test_output":	{
+		"ev":	"online tts",
+		"text":	"电压力锅我要煲汤帮我",
+		"data":	0
+	}
+} 
+[1;34m[2020-09-16 17:05:46.625][W](do_fsm_run:<129>) [0mcurrent state is STATE_PROMPT_PLAYING, handle the msg: TYPE_PROMPT_PLAY
+[0;35m[2020-09-16 17:05:46.701][N](mcrc_prompt_handler:<623>) [0m{
+	"test_output":	{
+		"ev":	"speak end"
+	}
+} 
+[0;35m[2020-09-16 17:05:46.702][N](mcrc_prompt_handler:<610>) [0m{
+	"test_output":	{
+		"ev":	"speak request start"
+	}
+} 
+[1;33m[2020-09-16 17:05:47.054][E](mcrc_httpclient_waiting:<415>) [0mi don know:-1
+
+[2020-09-16 17:05:50,569] - FullDuplex_Break.py [Line:200] - [INFO]-[thread:20964]-[process:14152] - 用例【['010003', '电压力锅我要煲汤帮我调好时间二十八分钟']】ASR识别结果：电压力锅我要煲汤帮我
+[2020-09-16 17:05:50,569] - FullDuplex_Break.py [Line:201] - [INFO]-[thread:20964]-[process:14152] - 用例【['010003', '电压力锅我要煲汤帮我调好时间二十八分钟']】打断测试结果：Pass
+[2020-09-16 17:05:50,569] - FullDuplex_Break.py [Line:205] - [INFO]-[thread:20964]-[process:14152] - 当前一共执行测试【3次】，正常执行【3】，其中ASR识别正确【0次】,打断成功【3次】，识别率为：【0.00%】,打断精准率为：【0.00%】，打断召回率为：【0.00%】
+[2020-09-16 17:05:50,698] - FullDuplex_Break.py [Line:165] - [INFO]-[thread:20964]-[process:14152] - 开始第4条测试：['010004', '电压力锅煮猪蹄不要太烂半小时']
+[2020-09-16 17:05:54,402] - FullDuplex_Break.py [Line:76] - [DEBUG]-[thread:20964]-[process:14152] - [0;35m[2020-09-16 17:05:51.157][N](mcrc_prompt_handler:<628>) [0m{
+	"test_output":	{
+		"ev":	"speak end"
+	}
+} 
+[1;34m[2020-09-16 17:05:51.158][W](do_fsm_run:<129>) [0mcurrent state is STATE_PROMPT_PLAYING, handle the msg: TYPE_PROMPT_COMPLETE
+[1;34m[2020-09-16 17:05:51.158][W](do_fsm_run:<129>) [0mcurrent state is STATE_IDLE, handle the msg: TYPE_RESUME
+[1;34m[2020-09-16 17:05:51.158][W](do_fsm_run:<133>) [0mwarning: when state is STATE_IDLE, can not handle the msg: TYPE_RESUME
+current:258457.627793
+[0;35m[2020-09-16 17:05:52.931][N](playing2wait_for_wakeup:<978>) [0m{
+	"test_output":	{
+		"ev":	"wake up",
+		"text":	"xiao mei xiao mei"
+	}
+} 
+[1;34m[2020-09-16 17:05:52.933][W](do_fsm_run:<129>) [0mcurrent state is STATE_IDLE, handle the msg: TYPE_PROMPT_PLAY
+[0;35m[2020-09-16 17:05:52.933][N](mcrc_prompt_handler:<610>) [0m{
+	"test_output":	{
+		"ev":	"speak request start"
+	}
+} 
+[0;35m[2020-09-16 17:05:52.935][N](playing2wait_for_wakeup:<1001>) [0m{
+	"test_output":	{
+		"ev":	"mode",
+		"text":	"full duplex mode"
+	}
+} 
+[0;35m[2020-09-16 17:05:52.938][N](playing2wait_for_wakeup:<1006>) [0m{
+	"test_output":	{
+		"ev":	"speech state",
+		"info":	"listen"
+	}
+} 
+
+[2020-09-16 17:05:55,403] - FullDuplex_Break.py [Line:76] - [DEBUG]-[thread:20964]-[process:14152] - [0;35m[2020-09-16 17:05:54.161][N](mcrc_prompt_handler:<628>) [0m{
+	"test_output":	{
+		"ev":	"speak end"
+	}
+} 
+[1;34m[2020-09-16 17:05:54.162][W](do_fsm_run:<129>) [0mcurrent state is STATE_PROMPT_PLAYING, handle the msg: TYPE_PROMPT_COMPLETE
+
+[2020-09-16 17:05:56,404] - FullDuplex_Break.py [Line:76] - [DEBUG]-[thread:20964]-[process:14152] - 
+[2020-09-16 17:05:57,405] - FullDuplex_Break.py [Line:172] - [INFO]-[thread:20964]-[process:14152] - 唤醒成功且进入全双工，即将进入播放前置音频
+[2020-09-16 17:08:11,594] - FullDuplex_Break.py [Line:29] - [INFO]-[thread:17652]-[process:1488] - =======================全双工链路打断精准率与识别率测试========================
+[2020-09-16 17:08:12,237] - FullDuplex_Break.py [Line:165] - [INFO]-[thread:17652]-[process:1488] - 开始第1条测试：['010001', '电压力锅启动红烧排骨']
+[2020-09-16 17:08:16,153] - FullDuplex_Break.py [Line:76] - [DEBUG]-[thread:17652]-[process:1488] - current:248240.692886
+[0;35m[2020-09-16 17:08:14.647][N](wait_for_wakeup2wait_for_speech_start:<688>) [0m{
+	"test_output":	{
+		"ev":	"wake up",
+		"text":	"xiao mei xiao mei"
+	}
+} 
+[1;34m[2020-09-16 17:08:14.649][W](do_fsm_run:<129>) [0mcurrent state is STATE_IDLE, handle the msg: TYPE_PROMPT_PLAY
+[0;35m[2020-09-16 17:08:14.650][N](wait_for_wakeup2wait_for_speech_start:<708>) [0m{
+	"test_output":	{
+		"ev":	"mode",
+		"text":	"full duplex mode"
+	}
+} 
+[0;35m[2020-09-16 17:08:14.649][N](mcrc_prompt_handler:<610>) [0m{
+	"test_output":	{
+		"ev":	"speak request start"
+	}
+} 
+cmd id 0xdf -- 0x18 seq 0xac
+
+
+[2020-09-16 17:08:17,153] - FullDuplex_Break.py [Line:76] - [DEBUG]-[thread:17652]-[process:1488] - [0;35m[2020-09-16 17:08:15.940][N](mcrc_prompt_handler:<628>) [0m{
+	"test_output":	{
+		"ev":	"speak end"
+	}
+} 
+[1;34m[2020-09-16 17:08:15.941][W](do_fsm_run:<129>) [0mcurrent state is STATE_PROMPT_PLAYING, handle the msg: TYPE_PROMPT_COMPLETE
+
+[2020-09-16 17:08:18,153] - FullDuplex_Break.py [Line:76] - [DEBUG]-[thread:17652]-[process:1488] - 
+[2020-09-16 17:08:19,153] - FullDuplex_Break.py [Line:172] - [INFO]-[thread:17652]-[process:1488] - 唤醒成功且进入全双工，即将进入播放前置音频
+[2020-09-16 17:08:21,363] - FullDuplex_Break.py [Line:76] - [DEBUG]-[thread:17652]-[process:1488] - 
+[2020-09-16 17:08:22,364] - FullDuplex_Break.py [Line:76] - [DEBUG]-[thread:17652]-[process:1488] - [1;33m[2020-09-16 17:08:21.302][E](mcrc_parse_order_control:<243>) [0mUnknown class:fullDuplex
+[0;35m[2020-09-16 17:08:21.305][N](mcrc_parse_speech_reply_tts:<2015>) [0m{
+	"test_output":	{
+		"ev":	"online tts",
+		"text":	"打开小天使",
+		"data":	0
+	}
+} 
+[1;34m[2020-09-16 17:08:21.308][W](do_fsm_run:<129>) [0mcurrent state is STATE_IDLE, handle the msg: TYPE_PROMPT_PLAY
+[0;35m[2020-09-16 17:08:21.309][N](mcrc_prompt_handler:<610>) [0m{
+	"test_output":	{
+		"ev":	"speak request start"
+	}
+} 
+
+[2020-09-16 17:08:23,367] - FullDuplex_Break.py [Line:134] - [INFO]-[thread:17652]-[process:1488] - 符合打断条件
+[2020-09-16 17:08:23,367] - FullDuplex_Break.py [Line:174] - [INFO]-[thread:17652]-[process:1488] - 即将播放音频【E:/ws/002M30_36//002M30_36_010001.wav】
+[2020-09-16 17:08:29,035] - FullDuplex_Break.py [Line:76] - [DEBUG]-[thread:17652]-[process:1488] - [1;33m[2020-09-16 17:08:21.942][E](mcrc_httpclient_waiting:<415>) [0mi don know:-1
+
+[2020-09-16 17:08:30,037] - FullDuplex_Break.py [Line:76] - [DEBUG]-[thread:17652]-[process:1488] - 
+[2020-09-16 17:08:31,037] - FullDuplex_Break.py [Line:76] - [DEBUG]-[thread:17652]-[process:1488] - [0;35m[2020-09-16 17:08:29.910][N](mcrc_prompt_handler:<628>) [0m{
+	"test_output":	{
+		"ev":	"speak end"
+	}
+} 
+[1;34m[2020-09-16 17:08:29.910][W](do_fsm_run:<129>) [0mcurrent state is STATE_PROMPT_PLAYING, handle the msg: TYPE_PROMPT_COMPLETE
+[1;34m[2020-09-16 17:08:29.911][W](do_fsm_run:<129>) [0mcurrent state is STATE_IDLE, handle the msg: TYPE_RESUME
+[1;34m[2020-09-16 17:08:29.911][W](do_fsm_run:<133>) [0mwarning: when state is STATE_IDLE, can not handle the msg: TYPE_RESUME
+
+[2020-09-16 17:08:32,038] - FullDuplex_Break.py [Line:76] - [DEBUG]-[thread:17652]-[process:1488] - 
+[2020-09-16 17:08:33,039] - FullDuplex_Break.py [Line:76] - [DEBUG]-[thread:17652]-[process:1488] - 
+[2020-09-16 17:08:34,040] - FullDuplex_Break.py [Line:76] - [DEBUG]-[thread:17652]-[process:1488] - 
+[2020-09-16 17:08:35,040] - FullDuplex_Break.py [Line:76] - [DEBUG]-[thread:17652]-[process:1488] - 
+[2020-09-16 17:08:36,041] - FullDuplex_Break.py [Line:200] - [INFO]-[thread:17652]-[process:1488] - 用例【['010001', '电压力锅启动红烧排骨']】ASR识别结果：False
+[2020-09-16 17:08:36,041] - FullDuplex_Break.py [Line:201] - [INFO]-[thread:17652]-[process:1488] - 用例【['010001', '电压力锅启动红烧排骨']】打断测试结果：Fail
+[2020-09-16 17:08:36,041] - FullDuplex_Break.py [Line:205] - [INFO]-[thread:17652]-[process:1488] - 当前一共执行测试【1次】，正常执行【1】，其中ASR识别正确【0次】,打断成功【0次】，识别率为：【0.00%】,打断精准率为：【0】，打断召回率为：【0.00%】
+[2020-09-16 17:08:36,232] - FullDuplex_Break.py [Line:165] - [INFO]-[thread:17652]-[process:1488] - 开始第2条测试：['010002', '电压力锅煲汤']
+[2020-09-16 17:08:39,951] - FullDuplex_Break.py [Line:76] - [DEBUG]-[thread:17652]-[process:1488] - current:296335.538485
+[0;35m[2020-09-16 17:08:38.391][N](playing2wait_for_wakeup:<978>) [0m{
+	"test_output":	{
+		"ev":	"wake up",
+		"text":	"xiao mei xiao mei"
+	}
+} 
+[1;34m[2020-09-16 17:08:38.393][W](do_fsm_run:<129>) [0mcurrent state is STATE_IDLE, handle the msg: TYPE_PROMPT_PLAY
+[0;35m[2020-09-16 17:08:38.394][N](mcrc_prompt_handler:<610>) [0m{
+	"test_output":	{
+		"ev":	"speak request start"
+	}
+} 
+[0;35m[2020-09-16 17:08:38.396][N](playing2wait_for_wakeup:<1001>) [0m{
+	"test_output":	{
+		"ev":	"mode",
+		"text":	"full duplex mode"
+	}
+} 
+[0;35m[2020-09-16 17:08:38.399][N](playing2wait_for_wakeup:<1006>) [0m{
+	"test_output":	{
+		"ev":	"speech state",
+		"info":	"listen"
+	}
+} 
+[0;35m[2020-09-16 17:08:39.430][N](mcrc_prompt_handler:<628>) [0m{
+	"test_output":	{
+		"ev":	"speak end"
+	}
+} 
+[1;34m[2020-09-16 17:08:39.431][W](do_fsm_run:<129>) [0mcurrent state is STATE_PROMPT_PLAYING, handle the msg: TYPE_PROMPT_COMPLETE
+
+[2020-09-16 17:08:40,952] - FullDuplex_Break.py [Line:76] - [DEBUG]-[thread:17652]-[process:1488] - 
+[2020-09-16 17:08:41,953] - FullDuplex_Break.py [Line:76] - [DEBUG]-[thread:17652]-[process:1488] - 
+[2020-09-16 17:08:42,953] - FullDuplex_Break.py [Line:172] - [INFO]-[thread:17652]-[process:1488] - 唤醒成功且进入全双工，即将进入播放前置音频
+[2020-09-16 17:08:45,109] - FullDuplex_Break.py [Line:76] - [DEBUG]-[thread:17652]-[process:1488] - 
+[2020-09-16 17:08:46,109] - FullDuplex_Break.py [Line:76] - [DEBUG]-[thread:17652]-[process:1488] - [1;33m[2020-09-16 17:08:45.091][E](mcrc_parse_order_control:<243>) [0mUnknown class:fullDuplex
+[0;35m[2020-09-16 17:08:45.098][N](mcrc_parse_speech_reply_tts:<2015>) [0m{
+	"test_output":	{
+		"ev":	"online tts",
+		"text":	"打开小天使",
+		"data":	0
+	}
+} 
+[1;34m[2020-09-16 17:08:45.102][W](do_fsm_run:<129>) [0mcurrent state is STATE_IDLE, handle the msg: TYPE_PROMPT_PLAY
+[0;35m[2020-09-16 17:08:45.102][N](mcrc_prompt_handler:<610>) [0m{
+	"test_output":	{
+		"ev":	"speak request start"
+	}
+} 
+
+[2020-09-16 17:08:47,110] - FullDuplex_Break.py [Line:134] - [INFO]-[thread:17652]-[process:1488] - 符合打断条件
+[2020-09-16 17:08:47,110] - FullDuplex_Break.py [Line:174] - [INFO]-[thread:17652]-[process:1488] - 即将播放音频【E:/ws/002M30_36//002M30_36_010002.wav】
+[2020-09-16 17:08:52,307] - FullDuplex_Break.py [Line:76] - [DEBUG]-[thread:17652]-[process:1488] - [1;33m[2020-09-16 17:08:45.801][E](mcrc_httpclient_waiting:<415>) [0mi don know:-1
+[MS]send msg=(0x5:47)
+[MS]net recv: 0x8005:0x47.
+[MS_DBG]date:2020.9.16
+[MS_DBG]net time:17:8:48:742
+[MS]get heartbeat from cloud[0x47]
+
+[2020-09-16 17:08:53,308] - FullDuplex_Break.py [Line:76] - [DEBUG]-[thread:17652]-[process:1488] - 
+[2020-09-16 17:08:54,308] - FullDuplex_Break.py [Line:76] - [DEBUG]-[thread:17652]-[process:1488] - [0;35m[2020-09-16 17:08:53.618][N](mcrc_prompt_handler:<628>) [0m{
+	"test_output":	{
+		"ev":	"speak end"
+	}
+} 
+[1;34m[2020-09-16 17:08:53.618][W](do_fsm_run:<129>) [0mcurrent state is STATE_PROMPT_PLAYING, handle the msg: TYPE_PROMPT_COMPLETE
+[1;34m[2020-09-16 17:08:53.619][W](do_fsm_run:<129>) [0mcurrent state is STATE_IDLE, handle the msg: TYPE_RESUME
+[1;34m[2020-09-16 17:08:53.619][W](do_fsm_run:<133>) [0mwarning: when state is STATE_IDLE, can not handle the msg: TYPE_RESUME
+
+[2020-09-16 17:08:55,309] - FullDuplex_Break.py [Line:76] - [DEBUG]-[thread:17652]-[process:1488] - 
+[2020-09-16 17:08:56,311] - FullDuplex_Break.py [Line:76] - [DEBUG]-[thread:17652]-[process:1488] - cmd id 0xdf -- 0x18 seq 0xad
+
+
+[2020-09-16 17:08:57,313] - FullDuplex_Break.py [Line:76] - [DEBUG]-[thread:17652]-[process:1488] - 
+[2020-09-16 17:08:58,314] - FullDuplex_Break.py [Line:76] - [DEBUG]-[thread:17652]-[process:1488] - 
+[2020-09-16 17:08:59,314] - FullDuplex_Break.py [Line:200] - [INFO]-[thread:17652]-[process:1488] - 用例【['010002', '电压力锅煲汤']】ASR识别结果：False
+[2020-09-16 17:08:59,314] - FullDuplex_Break.py [Line:201] - [INFO]-[thread:17652]-[process:1488] - 用例【['010002', '电压力锅煲汤']】打断测试结果：Fail
+[2020-09-16 17:08:59,314] - FullDuplex_Break.py [Line:205] - [INFO]-[thread:17652]-[process:1488] - 当前一共执行测试【2次】，正常执行【2】，其中ASR识别正确【0次】,打断成功【0次】，识别率为：【0.00%】,打断精准率为：【0】，打断召回率为：【0.00%】
+[2020-09-16 17:08:59,436] - FullDuplex_Break.py [Line:165] - [INFO]-[thread:17652]-[process:1488] - 开始第3条测试：['010003', '电压力锅我要煲汤帮我调好时间二十八分钟']
+[2020-09-16 17:09:03,149] - FullDuplex_Break.py [Line:76] - [DEBUG]-[thread:17652]-[process:1488] - current:272018.656790
+[0;35m[2020-09-16 17:09:01.589][N](playing2wait_for_wakeup:<978>) [0m{
+	"test_output":	{
+		"ev":	"wake up",
+		"text":	"xiao mei xiao mei"
+	}
+} 
+[1;34m[2020-09-16 17:09:01.590][W](do_fsm_run:<129>) [0mcurrent state is STATE_IDLE, handle the msg: TYPE_PROMPT_PLAY
+[0;35m[2020-09-16 17:09:01.591][N](mcrc_prompt_handler:<610>) [0m{
+	"test_output":	{
+		"ev":	"speak request start"
+	}
+} 
+[0;35m[2020-09-16 17:09:01.592][N](playing2wait_for_wakeup:<1001>) [0m{
+	"test_output":	{
+		"ev":	"mode",
+		"text":	"full duplex mode"
+	}
+} 
+[0;35m[2020-09-16 17:09:01.596][N](playing2wait_for_wakeup:<1006>) [0m{
+	"test_output":	{
+		"ev":	"speech state",
+		"info":	"listen"
+	}
+} 
+[0;35m[2020-09-16 17:09:02.637][N](mcrc_prompt_handler:<628>) [0m{
+	"test_output":	{
+		"ev":	"speak end"
+	}
+} 
+[1;34m[2020-09-16 17:09:02.638][W](do_fsm_run:<129>) [0mcurrent state is STATE_PROMPT_PLAYING, handle the msg: TYPE_PROMPT_COMPLETE
+
+[2020-09-16 17:09:04,149] - FullDuplex_Break.py [Line:76] - [DEBUG]-[thread:17652]-[process:1488] - 
+[2020-09-16 17:09:05,150] - FullDuplex_Break.py [Line:76] - [DEBUG]-[thread:17652]-[process:1488] - 
+[2020-09-16 17:09:06,150] - FullDuplex_Break.py [Line:172] - [INFO]-[thread:17652]-[process:1488] - 唤醒成功且进入全双工，即将进入播放前置音频
+[2020-09-16 17:09:08,364] - FullDuplex_Break.py [Line:76] - [DEBUG]-[thread:17652]-[process:1488] - cmd id 0xdf -- 0x18 seq 0xae
+
+
+[2020-09-16 17:09:09,365] - FullDuplex_Break.py [Line:76] - [DEBUG]-[thread:17652]-[process:1488] - [1;33m[2020-09-16 17:09:08.262][E](mcrc_parse_order_control:<243>) [0mUnknown class:fullDuplex
+[0;35m[2020-09-16 17:09:08.268][N](mcrc_parse_speech_reply_tts:<2015>) [0m{
+	"test_output":	{
+		"ev":	"online tts",
+		"text":	"打开小天使",
+		"data":	0
+	}
+} 
+[1;34m[2020-09-16 17:09:08.271][W](do_fsm_run:<129>) [0mcurrent state is STATE_IDLE, handle the msg: TYPE_PROMPT_PLAY
+[0;35m[2020-09-16 17:09:08.272][N](mcrc_prompt_handler:<610>) [0m{
+	"test_output":	{
+		"ev":	"speak request start"
+	}
+} 
+
+[2020-09-16 17:09:10,367] - FullDuplex_Break.py [Line:134] - [INFO]-[thread:17652]-[process:1488] - 符合打断条件
+[2020-09-16 17:09:10,369] - FullDuplex_Break.py [Line:174] - [INFO]-[thread:17652]-[process:1488] - 即将播放音频【E:/ws/002M30_36//002M30_36_010003.wav】
+[2020-09-16 17:09:17,886] - FullDuplex_Break.py [Line:76] - [DEBUG]-[thread:17652]-[process:1488] - [1;33m[2020-09-16 17:09:08.889][E](mcrc_httpclient_waiting:<415>) [0mi don know:-1
+[1;33m[2020-09-16 17:09:16.442][E](mcrc_parse_order_control:<243>) [0mUnknown class:fullDuplex
+[0;35m[2020-09-16 17:09:16.444][N](mcrc_parse_speech_reply_tts:<2015>) [0m{
+	"test_output":	{
+		"ev":	"online tts",
+		"text":	"电压力锅我要煲汤帮我调时间二十八分钟",
+		"data":	0
+	}
+} 
+[1;34m[2020-09-16 17:09:16.448][W](do_fsm_run:<129>) [0mcurrent state is STATE_PROMPT_PLAYING, handle the msg: TYPE_PROMPT_PLAY
+[0;35m[2020-09-16 17:09:16.483][N](mcrc_prompt_handler:<623>) [0m{
+	"test_output":	{
+		"ev":	"speak end"
+	}
+} 
+[0;35m[2020-09-16 17:09:16.484][N](mcrc_prompt_handler:<610>) [0m{
+	"test_output":	{
+		"ev":	"speak request start"
+	}
+} 
+[1;33m[2020-09-16 17:09:16.907][E](mcrc_httpclient_waiting:<415>) [0mi don know:-1
+
+[2020-09-16 17:09:18,886] - FullDuplex_Break.py [Line:200] - [INFO]-[thread:17652]-[process:1488] - 用例【['010003', '电压力锅我要煲汤帮我调好时间二十八分钟']】ASR识别结果：电压力锅我要煲汤帮我调时间二十八分钟
+[2020-09-16 17:09:18,886] - FullDuplex_Break.py [Line:201] - [INFO]-[thread:17652]-[process:1488] - 用例【['010003', '电压力锅我要煲汤帮我调好时间二十八分钟']】打断测试结果：Pass
+[2020-09-16 17:09:18,886] - FullDuplex_Break.py [Line:205] - [INFO]-[thread:17652]-[process:1488] - 当前一共执行测试【3次】，正常执行【3】，其中ASR识别正确【0次】,打断成功【1次】，识别率为：【0.00%】,打断精准率为：【0.00%】，打断召回率为：【0.00%】
+[2020-09-16 17:09:19,003] - FullDuplex_Break.py [Line:165] - [INFO]-[thread:17652]-[process:1488] - 开始第4条测试：['010004', '电压力锅煮猪蹄不要太烂半小时']
+[2020-09-16 17:09:22,719] - FullDuplex_Break.py [Line:76] - [DEBUG]-[thread:17652]-[process:1488] - [0;35m[2020-09-16 17:09:20.770][N](mcrc_prompt_handler:<628>) [0m{
+	"test_output":	{
+		"ev":	"speak end"
+	}
+} 
+[1;34m[2020-09-16 17:09:20.771][W](do_fsm_run:<129>) [0mcurrent state is STATE_PROMPT_PLAYING, handle the msg: TYPE_PROMPT_COMPLETE
+[1;34m[2020-09-16 17:09:20.771][W](do_fsm_run:<129>) [0mcurrent state is STATE_IDLE, handle the msg: TYPE_RESUME
+[1;34m[2020-09-16 17:09:20.771][W](do_fsm_run:<133>) [0mwarning: when state is STATE_IDLE, can not handle the msg: TYPE_RESUME
+current:317910.068967
+[0;35m[2020-09-16 17:09:21.140][N](playing2wait_for_wakeup:<978>) [0m{
+	"test_output":	{
+		"ev":	"wake up",
+		"text":	"xiao mei xiao mei"
+	}
+} 
+[1;34m[2020-09-16 17:09:21.141][W](do_fsm_run:<129>) [0mcurrent state is STATE_IDLE, handle the msg: TYPE_PROMPT_PLAY
+[0;35m[2020-09-16 17:09:21.142][N](mcrc_prompt_handler:<610>) [0m{
+	"test_output":	{
+		"ev":	"speak request start"
+	}
+} 
+[0;35m[2020-09-16 17:09:21.143][N](playing2wait_for_wakeup:<1001>) [0m{
+	"test_output":	{
+		"ev":	"mode",
+		"text":	"full duplex mode"
+	}
+} 
+[0;35m[2020-09-16 17:09:21.146][N](playing2wait_for_wakeup:<1006>) [0m{
+	"test_output":	{
+		"ev":	"speech state",
+		"info":	"listen"
+	}
+} 
+
+[2020-09-16 17:09:23,720] - FullDuplex_Break.py [Line:76] - [DEBUG]-[thread:17652]-[process:1488] - [0;35m[2020-09-16 17:09:22.274][N](mcrc_prompt_handler:<628>) [0m{
+	"test_output":	{
+		"ev":	"speak end"
+	}
+} 
+[1;34m[2020-09-16 17:09:22.276][W](do_fsm_run:<129>) [0mcurrent state is STATE_PROMPT_PLAYING, handle the msg: TYPE_PROMPT_COMPLETE
+
+[2020-09-16 17:09:24,721] - FullDuplex_Break.py [Line:76] - [DEBUG]-[thread:17652]-[process:1488] - 
+[2020-09-16 17:09:25,722] - FullDuplex_Break.py [Line:172] - [INFO]-[thread:17652]-[process:1488] - 唤醒成功且进入全双工，即将进入播放前置音频
+[2020-09-16 17:09:27,937] - FullDuplex_Break.py [Line:76] - [DEBUG]-[thread:17652]-[process:1488] - cmd id 0xdf -- 0x18 seq 0xaf
+
+[MS]cur-ver:081110002004030101
+[MS]send msg=(0xc1:48)
+
+[2020-09-16 17:09:28,937] - FullDuplex_Break.py [Line:76] - [DEBUG]-[thread:17652]-[process:1488] - [MS]net recv: 0x80c1:0x48.
+[MS]result_md5:
+[da be 84 02 9b 8a 9e 66 07 4e b1 e0 bf e7 d4 81 ]
+[MS]recv_md5:
+[da be 84 02 9b 8a 9e 66 07 4e b1 e0 bf e7 d4 81 ]
+[MS]result_md5:
+[e6 7a 86 2a 7e 44 81 b5 c6 0a 7d 61 6f 31 7f 79 ]
+[MS]recv_md5:
+[00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 ]
+[MS]MD5 error
+
+[MS_DBG]refresh hb tm: 2369839
+[MS_DBG]date:2020.9.16
+[MS_DBG]net time:17:9:27:346
+[MS]sw is newest
+[1;33m[2020-09-16 17:09:27.961][E](mcrc_parse_order_control:<243>) [0mUnknown class:fullDuplex
+[0;35m[2020-09-16 17:09:27.964][N](mcrc_parse_speech_reply_tts:<2015>) [0m{
+	"test_output":	{
+		"ev":	"online tts",
+		"text":	"打开小天使",
+		"data":	0
+	}
+} 
+[1;34m[2020-09-16 17:09:27.968][W](do_fsm_run:<129>) [0mcurrent state is STATE_IDLE, handle the msg: TYPE_PROMPT_PLAY
+[0;35m[2020-09-16 17:09:27.969][N](mcrc_prompt_handler:<610>) [0m{
+	"test_output":	{
+		"ev":	"speak request start"
+	}
+} 
+
+[2020-09-16 17:09:29,938] - FullDuplex_Break.py [Line:134] - [INFO]-[thread:17652]-[process:1488] - 符合打断条件
+[2020-09-16 17:09:29,938] - FullDuplex_Break.py [Line:174] - [INFO]-[thread:17652]-[process:1488] - 即将播放音频【E:/ws/002M30_36//002M30_36_010004.wav】
+[2020-09-16 17:09:36,693] - FullDuplex_Break.py [Line:76] - [DEBUG]-[thread:17652]-[process:1488] - [1;33m[2020-09-16 17:09:28.613][E](mcrc_httpclient_waiting:<415>) [0mi don know:-1
+[1;33m[2020-09-16 17:09:35.130][E](mcrc_parse_order_control:<243>) [0mUnknown class:fullDuplex
+[0;35m[2020-09-16 17:09:35.133][N](mcrc_parse_speech_reply_tts:<2015>) [0m{
+	"test_output":	{
+		"ev":	"online tts",
+		"text":	"电压力锅炖猪蹄不要太小苹果",
+		"data":	0
+	}
+} 
+[1;34m[2020-09-16 17:09:35.136][W](do_fsm_run:<129>) [0mcurrent state is STATE_PROMPT_PLAYING, handle the msg: TYPE_PROMPT_PLAY
+[0;35m[2020-09-16 17:09:35.183][N](mcrc_prompt_handler:<623>) [0m{
+	"test_output":	{
+		"ev":	"speak end"
+	}
+} 
+[0;35m[2020-09-16 17:09:35.184][N](mcrc_prompt_handler:<610>) [0m{
+	"test_output":	{
+		"ev":	"speak request start"
+	}
+} 
+[1;33m[2020-09-16 17:09:35.491][E](mcrc_httpclient_waiting:<415>) [0mi don know:-1
+
+[2020-09-16 17:09:37,693] - FullDuplex_Break.py [Line:200] - [INFO]-[thread:17652]-[process:1488] - 用例【['010004', '电压力锅煮猪蹄不要太烂半小时']】ASR识别结果：电压力锅炖猪蹄不要太小苹果
+[2020-09-16 17:09:37,694] - FullDuplex_Break.py [Line:201] - [INFO]-[thread:17652]-[process:1488] - 用例【['010004', '电压力锅煮猪蹄不要太烂半小时']】打断测试结果：Pass
+[2020-09-16 17:09:37,695] - FullDuplex_Break.py [Line:205] - [INFO]-[thread:17652]-[process:1488] - 当前一共执行测试【4次】，正常执行【4】，其中ASR识别正确【0次】,打断成功【2次】，识别率为：【0.00%】,打断精准率为：【0.00%】，打断召回率为：【0.00%】
+[2020-09-16 17:09:37,829] - FullDuplex_Break.py [Line:165] - [INFO]-[thread:17652]-[process:1488] - 开始第5条测试：['010005', '电压力锅煮豆蹄筋压力调到七十煮三十分钟']
