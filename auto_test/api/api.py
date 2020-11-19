@@ -20,7 +20,7 @@ class Api:
              headers={"Content-Type":"application/json "}
              self.params={"mid": "%s"%mid}
              log.info("获取设备状态,请求参数为:{}".format(self.params))
-             jsonvalue = requests.post("https://uat.aimidea.cn:11003/v1/common/device/getDeviceStatus", json=self.params, headers=headers).json()
+             jsonvalue = requests.post(http_host, json=self.params, headers=headers).json()
              log.info("获取设备状态信息:{}".format(jsonvalue))
              return jsonvalue
          except Exception as e:

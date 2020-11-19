@@ -107,7 +107,7 @@ if __name__ == '__main__':
     Mywebscoket("我回来了.wav", 1)
 
     '''
-    result = Mywebscoket('打开所有设备', "328").start_websocket()
+    result = Mywebscoket('我回来了', "328").start_websocket()
     print(result)
     
     #result = Mywebscoket("我回来了.wav", "328").start_websocket()
