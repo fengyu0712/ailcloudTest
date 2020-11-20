@@ -12,8 +12,8 @@ base_path=os.path.dirname(__file__)
 # 2、websocket的主机地址
 host="ws://linksit.aimidea.cn:10000/cloud/connect"
 # 3、http请求的主机地址,获取设备的状态
-#http_host="http://sit.aimidea.cn:11003/v1/common/device/getDeviceStatus"
-http_host="https://apis-uat.aimidea.cn:11003/v1/common/device/getDeviceStatus"
+http_host="http://sit.aimidea.cn:11003/v1/common/device/getDeviceStatus"
+#http_host="https://uat.aimidea.cn:11003/v1/common/device/getDeviceStatus"
 
 # 3、 excel数据对应的列
 cell_config={
