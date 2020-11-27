@@ -28,8 +28,6 @@ class FileTool:
         # 4、获取当前表的表单对象
         self.sheet = self.workbook[self.sheets[0]]
 
-
-
     # 读取excel文件
     def read_excel(self):
         wholedictinfo = list()

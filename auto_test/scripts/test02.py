@@ -18,8 +18,8 @@ import pytest
 
 class Test01:
     #1、实列化获取工具类对象
-    log.info("执行328固件空调入口测试用例..............")
-    device_type="328"  # 入口类型：328 固件的空调
+    log.info("执行328全双工固件空调入口测试用例..............")
+    device_type="328_fullDuplex"  # 入口类型：328 固件的空调
     tool=FileTool("data_case.xlsx",device_type)
     # 读取excel的内容信息
     testcaseinfo=tool.read_excel()
@@ -28,7 +28,7 @@ class Test01:
     Commonfunction().runcase(testcaseinfo,device_type,tool)
     print('结束。。。。。。{}'.format(datetime.datetime.now()))
 
-    @allure.feature("328固件空调入口")
+    @allure.feature("328全双工固件空调入口")
     @pytest.mark.parametrize("case",testcaseinfo)
     def test02(self,case):
         log.info("执行用例{}".format(case))

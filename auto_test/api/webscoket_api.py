@@ -16,7 +16,6 @@ class Mywebscoket():
         self.wavpath = os.path.join(base_path+os.sep+"audio_file"+os.sep,rootpath+".wav")
         self.address = host
         self.step = 3200
-        #self.is_devices_status=is_need_devices_status  # 默认为0，不需要，为1，则表示需要
         self.headers = Deviceset(terminal_type).headers
 
     def get_time_stamp(self):
@@ -107,8 +106,10 @@ if __name__ == '__main__':
     Mywebscoket("我回来了.wav", 1)
 
     '''
-    result = Mywebscoket('我回来了', "328").start_websocket()
+    result = Mywebscoket('打开空调', "yuyintie_1").start_websocket()
     print(result)
-    
+
+    result = Mywebscoket('打开空调', "yuyintie_1").start_websocket()
+    print(result)
     #result = Mywebscoket("我回来了.wav", "328").start_websocket()
     #print(result)

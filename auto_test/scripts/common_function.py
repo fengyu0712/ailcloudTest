@@ -93,7 +93,7 @@ class Commonfunction():
         i=0
         apiobj=Api()
         log.info('开始获取设备状态。。。。。。{}'.format(datetime.datetime.now()))
-        count=10
+        count=3
         while i < count:
             time.sleep(1)
             jsonvalue=apiobj.post(mid)
