@@ -59,7 +59,6 @@ class Deviceset():
                 }
         }
 
-        print(online_data)
         self.headers.append(online_data)
 
 

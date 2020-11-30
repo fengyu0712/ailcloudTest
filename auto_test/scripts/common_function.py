@@ -21,6 +21,7 @@ class Commonfunction():
                 current_step = step_list[i]  # 当前测试步骤
                 if i != step_len - 1:
                     params_value = current_step.get('params')
+                    print("{}入口,开始执行第{}用例".format(devicetype,i+1))
                     result = Mywebscoket(params_value, devicetype).start_websocket()
                     tool.write_excel(current_sheet, current_step.get("x_y"), "执行完成")
                     tool.write_excel(current_sheet, current_step.get("x_y_desc"), str(result))
