@@ -12,7 +12,12 @@ class FileTool:
         # 组装动态文件路径
         self.old_filename = base_path + os.sep + "data" + os.sep + filename  # 用例文件目录
         nowtimeinfo = datetime.datetime.now().strftime('%Y-%m-%d_%H-%M-%S')
-        self.filename=base_path+os.sep+"result"+os.sep+device_type+"_"+nowtimeinfo+filename # 保存的文件名称
+
+        result_root_path=base_path+os.sep+"result"
+        if not os.path.exists(result_root_path):
+            os.makedirs(result_root_path)
+        self.filename=result_root_path+os.sep+device_type+"_"+nowtimeinfo+filename # 保存的文件名称
+
         self.back_excel()  # 备份用例
 
     # 备份excel文件
