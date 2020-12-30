@@ -2,10 +2,11 @@
 import time
 from websocket import ABNF
 import websocket, time, json, os, gc
-from config import base_path,host
+from config import base_path
 from devices_info import Deviceset
 import os
 from tools.get_log import GetLog
+from scripts.conftest import host,http_host,current_env
 log=GetLog.get_logger()  # 初始化日志对象
 
 class Mywebscoket():
@@ -13,10 +14,13 @@ class Mywebscoket():
     # termianl_type : 终端类型
     # is_need_devices_status : 表示为需要获取设备信息
     def __init__(self,rootpath,terminal_type):
+        print("测试环境细腻系：",current_env)
         self.wavpath = os.path.join(base_path+os.sep+"audio_file"+os.sep,rootpath+".wav")
         self.address = host
+        print("当前测试环境为:",host)
         self.step = 3200
         self.headers = Deviceset(terminal_type).headers
+
 
     def get_time_stamp(self):
         ct = time.time()
@@ -31,22 +35,24 @@ class Mywebscoket():
             log.info("{}路径不存在".format(self.wavpath))
             return ""
         log.info("开始ws的链接")
-        ws = websocket.create_connection(self.address, timeout=30)
-        log.info("建立ws的链接")
         try:
-            result_asr = self.send_data(ws, self.wavpath)  # 获取预期结果
-            log.info("ws接口返回的信息为:{}".format(result_asr))
-            gc.collect()
-            ws.close()
-
+            ws=websocket.create_connection(self.address, timeout=30)
+            try:
+                log.info("建立ws的链接")
+                result_asr = self.send_data(ws, self.wavpath)  # 获取预期结果
+                log.info("ws接口返回的信息为:{}".format(result_asr))
+                gc.collect()
+                ws.close()
+            except Exception as e:
+                log.error("错误信息信息为:{}".format(e))
+                result_asr = {}
+            finally:
+                gc.collect()
+                ws.close()
+                log.info("ws链接关闭")
+                return result_asr
         except Exception as e:
             log.error("错误信息信息为:{}".format(e))
-            result_asr={}
-        finally:
-            gc.collect()
-            ws.close()
-            log.info("ws链接关闭")
-            return result_asr
 
     def send_data(self, ws, wav_path):
         try:

@@ -4,6 +4,7 @@ import os
 import openpyxl
 from tools.get_log import GetLog
 import datetime
+from scripts.conftest import current_env
 log=GetLog.get_logger()  # 初始化日志对象
 
 class FileTool:
@@ -12,12 +13,7 @@ class FileTool:
         # 组装动态文件路径
         self.old_filename = base_path + os.sep + "data" + os.sep + filename  # 用例文件目录
         nowtimeinfo = datetime.datetime.now().strftime('%Y-%m-%d_%H-%M-%S')
-
-        result_root_path=base_path+os.sep+"result"
-        if not os.path.exists(result_root_path):
-            os.makedirs(result_root_path)
-        self.filename=result_root_path+os.sep+device_type+"_"+nowtimeinfo+filename # 保存的文件名称
-
+        self.filename=base_path+os.sep+"result"+os.sep+current_env+"_"+device_type+"_"+nowtimeinfo+filename # 保存的文件名称
         self.back_excel()  # 备份用例
 
     # 备份excel文件

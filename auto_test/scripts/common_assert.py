@@ -18,6 +18,13 @@ def common_assert(response,excepect):
     # 断言: nlg 信息的响应码
     assert response.get('nlg').get('code') == excepect_dict.get('nlg').get('code'),'nlg错误！ 响应code：{}，预期code：{}'.format(response.get('nlg').get('code'),excepect_dict.get('nlg').get('code'))
     # 断言：nlg 的text信息
+    nlg_value = getvalue(response, 'nlg', '$.data.tts.data[0].text')
+    assert excepect_dict.get('nlg').get('text') in nlg_value, 'nlg错误！ 响应nlg：{}，预期nlg：{}'.format(nlg_value,
+                                                                                                excepect_dict.get(
+                                                                                                    'nlg').get('text'))
+
+    assert_device_status(response,excepect_dict)
+    '''
     nlg_value=getvalue(response,'nlg','$.data.tts.data[0].text')
     assert excepect_dict.get('nlg').get('text') in nlg_value,'nlg错误！ 响应nlg：{}，预期nlg：{}'.format(nlg_value,excepect_dict.get('nlg').get('text'))
 
@@ -35,7 +42,37 @@ def common_assert(response,excepect):
                     key)), 'device_status错误！ 响应device_status：{}，预期device_status：{}'.format(status_value,
                                                                                                             excepect_dict.get(
                                                                                                                 'device_status').get(
-                                                                                                                key))
+                                                                                                           key))
+    '''
+def assert_response(response,excepect):
+    # 断言：nlg 的text信息
+    excepect_dict=eval(excepect)
+
+    nlg_value = getvalue(response, 'reponse', '$.response.outSpeech.text')
+    print(excepect_dict.get('nlg').get('text'))
+    assert excepect_dict.get('nlg').get('text') in nlg_value, 'nlg错误！ 响应nlg：{}，预期nlg：{}'.format(nlg_value,
+                                                                                                excepect_dict.get(
+                                                                                                    'nlg').get('text'))
+    #assert_device_status(response,excepect_dict)
+
+
+def assert_device_status(response,excepect_dict):
+    # 断言：设备状态信息
+    if "device_status" in excepect_dict:
+        device_dict = excepect_dict['device_status']
+        for key in device_dict:
+            if key == "code":
+                assert response.get('device_status').get('code') == excepect_dict.get('device_status').get(
+                    'code'), 'device_status错误！ 响应code：{}，预期code：{}'.format(response.get('device_status').get('code'),
+                                                                           excepect_dict.get('device_status').get(
+                                                                               'code'))
+            else:
+                status_value = getvalue(response, 'device_status', '$.data.status.{}'.format(key))
+                assert str(status_value) == str(excepect_dict.get('device_status').get(
+                    key)), 'device_status错误！ 响应device_status：{}，预期device_status：{}'.format(status_value,
+                                                                                           excepect_dict.get(
+                                                                                               'device_status').get(
+                                                                                               key))
 
 def getvalue(response,root_mark,node_mark):
     try:

@@ -21,12 +21,7 @@ class GetLog:
           # 修改默认级别
           cls.__logger.setLevel(logging.INFO)
           nowtimeinfo = datetime.datetime.now().strftime('%Y-%m-%d_%H-%M-%S')
-
-          log_root_path=base_path+os.sep+"log"
-          if not os.path.exists(log_root_path):
-              os.makedirs(log_root_path)
-          log_path=log_root_path+os.sep+nowtimeinfo+".log"
-
+          log_path=base_path+os.sep+"log"+os.sep+nowtimeinfo+".log"
           # 获取处理器
           th=logging.handlers.TimedRotatingFileHandler(filename=log_path,when='midnight',interval=1,backupCount=3,encoding='utf-8')
           # 获取格式器
@@ -38,7 +33,6 @@ class GetLog:
           cls.__logger.addHandler(th)
       # 返回日志器
       return cls.__logger
-
 
 if __name__ == '__main__':
     log=GetLog.get_logger()
