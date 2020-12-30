@@ -17,14 +17,6 @@ def pytest_addoption(parser):
 def cmdopt(request):
     return request.config.getoption("--env")
 
-    # 将自定义参数的值打印出来
-
-
-@pytest.fixture(autouse=True)
-def fix_1( cmdopt):
-    print('\n --cmdopt的值：', cmdopt)
-    a = cmdopt
-
 
 
 
