@@ -1,7 +1,7 @@
 # coding: utf-8
 # 328
 import uuid
-from scripts.conftest import terminal_devices
+from scripts.init_env import terminal_devices
 class Deviceset():
     def __init__(self,terminal_type):
         self.devicetype=terminal_type   #  设备类型
@@ -140,6 +140,28 @@ class Deviceset():
                         "channel": 1,
                         "sampleBytes": 2
                     }
+                }
+            }
+        elif self.devicetype=="xf":
+            content_data= {
+                "topic": "cloud.speech.trans",
+                "mid": uuid.uuid1().hex,
+                "version": "1.0",
+                "request": {
+                    "timestamp": 1234567890,
+                    "sessionId": "%s" % uuid.uuid1().hex,
+                    "recordId": "%s" % uuid.uuid1().hex,
+                },
+                "params": {
+                    "audio": {
+                        "audioType": "wav",
+                        "sampleRate": 16000,
+                        "channel": 1,
+                        "sampleBytes": 2
+                    },
+                    "fullDuplex":False,
+                    "asrIsp":"xf-aiui",
+                    "accent":"mandarin",
                 }
             }
 

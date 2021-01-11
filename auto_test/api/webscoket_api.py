@@ -6,7 +6,7 @@ from config import base_path
 from devices_info import Deviceset
 import os
 from tools.get_log import GetLog
-from scripts.conftest import host,http_host,current_env
+from scripts.init_env import host,http_host,current_env
 log=GetLog.get_logger()  # 初始化日志对象
 
 class Mywebscoket():

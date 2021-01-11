@@ -18,7 +18,7 @@ class Test01:
     # 1、实列化获取工具类对象
     log.info("执行小美音箱入口测试用例..............")
     device_type = "xiaomei"  # 入口类型：328 固件的空调
-    tool = FileTool("data_case.xlsx", device_type)
+    tool = FileTool("data_case.csv", device_type)
     # 读取excel的内容信息
     testcaseinfo = tool.read_excel()
     import datetime

@@ -1,5 +1,5 @@
 # coding: utf-8
-from scripts.conftest import http_host
+from scripts.init_env import http_host
 import os
 import requests
 from tools.get_log import GetLog
@@ -19,8 +19,9 @@ class Api:
          try:
              headers={"Content-Type":"application/json "}
              self.params={"mid": "%s"%mid}
-             log.info("获取设备状态,请求参数为:{},地址:{}".format(self.params,http_host))
-             jsonvalue = requests.post(http_host, json=self.params, headers=headers).json()
+             device_host = http_host + "/v1/common/device/getDeviceStatus"
+             log.info("获取设备状态,请求参数为:{},地址:{}".format(self.params, device_host))
+             jsonvalue = requests.post(device_host, json=self.params, headers=headers).json()
              log.info("获取设备状态信息:{}".format(jsonvalue))
              return jsonvalue
          except Exception as e:

@@ -1,8 +1,9 @@
 # coding: utf-8
-# @Time : 2020-11-30 18:10
+# @Time : 2021-1-4 10:48 
 # @Author : xx
-# @File : conftest.py.py
+# @File : init_env.py 
 # @Software: PyCharm
+
 
 from config import host_address_list,device_status_list,alltotal_devices
 from tools import configparser_tool
