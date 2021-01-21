@@ -3,6 +3,7 @@
 # @Author : xx
 # @File : common_function.py 
 # @Software: PyCharm
+import threading
 
 import allure
 from scripts import common_assert
@@ -11,25 +12,49 @@ import time
 from api.api import Api
 from api.orionapi import OrionApi
 import datetime
+import re
+from tools.file_tool import FileTool
 
-
+device_locks = {"AC1": 0, "AC2": 0, "FC1": 0, "D1": 0, "DB1": 0}
 class Commonfunction():
     def runcase(self, caselist, devicetype, tool):
+        print(f"开始{devicetype}测试")
+        global device_locks
         for case in caselist:
-            current_sheet = case.get('case_catory')
-            step_list = case.get('steps')
-            step_len = len(step_list)  # 步骤长度
-            for i in range(0, step_len):
-                current_step = step_list[i]  # 当前测试步骤
-                if i != step_len - 1:
-                    params_value = current_step.get('params')
-                    if devicetype=="xiaomei":
-                        result=OrionApi(params_value).orion_post()
-                    else:
-                        result = Mywebscoket(params_value, devicetype).start_websocket()
-                    tool.write_excel(current_sheet, current_step.get("x_y"), "执行完成")
-                    tool.write_excel(current_sheet, current_step.get("x_y_desc"), str(result))
-                    current_step['step_result'] = result
+            device_lock=case.get('lock_device')
+            device_lock_list=[]
+            while True:
+                is_lock = 0
+                if device_lock:
+                    device_lock_list=re.split(",",device_lock)
+                    print(device_lock_list)
+                    for i in range(0,len(device_lock_list)):
+                        is_lock=device_locks[device_lock_list[i]]+is_lock
+                if not is_lock:
+                    for i in range(0,len(device_lock_list)):
+                        device_locks[device_lock_list[i]]=1
+                    current_sheet = case.get('case_catory')
+                    case_name=case.get('case_name')
+                    print(f"当前执行用例{case_name}")
+                    step_list = case.get('steps')
+                    step_len = len(step_list)  # 步骤长度
+                    for i in range(0, step_len):
+                        current_step = step_list[i]  # 当前测试步骤
+                        if i != step_len - 1:
+                            params_value = current_step.get('params')
+                            if devicetype=="xiaomei":
+                                result=OrionApi(params_value).orion_post()
+                            else:
+                                result = Mywebscoket(params_value, devicetype).start_websocket()
+                            tool.write_excel(current_sheet, current_step.get("x_y"), "执行完成")
+                            tool.write_excel(current_sheet, current_step.get("x_y_desc"), str(result))
+                            current_step['step_result'] = result
+                    for i in range(0, len(device_lock_list)):
+                        device_locks[device_lock_list[i]]=0
+                    break
+                else:
+                    print(f"设备{device_lock_list}正在使用中")
+                    time.sleep(1)
 
     def run_xiaomei_step(self,case,tool,log):
         current_sheet = case.get('case_catory')
@@ -138,5 +163,36 @@ class Commonfunction():
                 break
             elif i == count - 1:
                 result["device_status"] = jsonvalue
-
             i = i + 1
+
+def cost_time(func):
+    def wrapper(*args, **kwargs):
+        start_time = time.time()
+        func(*args, **kwargs)
+        end_time = time.time()
+        print(end_time - start_time)
+
+    return wrapper
+
+
+@cost_time
+def run():
+    ts = []
+    process_count = 8  # 进程数
+    device_type_list=["328","328_fullDuplex"]
+    for i in range(0,len(device_type_list)):
+        device_type=device_type_list[i]
+        tool = FileTool("data_case.csv", device_type)
+        # 读取excel的内容信息
+        testcaseinfo = tool.read_excel()
+        t0 = threading.Thread(target=Commonfunction().runcase, args=(testcaseinfo, device_type, tool,), name=f'线程{i}')
+        # t2 = threading.Thread(target=demo2, kwargs={case_list}, name='线程2')
+        ts.append(t0)
+    for i in range(len(ts)):
+        ts[i].start()
+    for i in range(len(ts)):
+        ts[i].join()
+
+
+if __name__ == '__main__':
+    run()

@@ -30,10 +30,11 @@ cell_config = {
     "case_catory": 1,
     "case_id": 2,
     "case_name": 3,
-    "step": 4,
-    "params": 5,
-    "result": 6,
-    "desc": 7
+    "lock_device":4,
+    "step": 5,
+    "params": 6,
+    "result": 7,
+    "desc": 8
 }
 
 # 4、终端入口设备信息
