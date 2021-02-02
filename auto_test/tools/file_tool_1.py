@@ -1,19 +1,22 @@
 # coding: utf-8
-from config import base_path, cell_config
+from config import base_path, cell_config, open_api
 import os
 import openpyxl
-from tools.get_log import GetLog
+from tools.mylog import Logger
 import datetime
 from scripts.init_env import current_env
 import csv
 import pandas as pd
 
-log = GetLog.get_logger()  # 初始化日志对象
+import xlrd
+from xlutils.copy import copy
+
+log = Logger()  # 初始化日志对象
 
 
 class FileTool:
     # 初始化
-    def __init__(self, filename, device_type,is_back=True):
+    def __init__(self, filename, device_type, is_back=True):
         # 组装动态文件路径
         self.old_filename = base_path + os.sep + "data" + os.sep + filename  # 用例文件目录
         nowtimeinfo = datetime.datetime.now().strftime('%Y-%m-%d_%H-%M-%S')
@@ -82,6 +85,31 @@ class FileTool:
             writer = csv.writer(f)
             writer.writerow(row)
 
+    def read_excel_openapi(self):
+        wholedictinfo = list()
+        try:
+            log.info("读取用例文件........")
+            allsteps = []
+            dictinfo = []
+            worksheet = self.sheet
+            # print( worksheet.max_row)
+            for i in range(2, worksheet.max_row + 1):
+                caseid = worksheet.cell(row=i, column=open_api.get("case_id")).value  # 用例编号信息
+                # print(caseid)
+                Interface_name = worksheet.cell(row=i, column=open_api.get("Interface_name")).value  # 接口信息
+                case_name = worksheet.cell(row=i, column=open_api.get("case_name")).value  # 用例名称信息
+                serviceUrl = worksheet.cell(row=i, column=open_api.get("serviceUrl")).value  # 用例名称信息
+                data = worksheet.cell(row=i, column=open_api.get("data")).value  # 用例名称信息
+                expect = worksheet.cell(row=i, column=open_api.get("expect")).value  # 用例名称信息
+                data = {"serviceUrl": serviceUrl, "data": data}
+                dictinfo = {"caseid": caseid, "Interface_name": Interface_name, "case_name": case_name, "data": data,
+                            "expect": eval(expect), "result": [i, cell_config.get("result")]}
+                wholedictinfo.append(dictinfo)
+            return wholedictinfo
+        except Exception as e:
+            log.info("读取用例文件异常,异常信息为:{}".format(e))
+            return wholedictinfo
+
     # 读取excel文件
     def read_excel(self):
         wholedictinfo = list()
@@ -104,7 +132,7 @@ class FileTool:
                     wholedictinfo.append(dictinfo)
                 linesinfo = dict()
                 params_value = worksheet.cell(row=i, column=cell_config.get("params")).value
-                #print(params_value)
+                # print(params_value)
                 if params_value == None:
                     continue
                 linesinfo["step"] = worksheet.cell(row=i, column=cell_config.get("step")).value
@@ -134,10 +162,93 @@ class FileTool:
             self.workbook.save(self.filename)
 
 
+class MyXlrs:
+    def __init__(self, filepath):
+        self.filepath = filepath
+        self.workbook = xlrd.open_workbook(filepath)
+
+    def get_sheet_names(self):
+        sheet_names = self.workbook.sheet_names()
+        return sheet_names
+
+    def read_cellvalue(self, row, col, bookname=None):  # row  行  col 列
+        if bookname == None:
+            bookname = self.get_sheet_names()[0]
+        shell_obj = self.workbook.sheet_by_name(bookname)
+        result = shell_obj.cell_value(row, col)
+        return result
+
+    def read_xlr(self, sheetname=None, start_line=None):
+        if start_line == None:
+            start_line = 1
+        if sheetname == None:
+            sheetname = self.get_sheet_names()[0]
+        wholedictinfo = list()
+        # try:
+        log.info("读取用例文件........")
+        allsteps = []
+        dictinfo = []
+        worksheet = self.workbook.sheet_by_name(sheetname)
+        # print( worksheet.nrows)
+        for i in range(start_line, worksheet.nrows):
+            col = cell_config.get("case_id")
+            caseid = worksheet.cell_value(rowx=i, colx=col - 1)  # 用例编号信息
+            casetitle = worksheet.cell_value(rowx=i, colx=cell_config.get("case_name") - 1)  # 用例名称信息
+            lock_device = worksheet.cell_value(rowx=i, colx=cell_config.get("lock_device") - 1)  # 用例名称信息
+
+            if caseid != None and caseid != "":
+                allsteps = []
+                case_catory = worksheet.cell_value(rowx=i, colx=cell_config.get("case_catory") - 1)
+                dictinfo = {"case_id": caseid, "case_name": casetitle, "case_catory": case_catory,
+                            "lock_device": lock_device, "steps": []}
+                wholedictinfo.append(dictinfo)
+
+            linesinfo = dict()
+            params_value = worksheet.cell_value(rowx=i, colx=cell_config.get("params") - 1)
+            # print(params_value)
+            if params_value == None:
+                continue
+            linesinfo["step"] = worksheet.cell_value(rowx=i, colx=cell_config.get("step") - 1)
+            linesinfo["params"] = params_value
+            linesinfo["x_y"] = [i, cell_config.get("result")]
+            linesinfo["x_y_desc"] = [i, cell_config.get("desc")]
+            linesinfo["step_result"] = worksheet.cell_value(rowx=i, colx=cell_config.get("step_result") - 1)
+            allsteps.append(linesinfo)
+            if "steps" in dictinfo:
+                dictinfo["steps"] = allsteps
+        log.info("读取用例文件完成........")
+        return wholedictinfo
+
+    def copy_sheet(self):
+        sheet = copy(self.workbook)
+        return sheet
+
+    def write_onedata(self, sheet, x_y, value, result_path=None, sheetname=None):
+        if sheetname == None:
+            index = 0
+        else:
+            index = self.get_sheet_names().index(sheetname)
+        if result_path == None:
+            result_path = self.filepath
+        load_sheet = sheet.get_sheet(index)
+        load_sheet.write(x_y[0], x_y[1] - 1, value)
+        sheet.save(result_path)
+
+    # def save_write(self, w, new_path):
+    #     try:
+    #         w.save(new_path)
+    #     except:
+    #         os.makedirs(os.path.dirname(new_path))
+    #         w.save(new_path)
+
+
 if __name__ == '__main__':
-    f = FileTool("data_case.csv", "328_halfDuplex")
-    d = f.read_excel()
+    # result_path=r"F:\git\Midea\auto_test\result\sit_328_2021-01-28data_case.xlsx"
+    # r = MyXlrs(a)
+    # d = r.read_xlr()
+    r = FileTool("open_api_case.csv", "OPEN_API")
+    d = r.read_excel_openapi()
     print(d[0])
-    # f.write_excel("空调本机控制",[3,11],"数据写入成功")
-    # f.write_excel("空调本机控制", [4, 11], "数据写入成功22222")
-    # f.write_excel("跨机控制", [4, 11], "333333")
+    # w_sheet=r.copy_sheet()
+    # r.write_onedata(w_sheet, [1, 8], "test_data23",)
+    # r.save_write(w_sheet, a)

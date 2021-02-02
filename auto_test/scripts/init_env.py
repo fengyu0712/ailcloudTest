@@ -4,16 +4,20 @@
 # @File : init_env.py 
 # @Software: PyCharm
 
-
+import config
 from config import host_address_list,device_status_list,alltotal_devices
 from tools import configparser_tool
-envinfo=configparser_tool.get_env()
+envinfo=config.test_env
 if envinfo.find("sit")!=-1:
     current_env="sit"
 elif envinfo.find("dit")!=-1:
     current_env="dit"
 elif envinfo.find("uat")!=-1:
     current_env="uat"
+elif envinfo.find("pro")!=-1:
+    current_env="pro"
+elif envinfo.find("test")!=-1:
+    current_env="test"
 else:
     current_env="pro"
 

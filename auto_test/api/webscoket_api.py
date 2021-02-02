@@ -117,5 +117,5 @@ if __name__ == '__main__':
 
     result = Mywebscoket('打开空调', "yuyintie_1").start_websocket()
     print(result)
-    #result = Mywebscoket("我回来了.wav", "328").start_websocket()
+    #result = Mywebscoket("我回来了.wav", "328_halfDuplex").start_websocket()
     #print(result)

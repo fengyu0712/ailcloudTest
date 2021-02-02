@@ -1,5 +1,6 @@
 # coding: utf-8
 # 328
+import time
 import uuid
 from scripts.init_env import terminal_devices
 
@@ -11,26 +12,53 @@ class Deviceset():
         self.sn = self.device_info.get("sn")  # sn信息
         self.clientid = self.device_info.get("clientid")  # clientid信息
         self.deviceId = self.device_info.get("deviceId")  # deviceId信息
-        self.set_headers()  # 初始化列表信息
 
-    # 添加头部信息
-    def set_headers(self):
-        self.headers = list()
-        self.__addonline()  # 添加上线信息
-        self.__add_stausdata() #添加上报音量信息
-        self.__addcontent()  # 添加content信息
+    def get_time_stamp(self):
+        ct = time.time()
+        local_time = time.localtime(ct)
+        data_head = time.strftime("%Y-%m-%d %H:%M:%S", local_time)
+        data_secs = (ct - int(ct)) * 1000
+        time_stamp = "%s.%03d" % (data_head, data_secs)
+        return time_stamp
 
-    def __add_stausdata(self):
+    def ota_check(self):
+        ota_check_data = {
+            "topic": "cloud.ota.check",
+            "mid": "%s" % uuid.uuid1().hex,
+            "version": "3.0",
+            "request": {
+                "timestamp": self.get_time_stamp()
+            },
+            "params": {
+                "sn": f"{self.sn}",
+                "category": "AC",
+                "model": "172",
+                "id": f"{self.deviceId}",
+                "clientId": "%s" % self.clientid,
+                "brand": "Midea",
+                "hardwarePlat": "07",
+                "hardwareVer": "07.03",
+                "hardwareCategory": "03",
+                "hardwareModel": "f4",
+                "hardwareFullVer": "07.03.01.01.f4",
+                "firmwareVer": "07.03.01.01.f4.20.12.05.01.07"
+            }
+        }
+        return ota_check_data
+
+    def audio_staus_data(self, volume=None):
+        if volume == None:
+            volume = 75
         status_data = {
             "version": "3.0",
             "topic": "cloud.report.status",
             "mid": "%s" % uuid.uuid1().hex,
             "category": "AC",
-            "id": "10995116462864",
+            "id": f"{self.deviceId}",
             "clientId": "%s" % self.clientid,
-            "sn": "00000031122251053060307510130000",
+            "sn": f"{self.sn}",
             "request": {
-                "timestamp": 1604989359
+                "timestamp": self.get_time_stamp()
             },
             "params": {
                 "status": [{
@@ -39,16 +67,15 @@ class Deviceset():
                         "level": "4",
                         "max": "99",
                         "min": "1",
-                        "volume": "75"
+                        "volume": f"{str(volume)}"
                     }
                 }]
             }
         }
-        print(status_data)
-        self.headers.append(status_data)
+        return status_data
 
     # 添加上线的信息
-    def __addonline(self):
+    def online_data(self):
         if self.devicetype == "yuyintie_1":
             online_data = {
                 "topic": "cloud.online",
@@ -56,7 +83,7 @@ class Deviceset():
                 "mid": "%s" % uuid.uuid1().hex,
                 "request": {
                     "apiVer": "1.0.0",
-                    "timestamp": 3,
+                    "timestamp": self.get_time_stamp(),
                     "paramsSignBase64": "8b0NLQ0rJ1Vb/MpTZ9vXHLsRMCk="
                 },
                 "params": {
@@ -70,6 +97,27 @@ class Deviceset():
                     "sn": "%s" % self.sn,
                 }
             }
+        elif self.devicetype == "328_halfDuplex":
+            online_data = {
+                "topic": "cloud.online",
+                "version": "3.0",
+                "mid": "%s" % uuid.uuid1().hex,
+                "request": {
+                    "apiVer": "1.0.0",
+                    "timestamp": self.get_time_stamp(),
+                    "paramsSignBase64": "8b0NLQ0rJ1Vb/MpTZ9vXHLsRMCk="
+                },
+                "params": {
+                    "category": "AC",
+                    "clientId": "%s" % self.clientid,
+                    "id": "%s" % self.deviceId,
+                    "ip": "127.0.0.1",
+                    "mac": "f0:c9:d1:b5:f9:a7",
+                    "model": "172",
+                    "productId": "1596681815",
+                    "sn": "%s" % self.sn,
+                }
+            }
         else:
             online_data = {
                 "topic": "cloud.online",
@@ -77,7 +125,7 @@ class Deviceset():
                 "version": "3.0",
                 "request": {
                     "apiVer": "1.0.0",
-                    "timestamp": 1234567890,
+                    "timestamp": self.get_time_stamp(),
 
                 },
                 "params": {
@@ -89,10 +137,11 @@ class Deviceset():
                 }
             }
 
-        print(online_data)
-        self.headers.append(online_data)
+        # print(online_data)
+        # self.headers.append(online_data)
+        return online_data
 
-    def __addcontent(self):
+    def content_data(self):
         if self.devicetype == "328_halfDuplex":
             content_data = {
                 "version": "3.0",
@@ -158,7 +207,7 @@ class Deviceset():
                 "mid": uuid.uuid1().hex,
                 "version": "1.0",
                 "request": {
-                    "timestamp": 1234567890,
+                    "timestamp": self.get_time_stamp(),
                     "sessionId": "%s" % uuid.uuid1().hex,
                     "recordId": "%s" % uuid.uuid1().hex,
                 },
@@ -177,7 +226,7 @@ class Deviceset():
                 "mid": uuid.uuid1().hex,
                 "version": "1.0",
                 "request": {
-                    "timestamp": 1234567890,
+                    "timestamp": self.get_time_stamp(),
                     "sessionId": "%s" % uuid.uuid1().hex,
                     "recordId": "%s" % uuid.uuid1().hex,
                 },
@@ -194,4 +243,4 @@ class Deviceset():
                 }
             }
 
-        self.headers.append(content_data)
+        return content_data
