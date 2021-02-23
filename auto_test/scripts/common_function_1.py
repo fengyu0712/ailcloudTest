@@ -30,6 +30,7 @@ class Commonfunction():
             case_id = case.get('case_id')
             case_name = case.get('case_name')
             case_lock = case.get('lock_device')
+            is_wait = case.get('is_wait')
             log.info(f"当前{devicetype}开始执行用例【{case_id}-{case_name}】")
             case_lock_list = []
             if case_lock:
@@ -69,7 +70,8 @@ class Commonfunction():
                                     result = OrionApi(params_value).orion_post()
                                 else:
                                     log.info(f"当前测试步骤【{current_step}】")
-                                    result = aicloud_ws.send_data(params_value)
+
+                                    result = aicloud_ws.send_data(params_value,iswait=is_wait)
                                 tool.write_excel(current_sheet, current_step.get("x_y"), "执行完成")
                                 tool.write_excel(current_sheet, current_step.get("x_y_desc"), str(result))
                                 current_step['step_result'] = result
@@ -178,11 +180,11 @@ def run():
     device_type_list = config.main_device_list
     for i in range(0, len(device_type_list)):
         device_type = device_type_list[i]
-        tool = FileTool("data_case_0.csv", device_type)
+        tool = FileTool("data_case.csv", device_type)
         tool.load_excel()
         # 读取excel的内容信息
         testcaseinfo = tool.read_excel()
-        t0 = threading.Thread(target=Commonfunction().runcase, args=(testcaseinfo, device_type, tool,), name=f'线程{i}')
+        t0 = threading.Thread(target=Commonfunction().runcase, args=(testcaseinfo, device_type, tool,), name=f'线程{i}:{device_type}')
         # t2 = threading.Thread(target=demo2, kwargs={case_list}, name='线程2')
         ts.append(t0)
     for i in range(len(ts)):

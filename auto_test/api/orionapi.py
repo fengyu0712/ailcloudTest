@@ -68,8 +68,9 @@ class OrionApi():
             "accept-encoding": "gzip",
             "user-agent": "okhttp/3.14.2",
         }
-        jsonvalue = requests.post(self.orion_url, json=http_body, headers=headers)
-        return midvalue
+        jsonvalue = requests.post(self.orion_url, json=http_body, headers=headers).json()
+        # print(jsonvalue)
+        return {"mid":midvalue,"nlu":jsonvalue}
 
     def orion_invoke_post(self,midvalue):
        info={
@@ -168,11 +169,18 @@ class OrionApi():
        jsonvalue = requests.post(self.invoke_url, json=info, headers=heads)
        return jsonvalue.json()
     def orion_post(self):
-        midvalue=self.orion_nlu_post()
-        value=self.orion_invoke_post(midvalue)
-        resultinfo={"mid":midvalue,"reponse":value}
-        return resultinfo
+        nlu_result=self.orion_nlu_post()
+        print(type(nlu_result))
+        mid=nlu_result["mid"]
+        value=self.orion_invoke_post(mid)
+        resultinfo={"reponse":value}
+        print(type(resultinfo))
+        result=resultinfo.update(nlu_result)
+        print(result)
+        return result
 
 if __name__ == '__main__':
-    api=OrionApi("空调开机")
-    api.orion_post()
+    api=OrionApi("音量大一点")
+    a=api.orion_post()
+    # print(type(a))
+    print(a)

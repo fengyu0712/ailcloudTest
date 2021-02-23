@@ -34,6 +34,7 @@ class Api:
 
     def open_api(self, data):
         # headers = {"Content-Type": "application/x-www-form-urlencoded"}
+
         device_host = http_host + "/v1/base2pro/data/transmit"
         log.info(f"open_api测试,请求参数为:{data},地址:{device_host}")
         try:
@@ -47,14 +48,16 @@ class Api:
 
 
 if __name__ == '__main__':
-    jsonvalue= Api().post("b41572f563e011ebb48598e7f4f1e716")
-    print(jsonvalue)
-    data = {"serviceUrl": "/v1/device/speech/fullDuplex",
-            "data": {"deviceId": 3298544982176, "fullDuplex": 1,
-                     "fullDuplexSkillConfig": [{"skillId": "midea-deviceControl", "timeOut": "10"}]}}
+    # jsonvalue = Api().post("b41572f563e011ebb48598e7f4f1e716")
+    # print(jsonvalue)
+    # data = {"serviceUrl": "/v1/device/speech/fullDuplex",
+    #         "data": {"deviceId": 3298544982176, "fullDuplex": 1,
+    #                  "fullDuplexSkillConfig": [{"skillId": "midea-deviceControl", "timeOut": "10"}]}}
     # data = {"serviceUrl": "/v1/tts/voice/set",
     #         "data": {"deviceId":"3298544982176","voiceId":"xiyaof"}}
+    data = {'serviceUrl': '/v1/accent/set',
+            'data': {'deviceId': '160528698598412', 'accentId': 'cantonese', 'enableAccent': '1',
+                     'mixedResEnable': '1'}}
     r = Api().open_api(data)
     print(r)
-    a=eval("{\"actionInterval\":3,\"deviceId\":\"3298544982176\",\"enable\":1,\"timeFrom\":\"21:30\",\"timeTo\":\"23:00\"}")
-    print(a)
+

@@ -101,14 +101,16 @@ class FileTool:
                 serviceUrl = worksheet.cell(row=i, column=open_api.get("serviceUrl")).value  # 用例名称信息
                 data = worksheet.cell(row=i, column=open_api.get("data")).value  # 用例名称信息
                 expect = worksheet.cell(row=i, column=open_api.get("expect")).value  # 用例名称信息
-                data = {"serviceUrl": serviceUrl, "data": data}
+                data = {"serviceUrl": serviceUrl, "data": eval(data)}
                 dictinfo = {"caseid": caseid, "Interface_name": Interface_name, "case_name": case_name, "data": data,
-                            "expect": eval(expect), "result": [i, cell_config.get("result")]}
+                            "expect": eval(expect), "response": [i, open_api.get("response")],
+                            "result": [i, open_api.get("result")]}
                 wholedictinfo.append(dictinfo)
             return wholedictinfo
         except Exception as e:
-            log.info("读取用例文件异常,异常信息为:{}".format(e))
-            return wholedictinfo
+            raise e
+            # log.info("读取用例文件异常,异常信息为:{}".format(e))
+            # return wholedictinfo
 
     # 读取excel文件
     def read_excel(self):
@@ -123,12 +125,13 @@ class FileTool:
                 caseid = worksheet.cell(row=i, column=cell_config.get("case_id")).value  # 用例编号信息
                 # print(caseid)
                 casetitle = worksheet.cell(row=i, column=cell_config.get("case_name")).value  # 用例名称信息
-                lock_device = worksheet.cell(row=i, column=cell_config.get("lock_device")).value  # 用例名称信息
+                lock_device = worksheet.cell(row=i, column=cell_config.get("lock_device")).value  # 设备锁
+                is_wait = worksheet.cell(row=i, column=cell_config.get("is_wait")).value
                 if caseid != None:
                     allsteps = []
                     case_catory = worksheet.cell(row=i, column=cell_config.get("case_catory")).value
                     dictinfo = {"case_id": caseid, "case_name": casetitle, "case_catory": case_catory,
-                                "lock_device": lock_device, "steps": []}
+                                "lock_device": lock_device, "is_wait": is_wait, "steps": []}
                     wholedictinfo.append(dictinfo)
                 linesinfo = dict()
                 params_value = worksheet.cell(row=i, column=cell_config.get("params")).value
@@ -248,7 +251,7 @@ if __name__ == '__main__':
     # d = r.read_xlr()
     r = FileTool("open_api_case.csv", "OPEN_API")
     d = r.read_excel_openapi()
-    print(d[0])
+    print(d)
     # w_sheet=r.copy_sheet()
     # r.write_onedata(w_sheet, [1, 8], "test_data23",)
     # r.save_write(w_sheet, a)

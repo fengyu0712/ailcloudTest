@@ -24,10 +24,10 @@ class Deviceset():
     def ota_check(self):
         ota_check_data = {
             "topic": "cloud.ota.check",
-            "mid": "%s" % uuid.uuid1().hex,
+            "mid": f"{uuid.uuid1().hex}",
             "version": "3.0",
             "request": {
-                "timestamp": self.get_time_stamp()
+                "timestamp": f"{self.get_time_stamp()}"
             },
             "params": {
                 "sn": f"{self.sn}",
@@ -48,7 +48,7 @@ class Deviceset():
 
     def audio_staus_data(self, volume=None):
         if volume == None:
-            volume = 75
+            volume = 50
         status_data = {
             "version": "3.0",
             "topic": "cloud.report.status",
@@ -65,7 +65,7 @@ class Deviceset():
                     "class": "audio",
                     "audio": {
                         "level": "4",
-                        "max": "99",
+                        "max": "100",
                         "min": "1",
                         "volume": f"{str(volume)}"
                     }
@@ -74,13 +74,47 @@ class Deviceset():
         }
         return status_data
 
+    def send_play_status(self, status=None):
+        if status == None or status == "resume":
+            status = "play"
+        play_status = {
+            "version": "3.0",
+            "topic": "cloud.report.status",
+            "mid": "%s" % uuid.uuid1().hex,
+            "category": "AC",
+            "id": f"{self.deviceId}",
+            "clientId": "%s" % self.clientid,
+            "sn": f"{self.sn}",
+            "request": {
+                "timestamp": self.get_time_stamp()
+            },
+            "params": {
+                "status": [{
+                    "class": "player",
+                    "player": {
+                        "status": status,
+                        "resource": {
+                            "urlType": "media",
+                            "skillType": "",
+                            "autoResume": True,
+                            "text": "浪人情歌",
+                            "url": "http://mp3cdn.hifiok.com/00/0E/wKgBeVBdTYaA_OZBAKfeJQULj-M020.mp3?sign=0b57017c2d9b000b02e130377d008364&t=1613756930",
+                            "seq": 1
+                        }
+                    }
+                }]
+            }
+        }
+        print(play_status)
+        return play_status
+
     # 添加上线的信息
     def online_data(self):
         if self.devicetype == "yuyintie_1":
             online_data = {
                 "topic": "cloud.online",
                 "version": "3.0",
-                "mid": "%s" % uuid.uuid1().hex,
+                "mid": f"{uuid.uuid1().hex}",
                 "request": {
                     "apiVer": "1.0.0",
                     "timestamp": self.get_time_stamp(),
@@ -88,20 +122,20 @@ class Deviceset():
                 },
                 "params": {
                     "category": "8",
-                    "clientId": "%s" % self.clientid,
-                    "id": "%s" % self.deviceId,
+                    "clientId": f" {self.clientid}",
+                    "id": f"{self.deviceId}",
                     "ip": "127.0.0.1",
                     "mac": "50:2d:bb:b3:e5:a5",
                     "model": "22",
                     "productId": "1596681815",
-                    "sn": "%s" % self.sn,
+                    "sn": f"{self.sn}",
                 }
             }
         elif self.devicetype == "328_halfDuplex":
             online_data = {
                 "topic": "cloud.online",
                 "version": "3.0",
-                "mid": "%s" % uuid.uuid1().hex,
+                "mid": f"{uuid.uuid1().hex}",
                 "request": {
                     "apiVer": "1.0.0",
                     "timestamp": self.get_time_stamp(),
@@ -109,19 +143,36 @@ class Deviceset():
                 },
                 "params": {
                     "category": "AC",
-                    "clientId": "%s" % self.clientid,
-                    "id": "%s" % self.deviceId,
+                    "clientId": f"{self.clientid}",
+                    "id": f"{self.deviceId}",
                     "ip": "127.0.0.1",
                     "mac": "f0:c9:d1:b5:f9:a7",
                     "model": "172",
                     "productId": "1596681815",
-                    "sn": "%s" % self.sn,
+                    "sn": f"{self.sn}",
+                }
+            }
+        elif self.devicetype == "3308_halfDuplex":
+            online_data = {
+                "topic": "cloud.online",
+                "version": "2.0",
+                "mid": f"{uuid.uuid1().hex}",
+                "request": {
+                    "apiVer": "1.0.0",
+                    "timestamp": f"{self.get_time_stamp()}"
+                },
+                "params": {
+                    "category": "0xAC",
+                    "clientId": f"{self.clientid}",
+                    "id": f"{self.deviceId}",
+                    "sn": f"{self.sn}",
+                    "magicCode": "TSETIA"
                 }
             }
         else:
             online_data = {
                 "topic": "cloud.online",
-                "mid": "%s" % uuid.uuid1().hex,
+                "mid": f"{uuid.uuid1().hex}",
                 "version": "3.0",
                 "request": {
                     "apiVer": "1.0.0",
@@ -242,5 +293,28 @@ class Deviceset():
                     "accent": "mandarin",
                 }
             }
-
+        elif self.devicetype == "3308_halfDuplex":
+            content_data = {
+                "version": "2.0",
+                "topic": "cloud.speech.trans",
+                "mid": f"{uuid.uuid1().hex}",
+                "id": f"{self.deviceId}",
+                "sn": self.sn,
+                "clientId": f"{self.clientid}",
+                "category": "AC",
+                "request": {
+                    "apiVer": "1.0.0",
+                    "sessionId": f"{uuid.uuid1().hex}",
+                    "recordId": f"{uuid.uuid1().hex}",
+                    "isMore": False
+                },
+                "params": {
+                    "audio": {
+                        "audioType": "wav",
+                        "sampleRate": 16000,
+                        "channel": 1,
+                        "sampleBytes": 2
+                    }
+                }
+            }
         return content_data

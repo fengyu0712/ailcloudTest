@@ -18,8 +18,9 @@ def common_assert(response,excepect):
     # 断言: nlg 信息的响应码
     assert response.get('nlg').get('code') == excepect_dict.get('nlg').get('code'),'nlg错误！ 响应code：{}，预期code：{}'.format(response.get('nlg').get('code'),excepect_dict.get('nlg').get('code'))
     # 断言：nlg 的text信息
-    nlg_value = getvalue(response, 'nlg', '$.data.tts.data[0].text')
-    assert excepect_dict.get('nlg').get('text') in nlg_value, 'nlg错误！ 响应nlg：{}，预期nlg：{}'.format(nlg_value,
+    if excepect_dict.get('nlg').get('text'):
+        nlg_value = getvalue(response, 'nlg', '$.data.tts.data[0].text')
+        assert excepect_dict.get('nlg').get('text') in nlg_value, 'nlg错误！ 响应nlg：{}，预期nlg：{}'.format(nlg_value,
                                                                                                 excepect_dict.get(
                                                                                                     'nlg').get('text'))
 
