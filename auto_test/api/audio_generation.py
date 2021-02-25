@@ -48,11 +48,12 @@ def audio_generation(audio_name):
     tts_url = result["result"]["url"]
     audio_path = os.path.join(base_path + os.sep + "audio_file" + os.sep, audio_name + ".mp3")
     result_path = os.path.join(base_path + os.sep + "audio_file" + os.sep, audio_name + ".wav")
-    print(result_path)
+
     with open(audio_path, "wb") as code:
         code.write(requests.get(tts_url).content)
     song = AudioSegment.from_mp3(audio_path)
     song.export(result_path, format='wav',bitrate="16k")
+    print(f"生成音频文件{result_path}")
     os.remove(audio_path)
 
 

@@ -14,7 +14,7 @@ from jsonpath import jsonpath
 import config
 import os
 from api import Traversing_path
-from api.api import Api
+from api.apis import Api
 from tools.file_tool_1 import MyXlrs, FileTool
 from tools.mylog import Logger
 from scripts import common_function_1
@@ -58,7 +58,7 @@ class Test_OpenApi:
                 log.info(key)
                 #部分接口返回的是str，jsonpath取不到值，需要转换
                 if not jsonpath(response, f"$..{key}") and isinstance(jsonpath(response, f"$..data")[-1],str):
-                    response["data"]=eval(jsonpath(response, f"$..data")[-1])
+                    response["data"]=eval(jsonpath(response, "$..data")[-1])
                 assert (expect[key] == jsonpath(response, f"$..{key}")[0]), f"{key}值校验失败"
         except Exception as e:
             result = e

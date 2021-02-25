@@ -25,7 +25,7 @@ report_file= Project_path.TestReport_path + "allure_report\\"
 
 def run():
     # pytest.main()
-    pytest.main(["-s",'-n=2',test_path,'--alluredir',result_file])
+    pytest.main(["-s",test_path,'--alluredir',result_file])
     # pytest.main(["-s",  test_path, '--alluredir', result_file])
     #'-s' 展示日志
     #'-p' 隐藏pytest打印日志

@@ -61,8 +61,7 @@ class AiCloud():
     # @retry(rerun_count=3)
     def client_ws(self):
         log.info("开始ws的链接")
-        ws = websocket.create_connection(self.address, timeout=120)
-        # ws.run_forever()
+        ws = websocket.create_connection(self.address, timeout=300)
         log.info("建立ws的链接成功")
         return ws
 
@@ -90,6 +89,7 @@ class AiCloud():
         if not os.path.exists(self.wavpath):
             log.info("未找到音频文件，开始重新生成音频...")
             audio_generation(audio_name)
+        print(type(iswait),iswait)
         self.iswait = iswait
         try:
             # 发送头部信息
@@ -143,15 +143,16 @@ class AiCloud():
                 pass
             return result
 
-    def wait_clock(self):
+    def wait_clock(self,wait_time):
         log.info("等待云端下发闹钟指令中...")
-        while True:
+        start_time=time.time()
+        while time.time()-start_time<wait_time*60+15:
             self.ws.send("HeartBeat")
             result = self.ws.recv()
             result = result.replace("false", "False").replace("true", "True")
             if "cloud.speech.broadcast" in result:
                 log.info("接收的cloud.speech.broadcast信息为:{}".format(result))
-                return result
+                return eval(result)
 
     def close(self):
         self.ws.close()
@@ -177,8 +178,8 @@ class AiCloud():
                     log.info("接收的cloud.speech.reply信息为:{}".format(result))
                     nlg_result = eval(result)
                     result_dict["nlg"] = nlg_result
-                    if "insert" in result and self.iswait == "1":
-                        result_dict["broadcast"] = self.wait_clock()
+                    if "insert" in result and self.iswait:
+                        result_dict["broadcast"] = self.wait_clock(self.iswait)
                     else:
                         break
                 time.sleep(0.1)
@@ -193,12 +194,12 @@ class AiCloud():
 if __name__ == '__main__':
     aiyuncloud = AiCloud("3308_halfDuplex")
     aiyuncloud.on_line()
-    # result = aiyuncloud.send_data('音量调小一点')
+    result = aiyuncloud.send_data('删除所有闹钟')
     # print(result)
-    result = aiyuncloud.send_data('音量设为百分之一百二')
+    result = aiyuncloud.send_data('帮我定个两分钟后的闹钟',iswait=2)
     # pass
     # print(result)
-    result = aiyuncloud.send_data('当前音量是多少')
+    # result = aiyuncloud.send_data('当前音量是多少')
     # print(result)
     # result = aiyuncloud.send_data('音量设为百分之六十五')
     # print(result)

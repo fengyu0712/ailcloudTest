@@ -103,7 +103,7 @@ alltotal_devices = {"dit": dit_terminal_devices, "sit": dit_terminal_devices, "u
 
 device_user_list = {"AC1": 0, "AC2": 0, "FC1": 0, "D1": 0, "DB1": 0}
 
-# "yuyintie_1,xf__halfDuplex,
+# "yuyintie_1,xf__halfDuplex,,"328_fullDuplex"
 main_device_list = ["328_halfDuplex","328_fullDuplex"]
 
 test_env = "uat"

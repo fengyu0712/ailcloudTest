@@ -166,7 +166,11 @@
       <dir>E:\AITEST</dir>
     </dirStrings>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
   <component name="ProjectId" id="1gO1TFhxQjNL7aWTcoKdJCXl3uc" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -175,7 +179,7 @@
     <property name="DatabaseDriversLRU" value="mysql&#10;redshift&#10;mariadb" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="database.console.LAST_STATE" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../ws" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
@@ -196,28 +200,7 @@
       <recent name="E:\AITEST\common" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.pipinstall">
-    <configuration name="Traversing_path" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="AITEST" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/common" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/common/Traversing_path.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
+  <component name="RunManager" selected="Python.runtest">
     <configuration name="demo0" type="PythonConfigurationType" factoryName="Python">
       <module name="AITEST" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -253,27 +236,6 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/demo/demo10.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="demo13" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="AITEST" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/demo" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/demo/demo13.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -368,6 +330,48 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="runprocess" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="AITEST" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/testrunner" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/testrunner/runprocess.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="runtest" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="AITEST" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/testrunner" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/testrunner/runtest.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="pytest in test_E2Redis.py" type="tests" factoryName="py.test" nameIsGenerated="true">
       <module name="AITEST" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -386,29 +390,29 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Python.Traversing_path" />
       <item itemvalue="Python.demo0" />
-      <item itemvalue="Python.demo10" />
-      <item itemvalue="Python.demo13" />
-      <item itemvalue="Python.demo13_1" />
       <item itemvalue="Python.demo5" />
-      <item itemvalue="Python.pipinstall" />
       <item itemvalue="Python.request_api" />
+      <item itemvalue="Python.demo10" />
+      <item itemvalue="Python.demo13_1" />
+      <item itemvalue="Python.pipinstall" />
       <item itemvalue="Python tests.pytest in test_E2Redis.py" />
+      <item itemvalue="Python.runtest" />
+      <item itemvalue="Python.runprocess" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.runtest" />
+        <item itemvalue="Python.runprocess" />
         <item itemvalue="Python.pipinstall" />
         <item itemvalue="Python.demo13_1" />
         <item itemvalue="Python.demo10" />
-        <item itemvalue="Python.demo13" />
-        <item itemvalue="Python.Traversing_path" />
       </list>
     </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration" cleanupOnStartRun="true">
-    <configuration>D:\MyData\lijq36\AppData\Roaming\Subversion</configuration>
+    <configuration>D:\MyData\lijq36.CN.000\AppData\Roaming\Subversion</configuration>
     <supportedVersion>125</supportedVersion>
   </component>
   <component name="TaskManager">
@@ -674,34 +678,26 @@
     <option name="LAST_COMMIT_MESSAGE" value="增加查询烹饪时间的函数&#10;修改电饭煲测试用例，使契合函数" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="580" y="184" key="FileChooserDialogImpl" timestamp="1599186063332">
+    <state x="254" y="84" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1611812701564">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state x="580" y="184" key="FileChooserDialogImpl/0.0.1600.860@0.0.1600.860" timestamp="1599186063332" />
-    <state width="1579" height="321" key="GridCell.Tab.0.bottom" timestamp="1597979177923">
+    <state x="254" y="84" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1600.860@0.0.1600.860" timestamp="1611812701564" />
+    <state width="1579" height="251" key="GridCell.Tab.0.bottom" timestamp="1611814451521">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state width="1579" height="321" key="GridCell.Tab.0.bottom/0.0.1600.860@0.0.1600.860" timestamp="1597979177923" />
-    <state width="1579" height="321" key="GridCell.Tab.0.center" timestamp="1597979177922">
+    <state width="1579" height="251" key="GridCell.Tab.0.bottom/0.0.1600.860@0.0.1600.860" timestamp="1611814451521" />
+    <state width="1579" height="251" key="GridCell.Tab.0.center" timestamp="1611814451521">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state width="1579" height="321" key="GridCell.Tab.0.center/0.0.1600.860@0.0.1600.860" timestamp="1597979177922" />
-    <state width="1579" height="321" key="GridCell.Tab.0.left" timestamp="1597979177922">
+    <state width="1579" height="251" key="GridCell.Tab.0.center/0.0.1600.860@0.0.1600.860" timestamp="1611814451521" />
+    <state width="1579" height="251" key="GridCell.Tab.0.left" timestamp="1611814451521">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state width="1579" height="321" key="GridCell.Tab.0.left/0.0.1600.860@0.0.1600.860" timestamp="1597979177922" />
-    <state width="1579" height="321" key="GridCell.Tab.0.right" timestamp="1597979177923">
+    <state width="1579" height="251" key="GridCell.Tab.0.left/0.0.1600.860@0.0.1600.860" timestamp="1611814451521" />
+    <state width="1579" height="251" key="GridCell.Tab.0.right" timestamp="1611814451521">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state width="1579" height="321" key="GridCell.Tab.0.right/0.0.1600.860@0.0.1600.860" timestamp="1597979177923" />
-    <state x="301" y="74" key="SettingsEditor" timestamp="1597970941639">
-      <screen x="0" y="0" width="1600" height="860" />
-    </state>
-    <state x="301" y="74" key="SettingsEditor/0.0.1600.860@0.0.1600.860" timestamp="1597970941639" />
-    <state x="717" y="181" width="672" height="678" key="search.everywhere.popup" timestamp="1598579166259">
-      <screen x="0" y="0" width="1600" height="860" />
-    </state>
-    <state x="717" y="181" width="672" height="678" key="search.everywhere.popup/0.0.1600.860@0.0.1600.860" timestamp="1598579166259" />
+    <state width="1579" height="251" key="GridCell.Tab.0.right/0.0.1600.860@0.0.1600.860" timestamp="1611814451521" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

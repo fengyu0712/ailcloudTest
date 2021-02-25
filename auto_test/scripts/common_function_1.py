@@ -9,13 +9,14 @@ import allure
 from scripts import common_assert
 from api.webscoket_api_1 import AiCloud
 import time
-from api.api import Api
+from api.apis import Api
 from api.orionapi import OrionApi
 import datetime
 import re
 from tools.file_tool_1 import FileTool
 from tools.mylog import Logger
 import config
+from api import clock_time
 
 log = Logger()
 device_user_list = config.device_user_list
@@ -30,7 +31,6 @@ class Commonfunction():
             case_id = case.get('case_id')
             case_name = case.get('case_name')
             case_lock = case.get('lock_device')
-            is_wait = case.get('is_wait')
             log.info(f"当前{devicetype}开始执行用例【{case_id}-{case_name}】")
             case_lock_list = []
             if case_lock:
@@ -66,12 +66,16 @@ class Commonfunction():
                             current_step = step_list[i]  # 当前测试步骤
                             if i != step_len - 1:
                                 params_value = current_step.get('params')
+                                is_wait = current_step.get('is_wait')
+                                if "clock_time" in params_value:
+                                    params_value = clock_time.set_clock(params_value)
+
                                 if devicetype == "xiaomei":
                                     result = OrionApi(params_value).orion_post()
                                 else:
                                     log.info(f"当前测试步骤【{current_step}】")
 
-                                    result = aicloud_ws.send_data(params_value,iswait=is_wait)
+                                    result = aicloud_ws.send_data(params_value, iswait=is_wait)
                                 tool.write_excel(current_sheet, current_step.get("x_y"), "执行完成")
                                 tool.write_excel(current_sheet, current_step.get("x_y_desc"), str(result))
                                 current_step['step_result'] = result
@@ -184,7 +188,8 @@ def run():
         tool.load_excel()
         # 读取excel的内容信息
         testcaseinfo = tool.read_excel()
-        t0 = threading.Thread(target=Commonfunction().runcase, args=(testcaseinfo, device_type, tool,), name=f'线程{i}:{device_type}')
+        t0 = threading.Thread(target=Commonfunction().runcase, args=(testcaseinfo, device_type, tool,),
+                              name=f'线程{i}:{device_type}')
         # t2 = threading.Thread(target=demo2, kwargs={case_list}, name='线程2')
         ts.append(t0)
     for i in range(len(ts)):

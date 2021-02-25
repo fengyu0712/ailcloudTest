@@ -131,7 +131,7 @@ class FileTool:
                     allsteps = []
                     case_catory = worksheet.cell(row=i, column=cell_config.get("case_catory")).value
                     dictinfo = {"case_id": caseid, "case_name": casetitle, "case_catory": case_catory,
-                                "lock_device": lock_device, "is_wait": is_wait, "steps": []}
+                                "lock_device": lock_device,"steps": []}
                     wholedictinfo.append(dictinfo)
                 linesinfo = dict()
                 params_value = worksheet.cell(row=i, column=cell_config.get("params")).value
@@ -140,6 +140,7 @@ class FileTool:
                     continue
                 linesinfo["step"] = worksheet.cell(row=i, column=cell_config.get("step")).value
                 linesinfo["params"] = params_value
+                linesinfo["is_wait"] = is_wait
                 linesinfo["x_y"] = [i, cell_config.get("result")]
                 linesinfo["x_y_desc"] = [i, cell_config.get("desc")]
                 allsteps.append(linesinfo)

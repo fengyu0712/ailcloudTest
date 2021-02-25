@@ -9,7 +9,7 @@ import allure
 from scripts import common_assert
 from api.webscoket_api import Mywebscoket
 import time
-from api.api import Api
+from api.apis import Api
 from api.orionapi import OrionApi
 import datetime
 import re
