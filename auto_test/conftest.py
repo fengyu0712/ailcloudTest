@@ -16,13 +16,15 @@
 import sys
 import os
 
+from scripts import init_env
+
 curPath = os.path.abspath(os.path.dirname(__file__))
 sys.path.append(curPath)
 import pytest
 import config
 
 base_path = config.base_path
-from scripts import init_env
+# from scripts.init_env import host, current_env
 
 allure_result = os.path.join(os.path.join(base_path, "result"), "allure_result")
 allure_conf_path = os.path.join(allure_result, "environment.properties")
@@ -34,7 +36,7 @@ def pytest_addoption(parser):
         "--env",
         action="store",
         # default: 默认值，命令行没有指定host时，默认用该参数值
-        default="SIT",
+        default=init_env.current_env,
         help="test case project host address"
     )
 
@@ -57,6 +59,9 @@ def updata_allure_env(env, testhost):
     :param testhost: 当前测试HOST
     :return:
     '''
+    if os.path.isfile(allure_conf_path):
+        os.remove(allure_conf_path)
     with open(allure_conf_path, "a") as f:
         f.write(f"ENVIRONMENT={env}\n")
         f.write(f"HOST={testhost}\n")
+

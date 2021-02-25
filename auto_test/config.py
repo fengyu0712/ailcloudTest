@@ -35,7 +35,7 @@ cell_config = {
     "case_id": 2,
     "case_name": 3,
     "lock_device": 4,
-    "is_wait":5,
+    "is_wait": 5,
     "step": 6,
     "params": 7,
     "result": 8,
@@ -87,14 +87,14 @@ dit_terminal_devices = {
 
 
 pro_terminal_devices = {
-    "328_halfDuplex": {"sn": "00000021122251157813008987000000", "clientid": "test0005",
-                       "deviceId": "160528698598412"},
-    "328_fullDuplex": {"sn": "00000021122251157813008987000000", "clientid": "test0006",
-                       "deviceId": "160528698598412"},
-    "xf__halfDuplex": {"sn": "00000021122251157813008987000000", "clientid": "test0007",
-           "deviceId": "160528698598412"},
+    "328_halfDuplex": {"sn": "00000021122251157813008987020000", "clientid": "test0005",
+                       "deviceId": "164926746499645"},
+    "328_fullDuplex": {"sn": "00000021122251157813008987020000", "clientid": "test0006",
+                       "deviceId": "164926746499645"},
+    "xf__halfDuplex": {"sn": "00000021122251157813008987020000", "clientid": "test0007",
+                       "deviceId": "164926746499645"},
     "yuyintie_1": {"sn": "000008311000VA022091500000289FGR", "clientid": "yuyintie_test", "deviceId": "9895604650248"},
-    "3308_halfDuplex": {"sn": "00000021122251157813008987000000", "clientid": "test0008","deviceId": "160528698598412"}
+    "3308_halfDuplex": {"sn": "00000021122251157813008987020000", "clientid": "test0008", "deviceId": "164926746499645"}
 
 }
 
@@ -104,13 +104,8 @@ alltotal_devices = {"dit": dit_terminal_devices, "sit": dit_terminal_devices, "u
 device_user_list = {"AC1": 0, "AC2": 0, "FC1": 0, "D1": 0, "DB1": 0}
 
 # "yuyintie_1,xf__halfDuplex,,"328_fullDuplex"
-main_device_list = ["328_halfDuplex","328_fullDuplex","3308_halfDuplex"]
+main_device_list = ["328_halfDuplex", "328_fullDuplex", "3308_halfDuplex"]
 
 test_env = "uat"
 
-test_mode=["音量"]
-
-
-
-
-
+test_mode = ["音量"]

@@ -89,7 +89,6 @@ class AiCloud():
         if not os.path.exists(self.wavpath):
             log.info("未找到音频文件，开始重新生成音频...")
             audio_generation(audio_name)
-        print(type(iswait),iswait)
         self.iswait = iswait
         try:
             # 发送头部信息
@@ -197,7 +196,7 @@ if __name__ == '__main__':
     result = aiyuncloud.send_data('删除所有闹钟')
     # print(result)
     result = aiyuncloud.send_data('帮我定个两分钟后的闹钟',iswait=2)
-    # pass
+
     # print(result)
     # result = aiyuncloud.send_data('当前音量是多少')
     # print(result)

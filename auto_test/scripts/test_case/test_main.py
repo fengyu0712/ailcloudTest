@@ -12,7 +12,7 @@ log = Logger()
 main_device_list = config.main_device_list
 
 # 运行设备控制阶段
-common_function_1.run()
+# common_function_1.run()
 
 
 def get_sheet(device_type):
@@ -23,6 +23,9 @@ def get_sheet(device_type):
     return sheet
 
 
+testcase_info = get_sheet(main_device_list[0]).read_xlr()[115:]
+
+
 class TestMain:
     def setup_class(self):
         log.info("========%s开始执行主场景用例测试用例:========" % __class__.__name__)
@@ -31,7 +34,7 @@ class TestMain:
         Logger().info("========%s执行主场景用例测试用例结束!========" % __class__.__name__)
 
     @allure.feature(f"{main_device_list[0]}")
-    @pytest.mark.parametrize("case", get_sheet(main_device_list[0]).read_xlr())
+    @pytest.mark.parametrize("case", testcase_info)
     def test_328_halfDuplex(self, case):
         log.info("执行用例{}".format(case))
         current_sheet = case.get('case_catory')
@@ -41,7 +44,7 @@ class TestMain:
                                                    get_sheet(main_device_list[0]).copy_sheet())
 
     @allure.feature(f"{main_device_list[1]}")
-    @pytest.mark.parametrize("case", get_sheet(main_device_list[1]).read_xlr())
+    @pytest.mark.parametrize("case", testcase_info)
     def test_328_fullDuplex(self, case):
         log.info("执行用例{}".format(case))
         current_sheet = case.get('case_catory')
@@ -51,7 +54,7 @@ class TestMain:
                                                    get_sheet(main_device_list[1]).copy_sheet())
 
     @allure.feature(f"{main_device_list[2]}")
-    @pytest.mark.parametrize("case", get_sheet(main_device_list[1]).read_xlr())
+    @pytest.mark.parametrize("case", testcase_info)
     def test_3308(self, case):
         log.info("执行用例{}".format(case))
         current_sheet = case.get('case_catory')
