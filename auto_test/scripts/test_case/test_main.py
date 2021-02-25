@@ -12,7 +12,7 @@ log = Logger()
 main_device_list = config.main_device_list
 
 # 运行设备控制阶段
-# common_function_1.run()
+common_function_1.run()
 
 
 def get_sheet(device_type):

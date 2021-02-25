@@ -170,17 +170,13 @@ class OrionApi():
        return jsonvalue.json()
     def orion_post(self):
         nlu_result=self.orion_nlu_post()
-        print(type(nlu_result))
         mid=nlu_result["mid"]
         value=self.orion_invoke_post(mid)
         resultinfo={"reponse":value}
-        print(type(resultinfo))
         result=resultinfo.update(nlu_result)
-        print(result)
         return result
 
 if __name__ == '__main__':
     api=OrionApi("音量大一点")
     a=api.orion_post()
-    # print(type(a))
     print(a)
