@@ -23,7 +23,7 @@ def get_sheet(device_type):
     return sheet
 
 
-testcase_info = get_sheet(main_device_list[0]).read_xlr()[115:]
+testcase_info = get_sheet(main_device_list[0]).read_xlr()
 
 
 class TestMain:
