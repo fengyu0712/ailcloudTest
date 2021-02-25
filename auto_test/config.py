@@ -66,7 +66,7 @@ open_api = {
 #     }
 
 dit_terminal_devices = {
-    "328_halfDuplex": {"sn": "00000021122251157813008987000000", "clientid": "test0011",
+    "328_halfDuplex": {"sn": "00000021122251157813008987000000", "clientid": "test0001",
                        "deviceId": "160528698598412"},
     "328_fullDuplex": {"sn": "00000031122251059042507F12340000", "clientid": "test0002",
                        "deviceId": "160528698598412"},
@@ -104,9 +104,12 @@ alltotal_devices = {"dit": dit_terminal_devices, "sit": dit_terminal_devices, "u
 device_user_list = {"AC1": 0, "AC2": 0, "FC1": 0, "D1": 0, "DB1": 0}
 
 # "yuyintie_1,xf__halfDuplex,,"328_fullDuplex"
-main_device_list = ["328_halfDuplex","328_fullDuplex"]
+main_device_list = ["328_halfDuplex","328_fullDuplex","3308_halfDuplex"]
 
 test_env = "uat"
+
+test_mode=["音量"]
+
 
 
 
