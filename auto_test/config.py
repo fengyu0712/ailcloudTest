@@ -17,7 +17,7 @@ host_address_list = {"dit": "ws://linkdit.aimidea.cn:10000/cloud/connect",
                      "uat": "ws://linkuat.aimidea.cn:10000/cloud/connect",
                      # "pro": "wss://linkprod.aimidea.cn:10443/cloud/connect",
                      "pro": "wss://link.aimidea.cn:10443/cloud/connect",
-                     "test": "wss://link-mock.aimidea.cn:10443/cloud/connect"
+                     "test": "wss://linkprod.aimidea.cn:10443/cloud/connect"
                      }
 
 # 2、主机地址
@@ -26,7 +26,7 @@ device_status_list = {"dit": "http://sit.aimidea.cn:11003",
                       'uat': "https://uat.aimidea.cn:21023",
                       # "pro": "https://openapi-prod-tmp.aimidea.cn",
                       "pro": "https://api.aimidea.cn:11003",
-                      "test": "https://openapi-prod-tmp.aimidea.cn"
+                      "test": "https://openapi-prod-tmp.aimidea.cn/"
                       }
 
 # 3、 excel数据对应的列
@@ -65,14 +65,22 @@ open_api = {
 #     "yuyintie_1": {"sn": "000008311000VA022091500000289FGR", "clientid": "yuyintie_test", "deviceId": "9895604650248"},
 #     }
 
-dit_terminal_devices = {
+sit_terminal_devices = {
+    # qq音乐链接
     "328_halfDuplex": {"sn": "00000021122251157813008987000000", "clientid": "test0001",
-                       "deviceId": "160528698598412"},
-    "328_fullDuplex": {"sn": "00000031122251059042507F12340000", "clientid": "test0002",
-                       "deviceId": "160528698598412"},
-    "xf": {"sn": "00000031122251059042507F12340000", "clientid": "test0003",
-           "deviceId": "160528698598412"},
-    "yuyintie_1": {"sn": "000008311000VA022091500000289FGR", "clientid": "test0004", "deviceId": "9895604650248"},
+                       "deviceId": "3298544982176", "module_version": "07.03.01.01.f4.20.12.05.01.07"},
+    # 酷狗音乐
+    "328_fullDuplex": {"sn": "00000021122251157813008987000000", "clientid": "test0002",
+                       "deviceId": "3298544982176", "module_version": "07.03.01.01.f4.20.12.05.01.07"},
+    # 思必驰音乐
+    "xf__halfDuplex": {"sn": "00000021122251157813008987000000", "clientid": "test0003",
+                       "deviceId": "3298544982176", "module_version": "07.03.01.01.f4.20.12.05.01.07"},
+    # 思必驰音乐
+    "yuyintie_1": {"sn": "000008311000VA022091500000289FGR", "clientid": "test0004", "deviceId": "9895604650248",
+                   "module_version": "07.03.01.01.f4.20.12.05.01.07"},
+    # qq音乐转码
+    "3308_halfDuplex": {"sn": "00000021122251157813008987000000", "clientid": "test0005", "deviceId": "3298544982176",
+                        "module_version": "05.03.00.01.06.19.09.01.01.08"}
 }
 
 # uat_terminal_devices = {
@@ -87,18 +95,20 @@ dit_terminal_devices = {
 
 
 pro_terminal_devices = {
-    "328_halfDuplex": {"sn": "00000021122251157813008987020000", "clientid": "test0005",
-                       "deviceId": "164926746499645"},
-    "328_fullDuplex": {"sn": "00000021122251157813008987020000", "clientid": "test0006",
-                       "deviceId": "164926746499645"},
-    "xf__halfDuplex": {"sn": "00000021122251157813008987020000", "clientid": "test0007",
-                       "deviceId": "164926746499645"},
-    "yuyintie_1": {"sn": "000008311000VA022091500000289FGR", "clientid": "yuyintie_test", "deviceId": "9895604650248"},
-    "3308_halfDuplex": {"sn": "00000021122251157813008987020000", "clientid": "test0008", "deviceId": "164926746499645"}
+    "328_halfDuplex": {"sn": "00000021122251157813008987000000", "clientid": "test0001",
+                       "deviceId": "164926746499645", "module_version": "07.03.01.01.f4.20.12.05.01.07"},
+    "328_fullDuplex": {"sn": "00000021122251157813008987000000", "clientid": "test0002",
+                       "deviceId": "164926746499645", "module_version": "07.03.01.01.f4.20.12.05.01.07"},
+    "xf__halfDuplex": {"sn": "00000021122251157813008987000000", "clientid": "test0003",
+                       "deviceId": "164926746499645", "module_version": "07.03.01.01.f4.20.12.05.01.07"},
+    "yuyintie_1": {"sn": "000008311000VA022091500000289FGR", "clientid": "test0004", "deviceId": "9895604650248",
+                   "module_version": "07.03.01.01.f4.20.12.05.01.07"},
+    "3308_halfDuplex": {"sn": "00000021122251157813008987000000", "clientid": "test0005", "deviceId": "164926746499645",
+                        "module_version": "07.03.01.01.f4.20.12.05.01.07"}
 
 }
 
-alltotal_devices = {"dit": dit_terminal_devices, "sit": dit_terminal_devices, "uat": pro_terminal_devices,
+alltotal_devices = {"dit": sit_terminal_devices, "sit": sit_terminal_devices, "uat": pro_terminal_devices,
                     "pro": pro_terminal_devices, "test": pro_terminal_devices}
 
 device_user_list = {"AC1": 0, "AC2": 0, "FC1": 0, "D1": 0, "DB1": 0}
@@ -106,6 +116,6 @@ device_user_list = {"AC1": 0, "AC2": 0, "FC1": 0, "D1": 0, "DB1": 0}
 # "yuyintie_1,xf__halfDuplex,,"328_fullDuplex"
 main_device_list = ["328_halfDuplex", "328_fullDuplex", "3308_halfDuplex"]
 
-test_env = "uat"
+test_env = "sit"
 
 test_mode = ["音量"]

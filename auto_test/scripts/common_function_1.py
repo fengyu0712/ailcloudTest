@@ -49,7 +49,6 @@ class Commonfunction():
                         device_user_list[case_lock_list[i]] = 1
                     if case_lock_list:
                         log.info(f"{devicetype}入口使用设备{case_lock_list}")
-
                     # 释放设备
                     def release_devices(devicetype, case_lock_list):
                         if case_lock_list:
@@ -62,6 +61,7 @@ class Commonfunction():
                     try:
                         aicloud_ws = AiCloud(devicetype)
                         aicloud_ws.on_line()
+                        url_error = {}
                         for i in range(0, step_len):
                             current_step = step_list[i]  # 当前测试步骤
                             if i != step_len - 1:
@@ -76,9 +76,18 @@ class Commonfunction():
                                     log.info(f"当前测试步骤【{current_step}】")
 
                                     result = aicloud_ws.send_data(params_value, iswait=is_wait)
+
+                                from scripts.common_assert import assert_url_status_code
+                                try:
+                                    assert_url_status_code(result)
+                                except Exception as e:
+                                    url_error= {"step": i, "url_error": e}
+                                if url_error:
+                                    result["error"]=(url_error)
                                 tool.write_excel(current_sheet, current_step.get("x_y"), "执行完成")
                                 tool.write_excel(current_sheet, current_step.get("x_y_desc"), str(result))
                                 current_step['step_result'] = result
+
                         log.info(f"用例【{case_name}】执行完成")
                         release_devices(devicetype, case_lock_list)
                         break
@@ -121,7 +130,7 @@ class Commonfunction():
 
                     resultdir = result
 
-    def runstep(self, r, case, w_tool):
+    def runstep(self, device_type, r, case, w_tool):
         # current_sheet = case.get('case_catory')
         step_list = case.get('steps')
         step_len = len(step_list)  # 步骤长度
@@ -133,8 +142,7 @@ class Commonfunction():
                 if i == step_len - 1:
                     # 进行校验信息
                     try:
-                        common_assert.common_assert(resultdir, current_step.get('params'))
-
+                        common_assert.common_assert(device_type, resultdir, current_step.get('params'))
                         r.write_onedata(w_tool, current_step.get("x_y"), "执行通过")
                     except Exception as e:
                         r.write_onedata(w_tool, current_step.get("x_y"), "执行失败! 原因:{}".format(e))
@@ -184,7 +192,7 @@ def run():
     device_type_list = config.main_device_list
     for i in range(0, len(device_type_list)):
         device_type = device_type_list[i]
-        tool = FileTool("data_case.csv", device_type)
+        tool = FileTool("data_case_2.csv", device_type)
         tool.load_excel()
         # 读取excel的内容信息
         testcaseinfo = tool.read_excel()

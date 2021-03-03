@@ -173,6 +173,9 @@ class AiCloud():
                 elif "cloud.speech.trans.ack" in result:
                     log.info("接收的cloud.speech.trans.ack信息为:{}".format(result))
                     result_dict["asr"] = eval(result)
+                elif "cloud.order.config" in result:
+                    log.info("接收的cloud.order.config信息为:{}".format(result))
+                    result_dict["order"] = eval(result)
                 elif "cloud.speech.reply" in result:
                     log.info("接收的cloud.speech.reply信息为:{}".format(result))
                     nlg_result = eval(result)
@@ -193,9 +196,16 @@ class AiCloud():
 if __name__ == '__main__':
     aiyuncloud = AiCloud("3308_halfDuplex")
     aiyuncloud.on_line()
-    result = aiyuncloud.send_data('删除所有闹钟')
+    result = aiyuncloud.send_data('来一首歌')
+    b = jsonpath(result, "$..url")[1]
+
+    # result = aiyuncloud.send_data('停止播放')
+
+
+    print(b)
+
     # print(result)
-    result = aiyuncloud.send_data('帮我定个两分钟后的闹钟',iswait=2)
+    # result = aiyuncloud.send_data('帮我定个两分钟后的闹钟',iswait=2)
 
     # print(result)
     # result = aiyuncloud.send_data('当前音量是多少')

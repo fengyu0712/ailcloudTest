@@ -1,5 +1,6 @@
 # coding: utf-8
 # 328
+import re
 import time
 import uuid
 from scripts.init_env import terminal_devices
@@ -9,9 +10,14 @@ class Deviceset():
     def __init__(self, terminal_type):
         self.devicetype = terminal_type  # 设备类型
         self.device_info = terminal_devices.get(terminal_type)  # 获取设备信息
-        self.sn = self.device_info.get("sn")  # sn信息
+        self.sn = self.device_info["sn"]  # sn信息
         self.clientid = self.device_info.get("clientid")  # clientid信息
         self.deviceId = self.device_info.get("deviceId")  # deviceId信息
+        self.module_version = self.device_info.get("module_version")
+        if self.devicetype == "3308_halfDuplex":
+            self.version = "1.0"
+        else:
+            self.version = "3.0"
 
     def get_time_stamp(self):
         ct = time.time()
@@ -25,7 +31,7 @@ class Deviceset():
         ota_check_data = {
             "topic": "cloud.ota.check",
             "mid": f"{uuid.uuid1().hex}",
-            "version": "3.0",
+            "version": self.version,
             "request": {
                 "timestamp": f"{self.get_time_stamp()}"
             },
@@ -35,22 +41,28 @@ class Deviceset():
                 "model": "172",
                 "id": f"{self.deviceId}",
                 "clientId": "%s" % self.clientid,
-                "brand": "Midea",
-                "hardwarePlat": "07",
-                "hardwareVer": "07.03",
-                "hardwareCategory": "03",
-                "hardwareModel": "f4",
-                "hardwareFullVer": "07.03.01.01.f4",
-                "firmwareVer": "07.03.01.01.f4.20.12.05.01.07"
+                "brand": "Midea"
             }
         }
+
+        def ota_module_version(module_version):
+            module_version_slitList = module_version.split(".")
+            module_version_json = {"hardwarePlat": module_version_slitList[0],
+                                   "hardwareVer": module_version[:5],
+                                   "hardwareCategory": module_version_slitList[1],
+                                   "hardwareModel": module_version_slitList[4],
+                                   "hardwareFullVer": module_version[:14],
+                                   "firmwareVer": module_version}
+            return module_version_json
+
+        ota_check_data["params"].update(ota_module_version(self.module_version))
         return ota_check_data
 
     def audio_staus_data(self, volume=None):
         if volume == None:
             volume = 50
         status_data = {
-            "version": "3.0",
+            "version": self.version,
             "topic": "cloud.report.status",
             "mid": "%s" % uuid.uuid1().hex,
             "category": "AC",
@@ -78,7 +90,7 @@ class Deviceset():
         if status == None or status == "resume":
             status = "play"
         play_status = {
-            "version": "3.0",
+            "version":self.version,
             "topic": "cloud.report.status",
             "mid": "%s" % uuid.uuid1().hex,
             "category": "AC",
@@ -105,7 +117,7 @@ class Deviceset():
                 }]
             }
         }
-        print(play_status)
+        # print(play_status)
         return play_status
 
     # 添加上线的信息
@@ -134,7 +146,7 @@ class Deviceset():
         elif self.devicetype == "328_halfDuplex":
             online_data = {
                 "topic": "cloud.online",
-                "version": "3.0",
+                "version": self.version,
                 "mid": f"{uuid.uuid1().hex}",
                 "request": {
                     "apiVer": "1.0.0",
@@ -155,7 +167,7 @@ class Deviceset():
         elif self.devicetype == "3308_halfDuplex":
             online_data = {
                 "topic": "cloud.online",
-                "version": "2.0",
+                "version": self.version,
                 "mid": f"{uuid.uuid1().hex}",
                 "request": {
                     "apiVer": "1.0.0",
@@ -173,7 +185,7 @@ class Deviceset():
             online_data = {
                 "topic": "cloud.online",
                 "mid": f"{uuid.uuid1().hex}",
-                "version": "3.0",
+                "version": self.version,
                 "request": {
                     "apiVer": "1.0.0",
                     "timestamp": self.get_time_stamp(),
@@ -195,7 +207,7 @@ class Deviceset():
     def content_data(self):
         if self.devicetype == "328_halfDuplex":
             content_data = {
-                "version": "3.0",
+                "version": self.version,
                 "topic": "cloud.speech.trans",
                 "mid": "%s" % uuid.uuid1().hex,
                 "id": "%s" % self.deviceId,
@@ -223,7 +235,7 @@ class Deviceset():
             }
         elif self.devicetype == "328_fullDuplex":
             content_data = {
-                "version": "3.0",
+                "version": self.version,
                 "topic": "cloud.speech.trans",
                 "mid": uuid.uuid1().hex,
                 "id": "%s" % self.deviceId,
@@ -256,7 +268,7 @@ class Deviceset():
             content_data = {
                 "topic": "cloud.speech.trans",
                 "mid": uuid.uuid1().hex,
-                "version": "1.0",
+                "version": self.version,
                 "request": {
                     "timestamp": self.get_time_stamp(),
                     "sessionId": "%s" % uuid.uuid1().hex,
@@ -275,7 +287,7 @@ class Deviceset():
             content_data = {
                 "topic": "cloud.speech.trans",
                 "mid": uuid.uuid1().hex,
-                "version": "1.0",
+                "version": self.version,
                 "request": {
                     "timestamp": self.get_time_stamp(),
                     "sessionId": "%s" % uuid.uuid1().hex,
@@ -295,7 +307,7 @@ class Deviceset():
             }
         elif self.devicetype == "3308_halfDuplex":
             content_data = {
-                "version": "2.0",
+                "version": self.version,
                 "topic": "cloud.speech.trans",
                 "mid": f"{uuid.uuid1().hex}",
                 "id": f"{self.deviceId}",
