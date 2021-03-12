@@ -4,6 +4,7 @@
 # @File : common_function.py 
 # @Software: PyCharm
 import threading
+import random
 
 import allure
 import jsonpath
@@ -215,6 +216,8 @@ def run():
         tool.load_excel()
         # 读取excel的内容信息
         testcaseinfo = tool.read_excel()
+        #打乱用例顺序，减少设备锁定时设备排队等待问题
+        random.shuffle(testcaseinfo)
         t0 = threading.Thread(target=Commonfunction().runcase, args=(testcaseinfo, device_type, tool,),
                               name=f'线程{i}:{device_type}')
         # t2 = threading.Thread(target=demo2, kwargs={case_list}, name='线程2')
