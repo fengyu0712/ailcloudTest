@@ -46,6 +46,17 @@ class Api:
             log.info("open_api接口返回信息:{}".format(jsonvalue))
             return jsonvalue
 
+        # 获取token信息
+    def get_token(self, uid):
+        device_host = http_host + "/v1/user/token/getToken"
+        data = {"clientId": "e256482c-2b93-4f79-bda5-c76da8de2129","uid":uid,"permission":"AutomationTest"}
+        try:
+            a = requests.get(device_host, params=parse.urlencode(data)).json()
+            return a['data']
+        except Exception as e:
+            log.info("获取token信息异常:{}".format(e))
+        return {}
+
 
 if __name__ == '__main__':
     # jsonvalue = Api().post("b41572f563e011ebb48598e7f4f1e716")
@@ -58,6 +69,8 @@ if __name__ == '__main__':
     data = {'serviceUrl': '/v1/accent/set',
             'data': {'deviceId': '160528698598412', 'accentId': 'cantonese', 'enableAccent': '1',
                      'mixedResEnable': '1'}}
-    r = Api().open_api(data)
-    print(r)
+    # r = Api().open_api(data)
+    # print(r)
+    n=Api().get_token("80920524eedef3574e64c3dab72dd0bd")
+    print(n)
 

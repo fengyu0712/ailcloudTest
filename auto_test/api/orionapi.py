@@ -1,7 +1,7 @@
 # coding: utf-8
-# @Time : 2020-12-29 15:18 
+# @Time : 2020-12-29 15:18
 # @Author : xx
-# @File : orionapi.py 
+# @File : orionapi.py
 # @Software: PyCharm
 
 import requests
@@ -11,23 +11,28 @@ import json
 import time
 import datetime
 import uuid
-import hashlib,base64
+import hashlib, base64
+import config
+from api import apis
+from scripts.init_env import http_host, current_env, terminal_devices
+
 
 class OrionApi():
-    def __init__(self,text):
-        self.orion_url="http://sit.aimidea.cn:11003/v1/ai/speech/nlu"
-        self.invoke_url='http://sit.aimidea.cn:11003/v1/orion/skill/invoke'
-        self.asr_text=text
-        self.deviceid="111000010213019416Z038"
+    def __init__(self, text):
+        self.device_info = terminal_devices["yinxiang"]
+        self.orion_url = http_host + "/v1/ai/speech/nlu"
+        self.invoke_url = http_host + '/v1/orion/skill/invoke'
+        self.asr_text = text
+        self.deviceid = self.device_info["deviceid"]
 
     def gen_ranvalue(self):
         datetime_now = datetime.datetime.now().strftime('%Y%m%d%H%M%S%f')
-        if len(datetime_now)==20:
-            datetime_now=datetime_now[:-1]
-        print("随机数：",datetime_now)
+        if len(datetime_now) == 20:
+            datetime_now = datetime_now[:-1]
+        print("随机数：", datetime_now)
         return datetime_now
 
-    def get_token(self,sign_value):
+    def get_token(self, sign_value):
         m = hashlib.md5()
         b = sign_value.encode(encoding='utf-8')
         m.update(b)
@@ -36,47 +41,51 @@ class OrionApi():
         return str_md5
 
     def orion_nlu_post(self):
-        clientid="0e215b2bc3f6cfa41cc3bfdc845b890c"
+        clientid = "0e215b2bc3f6cfa41cc3bfdc845b890c"
         clientKey = "2cddc204b428ef114e29664704698dcd"
-        time_stamp=round(time.time() * 1000)
+        time_stamp = round(time.time() * 1000)
         midvalue = uuid.uuid1().hex
-        http_body ={
-                    "clientId":"%s"%clientid,
-                    "device":{
-                        "deviceId":"%s"%self.deviceid,
-                        "deviceType":"2",
-                        "lat":"0.000000",
-                        "lng":"0.000000"
-                    },
-                    "mid": "%s"%midvalue,
-                    "params": {"text": "%s"%self.asr_text},
-                    "request": {
-                        "timestamp": time_stamp
-                },
-                    "version":"1.0"
-                }
-        str_http_body=json.dumps(http_body,ensure_ascii=False).replace(" ","")
-        ran_value=self.gen_ranvalue()
-        sign_value = str_http_body + ran_value+clientKey
-        token_key=self.get_token(sign_value)
+        http_body = {
+            "clientId": clientid,
+            "device": {
+                "deviceId": self.deviceid,
+                "deviceType": "2",
+                "lat": "0.000000",
+                "lng": "0.000000"
+            },
+            "mid": midvalue,
+            "params": {"text": self.asr_text},
+            "request": {
+                "timestamp": time_stamp
+            },
+            "version": "1.0"
+        }
+        str_http_body = json.dumps(http_body, ensure_ascii=False).replace(" ", "")
+        ran_value = self.gen_ranvalue()
+        sign_value = str_http_body + ran_value + clientKey
+        token_key = self.get_token(sign_value)
+        self.header_host = http_host.split("//")[-1]
         headers = {
-            "host": 'sit.aimidea.cn:11003',
+            "host": self.header_host,
             "remoteip": '218.13.14.225',
-            "sign": "%s"%token_key,
-            "random": "%s"%ran_value,
+            "sign": token_key,
+            "random": ran_value,
             "content-type": "application/json",
             "accept-encoding": "gzip",
             "user-agent": "okhttp/3.14.2",
         }
-        jsonvalue = requests.post(self.orion_url, json=http_body, headers=headers).json()
-        # print(jsonvalue)
-        return {"mid":midvalue,"nlu":jsonvalue}
+        response = requests.post(self.orion_url, json=http_body, headers=headers)
+        jsonvalue = response.text
+        print(jsonvalue)
+        return {"mid": midvalue, "nlu": jsonvalue}
 
-    def orion_invoke_post(self,midvalue):
-       info={
+    def orion_invoke_post(self, midvalue):
+        uid = self.device_info["uid"]
+        third_access_token = apis.Api().get_token(uid)
+        info = {
             "request": {
                 "asr": {
-                    "text": "%s"%self.asr_text
+                    "text": self.asr_text
                 },
                 "nlu": {
                     "slots": {
@@ -98,10 +107,10 @@ class OrionApi():
                     "skill": {
                         "linkAccount": {
                             "orion.ovs.rsplatform.1488857923": {
-                                "third_access_token": "T13x41o9bqio1fhjr",
+                                "third_access_token": third_access_token,
                                 "bind": 1,
-                                "third_uid": "o80920524eedef353700450694694912",
-                                "third_refresh_token": "c16f7be026c3472cbe8188bf47d6e37d",
+                                "third_uid": uid,
+                                "third_refresh_token": third_access_token,
                                 "type": "fusion_msmart"
                             }
                         },
@@ -112,7 +121,7 @@ class OrionApi():
                 "attributes": {
 
                 },
-                "sessionId": "%s" % midvalue,
+                "sessionId": midvalue,
                 "user": {
                     "isLogin": True,
                     "openId": "fcb5d68518a4e52f2b0f19a8b1ffbc7a",
@@ -128,7 +137,7 @@ class OrionApi():
 
                     },
                     "device": {
-                        "deviceId": "%s"%self.deviceid,
+                        "deviceId": self.deviceid,
                         "deviceType": "2",
                         "lang": "zh_CN",
                         "lat": "0.000000",
@@ -141,7 +150,7 @@ class OrionApi():
                         "lng": "0.000000",
                         "os_version": "1.2.14",
                         "device_type": 2,
-                        "deviceid": "%s"%self.deviceid,
+                        "deviceid": self.deviceid,
                         "version": "1.0.0",
                         "client_id": "orion.ovs.client.1507867446289",
                         "dt": 7,
@@ -157,26 +166,28 @@ class OrionApi():
             },
             "version": "0.2.0"
         }
-       heads = {
-           "host": "sit.aimidea.cn:11003",
-           "remoteip": "218.13.14.225",
-           "sid": "2c18f55d65e71260ad15d5ec7cbb8084",
-           "content-type": "application/json; charset=utf-8",
-           "accept-encoding": "gzip",
-           "user-agent": "okhttp/3.14.2",
-           "x-forwarded-proto": "http"
-       }
-       jsonvalue = requests.post(self.invoke_url, json=info, headers=heads)
-       return jsonvalue.json()
+        heads = {
+            "host": self.header_host,
+            "remoteip": "218.13.14.225",
+            "sid": "2c18f55d65e71260ad15d5ec7cbb8084",
+            "content-type": "application/json; charset=utf-8",
+            "accept-encoding": "gzip",
+            "user-agent": "okhttp/3.14.2",
+            "x-forwarded-proto": "http"
+        }
+        jsonvalue = requests.post(self.invoke_url, json=info, headers=heads)
+        return jsonvalue.json()
+
     def orion_post(self):
-        nlu_result=self.orion_nlu_post()
-        mid=nlu_result["mid"]
-        value=self.orion_invoke_post(mid)
-        resultinfo={"reponse":value}
-        result=resultinfo.update(nlu_result)
+        nlu_result = self.orion_nlu_post()
+        print(nlu_result)
+        mid = nlu_result["mid"]
+        resultinfo = self.orion_invoke_post(mid)
+        result = {**resultinfo, **nlu_result}
         return result
 
+
 if __name__ == '__main__':
-    api=OrionApi("音量大一点")
-    a=api.orion_post()
+    api = OrionApi("关闭所有设备")
+    a = api.orion_post()
     print(a)

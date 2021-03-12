@@ -10,6 +10,7 @@ import pandas as pd
 
 import xlrd
 from xlutils.copy import copy
+import config
 
 log = Logger()  # 初始化日志对象
 
@@ -62,7 +63,7 @@ class FileTool:
                 casetitle = i[cell_config.get("case_name")]  # 用例名称信息
                 if caseid.strip() != "":
                     allsteps = []
-                    dictinfo = {"case_id": caseid, "case_name": casetitle, "case_catory": "", "steps": []}
+                    dictinfo = {"case_id": caseid, "case_name": casetitle, "case_category": "", "steps": []}
                     wholedictinfo.append(dictinfo)
                 linesinfo = dict()
                 params_value = i[cell_config.get("params")]  # 参数信息
@@ -115,42 +116,38 @@ class FileTool:
     # 读取excel文件
     def read_excel(self):
         wholedictinfo = list()
-        try:
-            log.info("读取用例文件........")
-            allsteps = []
-            dictinfo = []
-            worksheet = self.sheet
-            # print( worksheet.max_row)
-            for i in range(2, worksheet.max_row + 1):
-                caseid = worksheet.cell(row=i, column=cell_config.get("case_id")).value  # 用例编号信息
-                # print(caseid)
-                casetitle = worksheet.cell(row=i, column=cell_config.get("case_name")).value  # 用例名称信息
-                lock_device = worksheet.cell(row=i, column=cell_config.get("lock_device")).value  # 设备锁
-                is_wait = worksheet.cell(row=i, column=cell_config.get("is_wait")).value
-                if caseid != None:
-                    allsteps = []
-                    case_catory = worksheet.cell(row=i, column=cell_config.get("case_catory")).value
-                    dictinfo = {"case_id": caseid, "case_name": casetitle, "case_catory": case_catory,
-                                "lock_device": lock_device,"steps": []}
+        # try:
+        log.info("读取用例文件........")
+        allsteps = []
+        dictinfo = []
+        worksheet = self.sheet
+        # print( worksheet.max_row)
+        for i in range(2, worksheet.max_row + 1):
+            case_category = worksheet.cell(row=i, column=cell_config.get("case_category")).value  # 用例场景
+            caseid = worksheet.cell(row=i, column=cell_config.get("case_id")).value  # 用例编号信息
+            casetitle = worksheet.cell(row=i, column=cell_config.get("case_name")).value  # 用例名称信息
+            lock_device = worksheet.cell(row=i, column=cell_config.get("lock_device")).value  # 设备锁
+            is_wait = worksheet.cell(row=i, column=cell_config.get("is_wait")).value
+            if caseid:
+                allsteps = []
+                dictinfo = {"case_id": caseid, "case_name": casetitle, "case_category": case_category,
+                            "lock_device": lock_device, "steps": []}
+                if case_category in config.test_category:  # 筛选用例
                     wholedictinfo.append(dictinfo)
-                linesinfo = dict()
-                params_value = worksheet.cell(row=i, column=cell_config.get("params")).value
-                # print(params_value)
-                if params_value == None:
-                    continue
-                linesinfo["step"] = worksheet.cell(row=i, column=cell_config.get("step")).value
-                linesinfo["params"] = params_value
-                linesinfo["is_wait"] = is_wait
-                linesinfo["x_y"] = [i, cell_config.get("result")]
-                linesinfo["x_y_desc"] = [i, cell_config.get("desc")]
-                allsteps.append(linesinfo)
-                if "steps" in dictinfo:
-                    dictinfo["steps"] = allsteps
-            log.info("读取用例文件完成........")
-            return wholedictinfo
-        except Exception as e:
-            log.info("读取用例文件异常,异常信息为:{}".format(e))
-            return wholedictinfo
+            linesinfo = dict()
+            params_value = worksheet.cell(row=i, column=cell_config.get("params")).value
+            if params_value == None:
+                continue
+            linesinfo["step"] = worksheet.cell(row=i, column=cell_config.get("step")).value
+            linesinfo["params"] = params_value
+            linesinfo["is_wait"] = is_wait
+            linesinfo["x_y"] = [i, cell_config.get("result")]
+            linesinfo["x_y_desc"] = [i, cell_config.get("desc")]
+            allsteps.append(linesinfo)
+            if "steps" in dictinfo:
+                dictinfo["steps"] = allsteps
+        log.info("读取用例文件完成........")
+        return wholedictinfo
 
     # 写入exel文件
     # x_y 是一个列表
@@ -195,17 +192,18 @@ class MyXlrs:
         worksheet = self.workbook.sheet_by_name(sheetname)
         # print( worksheet.nrows)
         for i in range(start_line, worksheet.nrows):
+            case_category = worksheet.cell_value(rowx=i, colx=cell_config.get("case_category") - 1)  # 用例场景
             col = cell_config.get("case_id")
             caseid = worksheet.cell_value(rowx=i, colx=col - 1)  # 用例编号信息
             casetitle = worksheet.cell_value(rowx=i, colx=cell_config.get("case_name") - 1)  # 用例名称信息
             lock_device = worksheet.cell_value(rowx=i, colx=cell_config.get("lock_device") - 1)  # 用例名称信息
 
-            if caseid != None and caseid != "":
+            if caseid:
                 allsteps = []
-                case_catory = worksheet.cell_value(rowx=i, colx=cell_config.get("case_catory") - 1)
-                dictinfo = {"case_id": caseid, "case_name": casetitle, "case_catory": case_catory,
+                dictinfo = {"case_id": caseid, "case_name": casetitle, "case_category": case_category,
                             "lock_device": lock_device, "steps": []}
-                wholedictinfo.append(dictinfo)
+                if case_category in config.test_category:  # 筛选用例
+                    wholedictinfo.append(dictinfo)
 
             linesinfo = dict()
             params_value = worksheet.cell_value(rowx=i, colx=cell_config.get("params") - 1)
@@ -247,12 +245,19 @@ class MyXlrs:
 
 
 if __name__ == '__main__':
-    # result_path=r"F:\git\Midea\auto_test\result\sit_328_2021-01-28data_case.xlsx"
-    # r = MyXlrs(a)
-    # d = r.read_xlr()
-    r = FileTool("open_api_case.csv", "OPEN_API")
-    d = r.read_excel_openapi()
-    print(d)
-    # w_sheet=r.copy_sheet()
-    # r.write_onedata(w_sheet, [1, 8], "test_data23",)
-    # r.save_write(w_sheet, a)
+    # # result_path=r"F:\git\Midea\auto_test\result\sit_328_2021-01-28data_case.xlsx"
+    # # r = MyXlrs(a)
+    # # d = r.read_xlr()
+    # r = FileTool("open_api_case.csv", "OPEN_API")
+    # d = r.read_excel_openapi()
+    # print(d)
+    # # w_sheet=r.copy_sheet()
+    # # r.write_onedata(w_sheet, [1, 8], "test_data23",)
+    # # r.save_write(w_sheet, a)
+    device_type = "328_halfDuplex"
+    a = r"F:\git\Midea\auto_test\data\data_case_3.csv"
+    tool = FileTool("data_case_3.csv", device_type)
+    tool.load_excel()
+    # 读取excel的内容信息
+    testcaseinfo = tool.read_excel()
+    print(testcaseinfo)

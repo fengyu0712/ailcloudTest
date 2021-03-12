@@ -29,9 +29,16 @@ device_status_list = {"dit": "http://sit.aimidea.cn:11003",
                       "test": "https://openapi-prod-tmp.aimidea.cn/"
                       }
 
+# 3、小美音箱地址
+yinxiang_host_list = {
+    "sit": "http://sit.aimidea.cn:11003",
+    'uat': "https://uat.aimidea.cn:21023",
+    "pro": "https://api.aimidea.cn:11003"
+}
+
 # 3、 excel数据对应的列
 cell_config = {
-    "case_catory": 1,
+    "case_category": 1,
     "case_id": 2,
     "case_name": 3,
     "lock_device": 4,
@@ -70,7 +77,7 @@ sit_terminal_devices = {
     "328_halfDuplex": {"sn": "00000021122251157813008987000000", "clientid": "test0001",
                        "deviceId": "3298544982176", "module_version": "07.03.01.01.f4.20.12.05.01.07"},
     # 酷狗音乐
-    "328_fullDuplex": {"sn": "00000021122251157813008987000000", "clientid": "test0002",
+    "328_fullDuplex": {"sn": "00000021122251157813008987000000", "clientid": "ed091219-a1c0-4993-9076-099641c34c6a",
                        "deviceId": "3298544982176", "module_version": "07.03.01.01.f4.20.12.05.01.07"},
     # 思必驰音乐
     "xf__halfDuplex": {"sn": "00000021122251157813008987000000", "clientid": "test0003",
@@ -80,7 +87,11 @@ sit_terminal_devices = {
                    "module_version": "07.03.01.01.f4.20.12.05.01.07"},
     # qq音乐转码
     "3308_halfDuplex": {"sn": "00000021122251157813008987000000", "clientid": "test0005", "deviceId": "3298544982176",
-                        "module_version": "05.03.00.01.06.19.09.01.01.08"}
+                        "module_version": "05.03.00.01.06.19.09.01.01.08"},
+
+    "yinxiang": {"deviceid": "111000010213019416Z038", "uid": "80920524eedef3574e64c3dab72dd0bd"},
+    "meiju": {"uid": "80920524eedef3574e64c3dab72dd0bd","homeId":"1018545"}
+
 }
 
 # uat_terminal_devices = {
@@ -114,8 +125,12 @@ alltotal_devices = {"dit": sit_terminal_devices, "sit": sit_terminal_devices, "u
 device_user_list = {"AC1": 0, "AC2": 0, "FC1": 0, "D1": 0, "DB1": 0}
 
 # "yuyintie_1,xf__halfDuplex,,"328_fullDuplex"
-main_device_list = ["328_halfDuplex", "328_fullDuplex", "3308_halfDuplex"]
-
+main_device_list = ["328_halfDuplex", "328_fullDuplex", "3308_halfDuplex","yinxiang","meiju"]
+# main_device_list = ["328_halfDuplex", "yinxiang"]
+# main_device_list = ["3308_halfDuplex"]
 test_env = "sit"
 
-test_mode = ["音量"]
+# test_category = ["多设备控制","设备继承","免设备名","场景控制","跨机控制","查询类","通用技能","Public","rasa","故障码问询","冰箱食材","播放控制","音量调节","闹钟技能"]
+
+test_category = ["通用技能","Public","rasa","故障码问询","冰箱食材","播放控制","音量调节","闹钟技能"]
+# test_category = ["播放"]

@@ -5,7 +5,7 @@
 # @Software: PyCharm
 
 import config
-from config import host_address_list,device_status_list,alltotal_devices
+from config import host_address_list,device_status_list,alltotal_devices,yinxiang_host_list
 from tools import configparser_tool
 envinfo=config.test_env
 if envinfo.find("sit")!=-1:
@@ -27,3 +27,5 @@ host=host_address_list[current_env]
 http_host=device_status_list[current_env]
 # 终端设备信息
 terminal_devices=alltotal_devices[current_env]
+#音箱地址
+yinxiang_host=yinxiang_host_list[current_env]

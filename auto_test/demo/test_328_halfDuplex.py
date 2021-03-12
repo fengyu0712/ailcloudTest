@@ -27,7 +27,7 @@ class Test_328_HalDuplex:
     def test01(self, case):
         log.info(case)
         log.info("执行用例{}".format(case))
-        current_sheet = case.get('case_catory')
+        current_sheet = case.get('case_category')
         allure.dynamic.story(current_sheet)
         allure.dynamic.title(case.get("case_name"))
         Commonfunction().runstep(r, case, r.copy_sheet())

@@ -107,6 +107,7 @@ class AiCloud():
             gc.collect()
         except Exception as e:
             self.ws.close()
+            result = {"ws_error": e}
             raise ("发送音频数据异常,原因:{}".format(e))
         else:
             if jsonpath(result, "$..audio"):
@@ -138,14 +139,17 @@ class AiCloud():
                 self.ws.send(json.dumps(Deviceset(self.terminal_type).send_play_status(status=player_status.lower())),
                              ABNF.OPCODE_TEXT)
                 time.sleep(1)
-            elif jsonpath(result, "$..skillType")[-1] == "alarmClock":
-                pass
+            elif jsonpath(result, "$..playMode"):
+                playMode = jsonpath(result, "$..mode")[-1]
+                self.ws.send(json.dumps(Deviceset(self.terminal_type).send_play_status(status=playMode.lower())),
+                             ABNF.OPCODE_TEXT)
+                time.sleep(1)
             return result
 
-    def wait_clock(self,wait_time):
+    def wait_clock(self, wait_time):
         log.info("等待云端下发闹钟指令中...")
-        start_time=time.time()
-        while time.time()-start_time<wait_time*60+15:
+        start_time = time.time()
+        while time.time() - start_time < wait_time * 60 + 15:
             self.ws.send("HeartBeat")
             result = self.ws.recv()
             result = result.replace("false", "False").replace("true", "True")
@@ -175,7 +179,7 @@ class AiCloud():
                     result_dict["asr"] = eval(result)
                 elif "cloud.order.config" in result:
                     log.info("接收的cloud.order.config信息为:{}".format(result))
-                    result_dict["order"] = eval(result)
+                    result_dict["order_config"] = eval(result)
                 elif "cloud.speech.reply" in result:
                     log.info("接收的cloud.speech.reply信息为:{}".format(result))
                     nlg_result = eval(result)
@@ -196,15 +200,15 @@ class AiCloud():
 if __name__ == '__main__':
     aiyuncloud = AiCloud("3308_halfDuplex")
     aiyuncloud.on_line()
-    result = aiyuncloud.send_data('来一首歌')
-    b = jsonpath(result, "$..url")[1]
+    result = aiyuncloud.send_data('播放新闻')
+    # b = jsonpath(result, "$..url")[1]
+    b = jsonpath(result, "$..order")
 
-    # result = aiyuncloud.send_data('停止播放')
+    result = aiyuncloud.send_data('继续播放')
 
+    print(result)
 
     print(b)
-
-    # print(result)
     # result = aiyuncloud.send_data('帮我定个两分钟后的闹钟',iswait=2)
 
     # print(result)

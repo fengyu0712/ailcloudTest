@@ -59,9 +59,7 @@ def updata_allure_env(env, testhost):
     :param testhost: 当前测试HOST
     :return:
     '''
-    if os.path.isfile(allure_conf_path):
-        os.remove(allure_conf_path)
-    with open(allure_conf_path, "a") as f:
+    with open(allure_conf_path, "w+") as f:
         f.write(f"ENVIRONMENT={env}\n")
         f.write(f"HOST={testhost}\n")
 

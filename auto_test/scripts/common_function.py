@@ -33,7 +33,7 @@ class Commonfunction():
                 if not is_lock:
                     for i in range(0,len(device_lock_list)):
                         device_locks[device_lock_list[i]]=1
-                    current_sheet = case.get('case_catory')
+                    current_sheet = case.get('case_category')
                     case_name=case.get('case_name')
                     print(f"当前执行用例{case_name}")
                     step_list = case.get('steps')
@@ -57,7 +57,7 @@ class Commonfunction():
                     time.sleep(1)
 
     def run_xiaomei_step(self,case,tool,log):
-        current_sheet = case.get('case_catory')
+        current_sheet = case.get('case_category')
         step_list = case.get('steps')
         step_len = len(step_list)  # 步骤长度
         resultdir = {}
@@ -87,7 +87,7 @@ class Commonfunction():
 
 
     def runstep(self, case, tool, devicetype, log):
-        current_sheet = case.get('case_catory')
+        current_sheet = case.get('case_category')
         step_list = case.get('steps')
         step_len = len(step_list)  # 步骤长度
         resultdir = {}
@@ -117,7 +117,7 @@ class Commonfunction():
 
     '''
     def runstep(self,case,tool,devicetype,log):
-        current_sheet = case.get('case_catory')
+        current_sheet = case.get('case_category')
         step_list = case.get('steps')
         step_len = len(step_list)  # 步骤长度
         resultdir = {}
@@ -185,6 +185,7 @@ def run():
         tool = FileTool("data_case.csv", device_type)
         # 读取excel的内容信息
         testcaseinfo = tool.read_excel()
+        print(testcaseinfo)
         t0 = threading.Thread(target=Commonfunction().runcase, args=(testcaseinfo, device_type, tool,), name=f'线程{i}')
         # t2 = threading.Thread(target=demo2, kwargs={case_list}, name='线程2')
         ts.append(t0)
