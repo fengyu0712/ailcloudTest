@@ -10,7 +10,7 @@ import allure
 import jsonpath
 from api.meiju_api import Meijuapi
 from scripts import common_assert
-from api.webscoket_api_1 import AiCloud
+from api.webscoket_api import AiCloud
 import time
 from api.apis import Api
 from api.orionapi import OrionApi

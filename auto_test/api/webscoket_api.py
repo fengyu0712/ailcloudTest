@@ -1,121 +1,230 @@
 # coding: utf-8
-import time
+from jsonpath import jsonpath
 from websocket import ABNF
-import websocket, time, json, os, gc
-from config import base_path
-from devices_info import Deviceset
-import os
-from tools.get_log import GetLog
-from scripts.init_env import host,http_host,current_env
-log=GetLog.get_logger()  # 初始化日志对象
+import websocket, time, json, gc
 
-class Mywebscoket():
+from api.audio_generation import audio_generation
+from config import base_path
+from devices_info_1 import Deviceset
+import os
+from tools.mylog import Logger
+from scripts.init_env import host, current_env
+
+log = Logger()  # 初始化日志对象
+
+volume_conf = {
+    "L1": 1,
+    "L2": 25,
+    "L3": 50,
+    "L4": 75,
+    "L5": 100,
+}
+
+
+# 重试装饰器
+def retry(rerun_count):
+    def wrapper(request):
+        def inner_wrapper(*args, **kwargs):
+            nonlocal rerun_count
+            for i in range(rerun_count):
+                try:
+                    response = request(*args, **kwargs)
+                except Exception as e:
+                    if i == rerun_count - 1:
+                        raise e
+                    else:
+                        print(f"第{i}次请求失败")
+                else:
+                    return response
+
+        return inner_wrapper
+
+    return wrapper
+
+
+class AiCloud():
     # rootpath: 音频名称
     # termianl_type : 终端类型
     # is_need_devices_status : 表示为需要获取设备信息
-    def __init__(self,rootpath,terminal_type):
-        print("测试环境细腻系：",current_env)
-        self.wavpath = os.path.join(base_path+os.sep+"audio_file"+os.sep,rootpath+".wav")
+    def __init__(self, terminal_type, env=None):
+        # if env==None:
+        #     env=current_env
+        print("测试环境细腻系：", current_env)
         self.address = host
-        print("当前测试环境为:",host)
+        # self.address = "wss://link-mock.aimidea.cn:10443/cloud/connect"
+        print("当前测试环境为:", host)
         self.step = 3200
-        self.headers = Deviceset(terminal_type).headers
+        self.terminal_type = terminal_type
+        # self.headers = Deviceset(terminal_type).headers
+        self.ws = self.client_ws()
 
-
-    def get_time_stamp(self):
-        ct = time.time()
-        local_time = time.localtime(ct)
-        data_head = time.strftime("%Y-%m-%d %H:%M:%S", local_time)
-        data_secs = (ct - int(ct)) * 1000
-        time_stamp = "%s.%03d" % (data_head, data_secs)
-        return time_stamp
-
-    def start_websocket(self):
-        if not os.path.exists(self.wavpath):
-            log.info("{}路径不存在".format(self.wavpath))
-            return ""
+    # @retry(rerun_count=3)
+    def client_ws(self):
         log.info("开始ws的链接")
-        try:
-            ws=websocket.create_connection(self.address, timeout=30)
-            try:
-                log.info("建立ws的链接")
-                result_asr = self.send_data(ws, self.wavpath)  # 获取预期结果
-                log.info("ws接口返回的信息为:{}".format(result_asr))
-                gc.collect()
-                ws.close()
-            except Exception as e:
-                log.error("错误信息信息为:{}".format(e))
-                result_asr = {}
-            finally:
-                gc.collect()
-                ws.close()
-                log.info("ws链接关闭")
-                return result_asr
-        except Exception as e:
-            log.error("错误信息信息为:{}".format(e))
+        ws = websocket.create_connection(self.address, timeout=300)
+        log.info("建立ws的链接成功")
+        return ws
 
-    def send_data(self, ws, wav_path):
+    def on_line(self):
         try:
-            log.info("开始发送头部数据......................")
-            for key in self.headers:
-                ws.send(json.dumps(key), ABNF.OPCODE_TEXT)
-                time.sleep(0.1)
+            # 开始云端上线
+            print(Deviceset(self.terminal_type).online_data())
+            self.ws.send(json.dumps(Deviceset(self.terminal_type).online_data()), ABNF.OPCODE_TEXT)
+            # 开始上报设备音量信息
+            self.ws.send(json.dumps(Deviceset(self.terminal_type).audio_staus_data()), ABNF.OPCODE_TEXT)
+            # 开始上报设备OTA信息
+            self.ws.send(json.dumps(Deviceset(self.terminal_type).ota_check()), ABNF.OPCODE_TEXT)
+        except Exception as e:
+            self.ws.close()
+            raise (f"错误信息信息为:{e}")
+        else:
+            return self.ws
+
+    def send_staus(self, staus_data):
+        self.ws.send(json.dumps(staus_data), ABNF.OPCODE_TEXT)
+
+    # @retry(rerun_count=3)
+    def send_data(self, audio_name, iswait=None):
+        self.wavpath = os.path.join(base_path + os.sep + "audio_file" + os.sep, audio_name + ".wav")
+        if not os.path.exists(self.wavpath):
+            log.info("未找到音频文件，开始重新生成音频...")
+            audio_generation(audio_name)
+        self.iswait = iswait
+        try:
+            # 发送头部信息
+            self.ws.send(json.dumps(Deviceset(self.terminal_type).content_data()), ABNF.OPCODE_TEXT)
             log.info("开始发送音频数据......................")
-            with open(wav_path, 'rb') as f:
+            with open(self.wavpath, 'rb') as f:
                 while True:
                     data = f.read(self.step)
                     if data:
-                        ws.send(data, ABNF.OPCODE_BINARY)
+                        self.ws.send(data, ABNF.OPCODE_BINARY)
                     if len(data) < self.step:
                         break
                     time.sleep(0.1)
-            ws.send('', ABNF.OPCODE_BINARY)
-            result = self.get_message(ws)
-            return result
+            self.ws.send('', ABNF.OPCODE_BINARY)
+            result = self.get_message()
+            gc.collect()
         except Exception as e:
-            log.info("发送音频数据异常,原因:{}".format(e))
-            ws.close()
+            self.ws.close()
+            result = {"ws_error": e}
+            raise ("发送音频数据异常,原因:{}".format(e))
+        else:
+            if jsonpath(result, "$..audio"):
+                # if "audio" in str(result):
+                volume = 50
+                nlg_volume = jsonpath(result, "$..volume")[-1]
+                if nlg_volume in list(volume_conf.keys()):
+                    volume = volume_conf[nlg_volume]
+                elif nlg_volume == "-20":
+                    volume = volume - 25
+                elif nlg_volume == "+20":
+                    if volume == 1:
+                        volume = 25
+                    else:
+                        volume = volume + 25
+                else:
+                    volume = int(nlg_volume)
+                if volume < 1: volume = 1
+                if volume > 100: volume = 100
+                self.ws.send(json.dumps(Deviceset(self.terminal_type).audio_staus_data(volume=volume)),
+                             ABNF.OPCODE_TEXT)
+                time.sleep(1)
+            elif jsonpath(result, "$..skillType")[-1] == "music":
+                self.ws.send(json.dumps(Deviceset(self.terminal_type).send_play_status()),
+                             ABNF.OPCODE_TEXT)
+                time.sleep(1)
+            elif jsonpath(result, "$..player"):
+                player_status = jsonpath(result, "$..player")[-1]
+                self.ws.send(json.dumps(Deviceset(self.terminal_type).send_play_status(status=player_status.lower())),
+                             ABNF.OPCODE_TEXT)
+                time.sleep(1)
+            elif jsonpath(result, "$..playMode"):
+                playMode = jsonpath(result, "$..mode")[-1]
+                self.ws.send(json.dumps(Deviceset(self.terminal_type).send_play_status(status=playMode.lower())),
+                             ABNF.OPCODE_TEXT)
+                time.sleep(1)
+            return result
 
-    def get_message(self, ws):
+    def wait_clock(self, wait_time):
+        log.info("等待云端下发闹钟指令中...")
+        start_time = time.time()
+        while time.time() - start_time < wait_time * 60 + 15:
+            self.ws.send("HeartBeat")
+            result = self.ws.recv()
+            result = result.replace("false", "False").replace("true", "True")
+            if "cloud.speech.broadcast" in result:
+                log.info("接收的cloud.speech.broadcast信息为:{}".format(result))
+                return eval(result)
+
+    def close(self):
+        self.ws.close()
+        log.info("ws链接关闭")
+
+    def get_message(self):
+        result_dict = {"login": {}, "asr": {}, "nlg": {}}
         try:
             log.info("开始接收数据......................")
-            mid=""
-            result_dict={"login":{},"asr":{},"nlg":{}}
             i = 0
-            while (i<5):
-                result = ws.recv()
-                result=result.replace("false","False").replace("true","True")
+            while result_dict["nlg"] == {}:
+                if i > 10:
+                    break
+                result = self.ws.recv()
+                result = result.replace("false", "False").replace("true", "True")
                 if "cloud.online.reply" in result:
                     log.info("接收的online信息为:{}".format(result))
-                    result_dict['login']=eval(result)
+                    result_dict['login'] = eval(result)
                 elif "cloud.speech.trans.ack" in result:
                     log.info("接收的cloud.speech.trans.ack信息为:{}".format(result))
-                    result_dict["asr"]=eval(result)
+                    result_dict["asr"] = eval(result)
+                elif "cloud.order.config" in result:
+                    log.info("接收的cloud.order.config信息为:{}".format(result))
+                    result_dict["order_config"] = eval(result)
                 elif "cloud.speech.reply" in result:
                     log.info("接收的cloud.speech.reply信息为:{}".format(result))
-                    nlg_result=eval(result)
-                    result_dict["nlg"]=nlg_result
-                    #mid=nlg_result.get("mid")
-                    break
+                    nlg_result = eval(result)
+                    result_dict["nlg"] = nlg_result
+                    if "insert" in result and self.iswait:
+                        result_dict["broadcast"] = self.wait_clock(self.iswait)
+                    else:
+                        break
                 time.sleep(0.1)
                 i = i + 1
         except Exception as e:
-            result_dict["error"]=e
+            result_dict["error"] = e
             log.error("错误信息信息为:{}".format(e))
 
         return result_dict
 
+
 if __name__ == '__main__':
-    '''
-    Mywebscoket("打开卧室空调.wav", 1)
-    time.sleep(2)
-    Mywebscoket("我回来了.wav", 1)
+    aiyuncloud = AiCloud("3308_halfDuplex")
+    aiyuncloud.on_line()
+    result = aiyuncloud.send_data('关灯')
+    # b = jsonpath(result, "$..url")[1]
+    b = jsonpath(result, "$..order")
 
-    '''
-    result = Mywebscoket('打开空调', "yuyintie_1").start_websocket()
+    # result = aiyuncloud.send_data('继续播放')
+
     print(result)
 
-    result = Mywebscoket('打开空调', "yuyintie_1").start_websocket()
-    print(result)
-    #result = Mywebscoket("我回来了.wav", "328_halfDuplex").start_websocket()
-    #print(result)
+    print(b)
+    # result = aiyuncloud.send_data('帮我定个两分钟后的闹钟',iswait=2)
+
+    # print(result)
+    # result = aiyuncloud.send_data('当前音量是多少')
+    # print(result)
+    # result = aiyuncloud.send_data('音量设为百分之六十五')
+    # print(result)
+    # result = aiyuncloud.send_data('来一首歌')
+    # # print(result)
+    #
+    # # print(result)
+    # result = aiyuncloud.send_data('继续播放')
+    # # print(result)
+    # # print(result)
+    # result = aiyuncloud.send_data('暂停播放', )
+    # # # print(result)
+    # result = aiyuncloud.send_data('停止播放')
+    # # # print(result)
+    # result = aiyuncloud.send_data('继续播放')

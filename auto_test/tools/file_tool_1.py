@@ -20,6 +20,8 @@ class FileTool:
     def __init__(self, filename, device_type, is_back=True):
         # 组装动态文件路径
         self.old_filename = base_path + os.sep + "data" + os.sep + filename  # 用例文件目录
+        if os.path.isfile(self.old_filename) == False:
+            raise Exception(f"文件{self.old_filename}不存在")
         nowtimeinfo = datetime.datetime.now().strftime('%Y-%m-%d_%H-%M-%S')
         self.filename = base_path + os.sep + "result" + os.sep + current_env + "_" + device_type + "_" + nowtimeinfo + filename.replace(
             ".csv", ".xlsx")  # 保存的文件名称
@@ -96,7 +98,6 @@ class FileTool:
             # print( worksheet.max_row)
             for i in range(2, worksheet.max_row + 1):
                 caseid = worksheet.cell(row=i, column=open_api.get("case_id")).value  # 用例编号信息
-                # print(caseid)
                 Interface_name = worksheet.cell(row=i, column=open_api.get("Interface_name")).value  # 接口信息
                 case_name = worksheet.cell(row=i, column=open_api.get("case_name")).value  # 用例名称信息
                 serviceUrl = worksheet.cell(row=i, column=open_api.get("serviceUrl")).value  # 用例名称信息
@@ -109,8 +110,9 @@ class FileTool:
                 wholedictinfo.append(dictinfo)
             return wholedictinfo
         except Exception as e:
+            log.info("读取用例文件异常,异常信息为:{}".format(e))
             raise e
-            # log.info("读取用例文件异常,异常信息为:{}".format(e))
+
             # return wholedictinfo
 
     # 读取excel文件
@@ -121,7 +123,6 @@ class FileTool:
         allsteps = []
         dictinfo = []
         worksheet = self.sheet
-        # print( worksheet.max_row)
         for i in range(2, worksheet.max_row + 1):
             case_category = worksheet.cell(row=i, column=cell_config.get("case_category")).value  # 用例场景
             caseid = worksheet.cell(row=i, column=cell_config.get("case_id")).value  # 用例编号信息
@@ -255,9 +256,9 @@ if __name__ == '__main__':
     # # r.write_onedata(w_sheet, [1, 8], "test_data23",)
     # # r.save_write(w_sheet, a)
     device_type = "328_halfDuplex"
-    a = r"F:\git\Midea\auto_test\data\data_case_3.csv"
-    tool = FileTool("data_case_3.csv", device_type)
-    tool.load_excel()
+    a = r"F:\git\Midea\auto_test\data\空调.csv"
+    tool = FileTool("空调.csv", device_type)
+    # tool.load_excel()
     # 读取excel的内容信息
     testcaseinfo = tool.read_excel()
     print(testcaseinfo)

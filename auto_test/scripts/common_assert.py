@@ -90,7 +90,7 @@ def assert_media(response, device_type):
         assert "aod.cos.tx.xmcdn.com" in jsonpath.jsonpath(response, "$..url")[1], "返回喜马拉雅相声资源异常，返回url为：%s" % {
             jsonpath.jsonpath(response, "$..url")[1]}
     elif jsonpath.jsonpath(response, "$..skillType")[-1] == "otherAudio":  # 儿歌
-        assert "http://aod.cos.tx.xmcdn.com" in jsonpath.jsonpath(response, "$..url")[1], "返回喜马拉雅儿歌资源异常，返回url为：%s" % {
+        assert "aod.cos.tx.xmcdn.com" in jsonpath.jsonpath(response, "$..url")[1], "返回喜马拉雅儿歌资源异常，返回url为：%s" % {
             jsonpath.jsonpath(response, "$..url")[1]}
 
 
