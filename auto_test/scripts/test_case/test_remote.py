@@ -20,7 +20,7 @@ main_device_list = config.main_device_list
 common_function.run_remote_case()
 
 nowdate = datetime.datetime.now().strftime('%Y-%m-%d')
-result_file = os.path.join(os.path.join(config.base_path, "../result"),
+result_file = os.path.join(os.path.join(config.base_path, "result"),
                            f"{current_env}_RemoteCase_TestResult_{nowdate}.xls")
 r = Read_xls(result_file)
 w = r.copy_book()
@@ -31,7 +31,7 @@ def get_all_caseinfo():
     all_caseinfo = list()
     for remote_device in sheet_names:
         data = r.read_data(start_line=2, sheetname=remote_device, is_addsheetname=True)
-        dict_data = FileTool().dict_info(data, isindex=True,remote_device=remote_device)
+        dict_data = FileTool().dict_info(data, isindex=True, remote_device=remote_device)
         all_caseinfo += dict_data
     return all_caseinfo
 
