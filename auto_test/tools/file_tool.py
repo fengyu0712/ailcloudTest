@@ -33,7 +33,7 @@ class FileTool():
             if caseid:
                 if devicetype == None: devicetype = data[i][-2]
                 dictinfo = {"case_category": data[i][0], "case_id": caseid, "case_name": data[i][2],
-                            "lock_device": data[i][3], "steps": [], "devicetype": devicetype,
+                            "lock_device": data[i][3], "is_wait": data[i][4], "steps": [], "devicetype": devicetype,
                             "remote_device": remote_device}
                 dictinfo["devicetype"] = devicetype
                 if data[i][0] in config.test_category:  # 筛选用例
@@ -45,7 +45,6 @@ class FileTool():
             step_dict = dict()
             if data[i][6] == None:
                 continue
-            step_dict["is_wait"] = data[i][4]
             step_dict["step"] = data[i][5]
             step_dict["params"] = data[i][6]
             step_dict["response"] = data[i][7]
@@ -60,9 +59,10 @@ class FileTool():
         for case in datainfo:
             for i in range(len(case["steps"])):
                 if i == 0:
-                    one_data = [case["case_category"], case["case_id"], case["case_name"], case["lock_device"], ]
+                    one_data = [case["case_category"], case["case_id"], case["case_name"], case["lock_device"],
+                                case["is_wait"]]
                 else:
-                    one_data = ["", "", "", ""]
+                    one_data = ["", "", "", "", ""]
                 for value in list(case["steps"][i].values()):
                     one_data.append(value)
                 if add_devicetype: one_data.append(case["devicetype"])

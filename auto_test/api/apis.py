@@ -55,7 +55,8 @@ class Api:
             return a['data']
         except Exception as e:
             log.info("获取token信息异常:{}".format(e))
-        return {}
+            return {}
+
 
 
 if __name__ == '__main__':

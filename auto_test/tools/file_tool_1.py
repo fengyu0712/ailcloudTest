@@ -132,7 +132,7 @@ class FileTool:
             if caseid:
                 allsteps = []
                 dictinfo = {"case_id": caseid, "case_name": casetitle, "case_category": case_category,
-                            "lock_device": lock_device, "steps": []}
+                            "lock_device": lock_device, "is_wait": is_wait, "steps": []}
                 if case_category in config.test_category:  # 筛选用例
                     wholedictinfo.append(dictinfo)
             linesinfo = dict()
@@ -141,7 +141,7 @@ class FileTool:
                 continue
             linesinfo["step"] = worksheet.cell(row=i, column=cell_config.get("step")).value
             linesinfo["params"] = params_value
-            linesinfo["is_wait"] = is_wait
+
             linesinfo["x_y"] = [i, cell_config.get("result")]
             linesinfo["x_y_desc"] = [i, cell_config.get("desc")]
             allsteps.append(linesinfo)

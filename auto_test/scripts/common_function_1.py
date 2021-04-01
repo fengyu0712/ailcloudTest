@@ -37,6 +37,7 @@ class Commonfunction():
                 case_id = case.get('case_id')
                 case_name = case.get('case_name')
                 case_lock = case.get('lock_device')
+                is_wait = case.get('is_wait')
                 log.info(f"当前{devicetype}开始执行用例【{case_id}-{case_name}】")
                 case_lock_list = []
                 if case_lock:
@@ -68,13 +69,13 @@ class Commonfunction():
                         try:
                             aicloud_ws = None
                             if devicetype not in ["yinxiang", "meiju"]:
-                                aicloud_ws = AiCloud(devicetype)
+                                aicloud_ws = AiCloud(devicetype,iswait=is_wait)
                                 aicloud_ws.on_line()
                             for i in range(0, step_len):
                                 current_step = step_list[i]  # 当前测试步骤
                                 if i != step_len - 1:
                                     params_value = current_step.get('params')
-                                    is_wait = current_step.get('is_wait')
+
                                     if "clock_time" in params_value:
                                         params_value = clock_time.set_clock(params_value)
                                     if devicetype == "yinxiang":
@@ -84,10 +85,11 @@ class Commonfunction():
                                     else:
                                         log.info(f"当前测试步骤【{current_step}】")
                                         try:
-                                            result = aicloud_ws.send_data(params_value, iswait=is_wait)
-                                            assert_url_status_code(result)
+                                            result = aicloud_ws.send_data(params_value)
                                         except Exception as e:
                                             result = {"response_error": e}
+                                        else:
+                                            assert_url_status_code(result)
                                     if result == None: result = {"error": f"{devicetype}接口超时"}
                                     tool.write_excel(case_category, current_step.get("x_y"), "执行完成")
                                     tool.write_excel(case_category, current_step.get("x_y_desc"), str(result))
@@ -216,7 +218,7 @@ def run():
         tool.load_excel()
         # 读取excel的内容信息
         testcaseinfo = tool.read_excel()
-        #打乱用例顺序，减少设备锁定时设备排队等待问题
+        # 打乱用例顺序，减少设备锁定时设备排队等待问题
         random.shuffle(testcaseinfo)
         t0 = threading.Thread(target=Commonfunction().runcase, args=(testcaseinfo, device_type, tool,),
                               name=f'线程{i}:{device_type}')

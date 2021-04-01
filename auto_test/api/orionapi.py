@@ -41,8 +41,8 @@ class OrionApi():
         return str_md5
 
     def orion_nlu_post(self):
-        clientid = "0e215b2bc3f6cfa41cc3bfdc845b890c"
-        clientKey = "2cddc204b428ef114e29664704698dcd"
+        clientid = self.device_info["clientid"]
+        clientKey = self.device_info["clientKey"]
         time_stamp = round(time.time() * 1000)
         midvalue = uuid.uuid1().hex
         http_body = {
@@ -76,7 +76,7 @@ class OrionApi():
         }
         response = requests.post(self.orion_url, json=http_body, headers=headers)
         jsonvalue = response.text
-        print("orion_nlu_post:"+jsonvalue)
+        print("orion_nlu_post:" + jsonvalue)
         return {"mid": midvalue, "nlu": jsonvalue}
 
     def orion_invoke_post(self, midvalue):
@@ -188,6 +188,6 @@ class OrionApi():
 
 
 if __name__ == '__main__':
-    api = OrionApi("空调开机")
+    api = OrionApi("打开净化器")
     a = api.orion_post()
     print(a)

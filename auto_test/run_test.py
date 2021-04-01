@@ -12,7 +12,7 @@ from scripts import common_function_1
 
 now = time.strftime("%Y-%m-%d %H_%M_%S", time.localtime())
 result_path = os.path.join(config.base_path, "result")
-# allure_report_path = os.path.join(config.base_path, "report")
+allure_report_path = os.path.join(config.base_path, "report")
 
 allure_result_path = os.path.join(result_path, "allure_result")
 
@@ -41,7 +41,7 @@ def run_testcase():
 if __name__ == '__main__':
     # run_deviceControl()
     run_testcase()
-    print("allure generate %s -o %s --clean" % (allure_result_path, allure_result_path))
-    print("allure open  %s" % allure_result_path)
-    os.system("allure generate %s -o %s --clean" % (allure_result_path, allure_result_path))
-    os.system("allure open  %s" % allure_result_path)
+    print("allure generate %s -o %s --clean" % (allure_result_path, allure_report_path))
+    print("allure open  %s" % allure_report_path)
+    os.system("allure generate %s -o %s --clean" % (allure_result_path, allure_report_path))
+    os.system("allure open  %s" % allure_report_path)

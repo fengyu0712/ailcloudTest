@@ -44,6 +44,7 @@ class Commonfunction():
                 case_id = case.get('case_id')
                 case_name = case.get('case_name')
                 case_lock = case.get('lock_device')
+                is_wait = case.get('is_wait')
                 log.info(f"当前{devicetype}开始执行用例【{case_id}-{case_name}】")
                 case_lock_list = []
                 if case_lock:
@@ -75,14 +76,14 @@ class Commonfunction():
                         try:
                             aicloud_ws = None
                             if devicetype not in ["yinxiang", "meiju"]:
-                                aicloud_ws = AiCloud(devicetype)
+                                aicloud_ws = AiCloud(devicetype, iswait=is_wait)
                                 aicloud_ws.on_line()
                                 time.sleep(0.1)
                             for i in range(0, step_len):
                                 current_step = step_list[i]  # 当前测试步骤
                                 if i != step_len - 1:
                                     params_value = current_step.get('params')
-                                    is_wait = current_step.get('is_wait')
+
                                     if "clock_time" in params_value:
                                         params_value = clock_time.set_clock(params_value)
                                         print(params_value)
@@ -93,10 +94,12 @@ class Commonfunction():
                                     else:
                                         log.info(f"当前测试步骤【{current_step}】")
                                         try:
-                                            result = aicloud_ws.send_data(params_value, iswait=is_wait)
-                                            assert_url_status_code(result)
+                                            result = aicloud_ws.send_data(params_value)
                                         except Exception as e:
                                             result = {"response_error": e}
+                                        else:
+                                            # 校验url是否可以正常访问
+                                            assert_url_status_code(result)
                                     if result == None: result = {"error": f"{devicetype}接口超时"}
                                     current_step['response'] = result
 
