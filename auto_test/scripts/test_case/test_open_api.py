@@ -25,7 +25,7 @@ test_type = "openapi"
 nowdate = datetime.datetime.now().strftime('%Y-%m-%d')
 case_path = os.path.join(os.path.join(config.base_path, "data"), "open_api_case.csv")
 result_file = os.path.join(os.path.join(config.base_path, "../result"), f"{current_env}_OpenApi_TestResult_{nowdate}.xls")
-testcaseinfo = FileTool().read_csv(case_path)[:10]
+testcaseinfo = FileTool().read_csv(case_path)
 
 header = ["用例编号", "测试接口", "用例名称", "serviceUrl", "参数", "校验参数", "实际结果", "测试结果"]
 

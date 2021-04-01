@@ -89,7 +89,7 @@ sit_terminal_devices = {
     "3308_halfDuplex": {"sn": "00000021122251157813008987000000", "clientid": "test0005", "deviceId": "3298544982176",
                         "module_version": "05.03.00.01.06.19.09.01.01.08"},
 
-    "yinxiang": {"deviceid": "111000010213019416Z038", "uid": "80920524eedef3574e64c3dab72dd0bd"},
+    "yinxiang": {"deviceid": "111000010213019416Z068", "uid": "80920524eedef3574e64c3dab72dd0bd"},
     "meiju": {"uid": "80920524eedef3574e64c3dab72dd0bd", "homeId": "1018545"}
 
 }
@@ -106,18 +106,23 @@ sit_terminal_devices = {
 
 
 pro_terminal_devices = {
-    "328_halfDuplex": {"sn": "00000021122251157813008987000000", "clientid": "test0001",
-                       "deviceId": "164926746499645", "module_version": "07.03.01.01.f4.20.12.05.01.07"},
-    "328_fullDuplex": {"sn": "00000021122251157813008987000000", "clientid": "test0002",
-                       "deviceId": "164926746499645", "module_version": "07.03.01.01.f4.20.12.05.01.07"},
-    "xf__halfDuplex": {"sn": "00000021122251157813008987000000", "clientid": "test0003",
-                       "deviceId": "164926746499645", "module_version": "07.03.01.01.f4.20.12.05.01.07"},
+    # qq音乐链接
+    "328_halfDuplex": {"sn": "00000021122251157813008988650000", "clientid": "test0001",
+                       "deviceId": "160528700040836", "module_version": "07.03.01.01.f4.20.12.05.01.07"},
+    # 酷狗音乐
+    "328_fullDuplex": {"sn": "00000021122251157813008988650000", "clientid": "test0002",
+                       "deviceId": "160528700040836", "module_version": "07.03.01.01.f4.20.12.05.01.07"},
+    # 思必驰音乐
+    "xf__halfDuplex": {"sn": "00000021122251157813008988650000", "clientid": "test0003",
+                       "deviceId": "160528700040836", "module_version": "07.03.01.01.f4.20.12.05.01.07"},
+    # 思必驰音乐
     "yuyintie_1": {"sn": "000008311000VA022091500000289FGR", "clientid": "test0004", "deviceId": "9895604650248",
                    "module_version": "07.03.01.01.f4.20.12.05.01.07"},
-    "3308_halfDuplex": {"sn": "00000021122251157813008987000000", "clientid": "test0005", "deviceId": "164926746499645",
-                        "module_version": "07.03.01.01.f4.20.12.05.01.07"},
-    "yinxiang": {"deviceid": "111000010213019416Z038", "uid": "80920524eedef3574e64c3dab72dd0bd"},
-    "meiju": {"uid": "80920524eedef3574e64c3dab72dd0bd", "homeId": "1018545"}
+    # qq音乐转码
+    "3308_halfDuplex": {"sn": "00000021122251157813008988650000", "clientid": "test0005", "deviceId": "160528700040836",
+                        "module_version": "05.03.00.01.06.19.09.01.01.08"},
+    "yinxiang": {"deviceid": "111000010213019416Z031", "uid": "5668a004b73f4aa89ec5c3a19dc5defd"},
+    "meiju": {"uid": "5668a004b73f4aa89ec5c3a19dc5defd", "homeId": "11207290"}
 
 }
 
@@ -127,18 +132,16 @@ alltotal_devices = {"dit": sit_terminal_devices, "sit": sit_terminal_devices, "u
 device_user_list = {"AC1": 0, "AC2": 0, "FC1": 0, "D1": 0, "DB1": 0}
 
 # "yuyintie_1,xf__halfDuplex,,"328_fullDuplex"
-# main_device_list = ["328_halfDuplex", "328_fullDuplex", "3308_halfDuplex", "yinxiang", "meiju"]
-main_device_list = ["3308_halfDuplex", "meiju"]
-# main_device_list = ["xf__halfDuplex"]
+main_device_list = ["328_halfDuplex", "328_fullDuplex", "3308_halfDuplex", "yinxiang", "meiju"]
+# main_device_list = ["meiju", "328_fullDuplex"]
 test_env = "uat"
 
-# test_category = ["多设备控制", "设备继承", "免设备名", "场景控制", "跨机控制", "查询类", "通用技能", "Public", "rasa", "故障码问询", "冰箱食材", "播放控制",
-#                  "音量调节", "闹钟技能", "自定义设备名"]
+test_category = ["多设备控制", "设备继承", "免设备名", "场景控制", "跨机控制", "查询类", "通用技能", "Public", "rasa", "故障码问询", "冰箱食材", "播放控制",
+                 "音量调节", "闹钟技能", "自定义设备名"]
 
-# test_category = ["通用技能", "Public", "rasa", "故障码问询", "冰箱食材", "播放控制", "音量调节", "闹钟技能"]
-test_category = ["播放控制", "故障码问询", "跨机控制"]
+# test_category = ["通用技能", "Public", "rasa", "故障码问询", "冰箱食材", "播放控制", "音量调节", "闹钟技能", "跨机控制"]
+# test_category = ["播放控制", "故障码问询", "跨机控制"]
 
 # remote_devices = ["空调", "烤箱", "电压力锅", "智能灯", "加湿器", "电饭煲", "净水器", "蒸箱", "扫地机", "洗衣机", "烟机", "破壁机", "电热水器", "燃气热水器",
 #                   "净化器", "微蒸烤一体机", "微波炉"]
 remote_devices = ["灯", "灯1", "灯2", "灯3", "灯4"]
-# remote_devices = ["灯", "灯1"]

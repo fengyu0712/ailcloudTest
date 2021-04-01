@@ -29,7 +29,7 @@ class OrionApi():
         datetime_now = datetime.datetime.now().strftime('%Y%m%d%H%M%S%f')
         if len(datetime_now) == 20:
             datetime_now = datetime_now[:-1]
-        print("随机数：", datetime_now)
+        # print("随机数：", datetime_now)
         return datetime_now
 
     def get_token(self, sign_value):
@@ -37,7 +37,7 @@ class OrionApi():
         b = sign_value.encode(encoding='utf-8')
         m.update(b)
         str_md5 = m.hexdigest()
-        print(str_md5)
+        # print(str_md5)
         return str_md5
 
     def orion_nlu_post(self):
@@ -72,11 +72,11 @@ class OrionApi():
             "random": ran_value,
             "content-type": "application/json",
             "accept-encoding": "gzip",
-            "user-agent": "okhttp/3.14.2",
+            "user-agent": "AIokhttp/3.14.2",
         }
         response = requests.post(self.orion_url, json=http_body, headers=headers)
         jsonvalue = response.text
-        print(jsonvalue)
+        print("orion_nlu_post:"+jsonvalue)
         return {"mid": midvalue, "nlu": jsonvalue}
 
     def orion_invoke_post(self, midvalue):
@@ -188,6 +188,6 @@ class OrionApi():
 
 
 if __name__ == '__main__':
-    api = OrionApi("关闭所有设备")
+    api = OrionApi("空调开机")
     a = api.orion_post()
     print(a)
