@@ -183,11 +183,10 @@ class Commonfunction():
                         print(result)
                         current_step["result"] = result
                         r.write_onlydata_new(w, index + i, 8, result, result_file, sheetname=sheetname)
-        print(case)
 
     def search_device_status(self, mid, step_result, log):
         if isinstance(step_result, str):
-            result = eval(step_result)
+            step_result = eval(step_result)
         i = 0
         apiobj = Api()
         log.info('开始获取设备状态。。。。。。{}'.format(datetime.datetime.now()))
@@ -322,5 +321,5 @@ def write_result1(path):
 
 
 if __name__ == '__main__':
-    run_remote_case()
-    # run_main_case()
+    # run_remote_case()
+    run_main_case()

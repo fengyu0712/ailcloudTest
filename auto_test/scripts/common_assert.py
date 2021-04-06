@@ -70,7 +70,7 @@ def assert_media(response, device_type):
                 "返回酷狗音乐资源异常，返回url为：%s" % {
                     jsonpath.jsonpath(response, "$..url")[1]}
         elif device_type == "3308_halfDuplex":
-            assert "audio-convert-sit.aimidea.cn" in jsonpath.jsonpath(response, "$..url")[1], \
+            assert "audio-convert" in jsonpath.jsonpath(response, "$..url")[1], \
                 "返回qq转码音乐资源异常，返回url为：%s" % {
                     jsonpath.jsonpath(response, "$..url")[1]}
         else:

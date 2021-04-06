@@ -46,14 +46,14 @@ class AiCloud():
     # rootpath: 音频名称
     # termianl_type : 终端类型
     # is_need_devices_status : 表示为需要获取设备信息
-    def __init__(self, terminal_type, iswait):
+    def __init__(self, terminal_type, iswait=None):
         print("测试环境细腻系：", current_env)
         self.address = host
         # self.address = "wss://link-mock.aimidea.cn:10443/cloud/connect"
         print("当前测试环境为:", host)
         self.step = 3200
         self.terminal_type = terminal_type
-        if iswait == "":
+        if not iswait:
             self.iswait = 0
         else:
             self.iswait = int(iswait)
@@ -72,13 +72,13 @@ class AiCloud():
             self.ws.send(json.dumps(Deviceset(self.terminal_type).online_data()), ABNF.OPCODE_TEXT)
             # 开始上报设备音量信息
             self.ws.send(json.dumps(Deviceset(self.terminal_type).audio_staus_data()), ABNF.OPCODE_TEXT)
-            # 开始上报设备OTA信息
-            self.ws.send(json.dumps(Deviceset(self.terminal_type).ota_check()), ABNF.OPCODE_TEXT)
+            # # 开始上报设备OTA信息
+            # self.ws.send(json.dumps(Deviceset(self.terminal_type).ota_check()), ABNF.OPCODE_TEXT)
         except Exception as e:
             self.ws.close()
             raise (f"错误信息信息为:{e}")
-        else:
-            return self.ws
+        # else:
+        #     return self.ws
 
     def send_staus(self, staus_data):
         self.ws.send(json.dumps(staus_data), ABNF.OPCODE_TEXT)
@@ -167,7 +167,6 @@ class AiCloud():
             while result_dict["nlg"] == {}:
                 result = self.ws.recv()
                 result = result.replace("false", "False").replace("true", "True")
-                print(result)
                 if "cloud.online.reply" in result:
                     log.info("接收的online信息为:{}".format(result))
                     result_dict['login'] = eval(result)
@@ -197,8 +196,10 @@ class AiCloud():
 
 
 if __name__ == '__main__':
-    aiyuncloud = AiCloud("328_fullDuplex", iswait=1)
+    aiyuncloud = AiCloud("3308_halfDuplex", iswait="1")
+    # aiyuncloud = AiCloud("328")
     aiyuncloud.on_line()
+    aiyuncloud.send_data('来一首歌')
     # result = aiyuncloud.send_data('打开卧室空调')
     # # b = jsonpath(result, "$..url")[1]
     # b = jsonpath(result, "$..order")
@@ -208,7 +209,7 @@ if __name__ == '__main__':
     # print(result)
 
     # result = aiyuncloud.send_data('帮我定个一分钟以后的闹钟')
-    result = aiyuncloud.send_data('我今天有闹钟吗')
+
     # print(result)
     # result = aiyuncloud.send_data('当前音量是多少')
     # print(result)

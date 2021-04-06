@@ -10,6 +10,8 @@ class Deviceset():
     def __init__(self, terminal_type):
         self.devicetype = terminal_type  # 设备类型
         self.device_info = terminal_devices.get(terminal_type)  # 获取设备信息
+        if not self.device_info:
+            self.device_info = terminal_devices.get("328_halfDuplex")
         self.sn = self.device_info["sn"]  # sn信息
         self.clientid = self.device_info.get("clientid")  # clientid信息
         self.deviceId = self.device_info.get("deviceId")  # deviceId信息
@@ -90,7 +92,7 @@ class Deviceset():
         if status == None or status == "resume":
             status = "play"
         play_status = {
-            "version":self.version,
+            "version": self.version,
             "topic": "cloud.report.status",
             "mid": "%s" % uuid.uuid1().hex,
             "category": "AC",
@@ -200,7 +202,6 @@ class Deviceset():
                 }
             }
 
-        # print(online_data)
         # self.headers.append(online_data)
         return online_data
 
@@ -329,4 +330,36 @@ class Deviceset():
                     }
                 }
             }
+        else:
+            content_data = {
+                "version": self.version,
+                "topic": "cloud.speech.trans",
+                "mid": "%s" % uuid.uuid1().hex,
+                "id": "%s" % self.deviceId,
+                "category": "AC",
+                "request": {
+                    "apiVer": "1.0.0",
+                    "sessionId": "%s" % uuid.uuid1().hex,
+                    "recordId": "%s" % uuid.uuid1().hex,
+                    "isMore": False
+                },
+                "params": {
+                    "audio": {
+                        "audioType": "wav",
+                        "sampleRate": 16000,
+                        "channel": 1,
+                        "sampleBytes": 2
+                    },
+                    "ttsIsp": "dui-real-sound",
+                    "nluIsp": "DUI",
+                    "asrIsp": "DUI",
+                    "serverVad": False,
+                    "accent": "mandarin",
+                    "mixedResEnable": "0"
+                }
+            }
         return content_data
+
+if __name__ == '__main__':
+    a=Deviceset("328").content_data()
+    print(a)
