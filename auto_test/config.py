@@ -87,24 +87,24 @@ sit_terminal_devices = {
 }
 
 pro_terminal_devices = {
-    # qq音乐链接
     "328_halfDuplex": {"sn": "00000021122251157813008988650000", "clientid": "test0001",
-                       "deviceId": "160528700040836", "module_version": "07.03.01.01.f4.20.12.05.01.07"},
-    # 酷狗音乐
+                       "deviceId": "160528700040836",
+                       "module_version": "07.03.01.01.f4.20.12.05.01.07"},
     "328_fullDuplex": {"sn": "00000021122251157813008988650000", "clientid": "test0002",
-                       "deviceId": "160528700040836", "module_version": "07.03.01.01.f4.20.12.05.01.07"},
-    # 思必驰音乐
+                       "deviceId": "160528700040836",
+                       "module_version": "07.03.01.01.f4.20.12.05.01.07"},
     "xf__halfDuplex": {"sn": "00000021122251157813008988650000", "clientid": "test0003",
-                       "deviceId": "160528700040836", "module_version": "07.03.01.01.f4.20.12.05.01.07"},
-    # 思必驰音乐
-    "yuyintie_1": {"sn": "000008311000VA022091500000289FGR", "clientid": "test0004", "deviceId": "9895604650248",
-                   "module_version": "07.03.01.01.f4.20.12.05.01.07"},
-    # qq音乐转码
-    "3308_halfDuplex": {"sn": "00000021122251157813008988650000", "clientid": "test0005", "deviceId": "160528700040836",
+                       "deviceId": "160528700040836",
+                       "module_version": "07.03.01.01.f4.20.12.05.01.07"},
+    # "yuyintie_1": {"sn": "000008311000VA022091500000289FGR", "clientid": "test0004", "deviceId": "9895604650248",
+    #               "module_version": "07.03.01.01.f4.20.12.05.01.07"},
+    "3308_halfDuplex": {"sn": "00000021122251157813008988650000", "clientid": "test0005",
+                        "deviceId": "160528700040836",
                         "module_version": "05.03.00.01.06.19.09.01.01.08"},
-    "yinxiang": {"deviceid": "1110000102130196016509", "uid": "5668a004b73f4aa89ec5c3a19dc5defd",
+    "yinxiang": {"deviceid": "111000010213019416Z031", "uid": "5668a004b73f4aa89ec5c3a19dc5defd",
                  "clientid": "e256482c-2b93-4f79-bda5-c76da8de2129",
                  "clientKey": "76f01e24-afc1-4a9c-879b-3d3e5941bda4"},
+    # "yinxiang": {"deviceid": "1110000102130196016509", "uid": "5668a004b73f4aa89ec5c3a19dc5defd"},
     "meiju": {"uid": "5668a004b73f4aa89ec5c3a19dc5defd", "homeId": "11207290"}
 
 }
@@ -115,9 +115,9 @@ alltotal_devices = {"dit": sit_terminal_devices, "sit": sit_terminal_devices, "u
 device_user_list = {"AC1": 0, "AC2": 0, "FC1": 0, "D1": 0, "DB1": 0}
 
 # "yuyintie_1,xf__halfDuplex,
-main_device_list = ["328_halfDuplex", "328_fullDuplex", "3308_halfDuplex", "yinxiang", "meiju"]
-# main_device_list = ["1"]
-test_env = "pro"
+# main_device_list = ["328_halfDuplex", "328_fullDuplex", "3308_halfDuplex", "yinxiang", "meiju"]
+main_device_list = ["yinxiang"]
+test_env = "sit"
 # #
 test_category = ["多设备控制", "设备继承", "免设备名", "场景控制", "跨机控制", "查询类", "通用技能", "Public", "rasa", "故障码问询", "冰箱食材", "播放控制",
                  "音量调节", "闹钟技能", "自定义设备名"]
