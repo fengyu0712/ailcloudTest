@@ -28,10 +28,11 @@ w = r.copy_book()
 def get_all_caseinfo():
     sheet_names = r.get_sheet_names()
     all_caseinfo = list()
-    for devicetype in sheet_names:
-        data = r.read_data(start_line=2, sheetname=devicetype, is_addsheetname=True)
-        dict_data = FileTool().dict_info(data, devicetype=devicetype, isindex=True)
-        all_caseinfo += dict_data
+    for sheet in sheet_names:
+        if sheet in main_device_list:
+            data = r.read_data(start_line=2, sheetname=sheet, is_addsheetname=True)
+            dict_data = FileTool().dict_info(data, devicetype=sheet, isindex=True)
+            all_caseinfo += dict_data
     print(all_caseinfo)
     return all_caseinfo
 
