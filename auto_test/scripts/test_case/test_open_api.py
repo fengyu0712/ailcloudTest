@@ -32,7 +32,7 @@ header = ["用例编号", "测试接口", "用例名称", "serviceUrl", "参数"
 
 class Test_OpenApi:
     def setup_class(cls):
-        log.info("========%s开始执行用例测试用例:========" % __class__.__name__)
+        log.info("========%s开始执行OPENAPI测试用例:========" % __class__.__name__)
         cls.w = Write_xls()
         cls.w.creattable("openapi")
         cls.w.write_linedata(0, header)
@@ -49,7 +49,11 @@ class Test_OpenApi:
         serviceUrl = case[3]
         params = eval(case[4])
         expect = eval(case[5])
-        params["deviceId"] = terminal_devices["328_halfDuplex"]["deviceId"]  # 修改deviceID
+        if params.get("deviceId"):
+            params["deviceId"] = terminal_devices["328_halfDuplex"]["deviceId"]  # 修改deviceID
+        headers = {"Content-Type": "application/x-www-form-urlencoded"}
+        if case[1] == "沉浸式烹饪":
+            headers = {"Content-Type": "application/x-www-form-urlencoded", "uid": "a7da5f1093a94d40b45bb0ccf6fa21fc"}
         log.info("执行用例{}".format(case))
         current_sheet = case[1]
         allure.dynamic.story(current_sheet)
@@ -57,14 +61,13 @@ class Test_OpenApi:
         response = ""
         result = ""
         try:
-            response = Api().open_api(data)
-
+            response = Api().open_api(data, headers)
             for key in (list(expect.keys())):
                 log.info(key)
                 # 部分接口返回的是str，jsonpath取不到值，需要转换
                 if not jsonpath(response, f"$..{key}") and isinstance(jsonpath(response, f"$..data")[-1], str):
-                    response["data"] = eval(jsonpath(response, "$..data")[-1])
-                assert (expect[key] == jsonpath(response, f"$..{key}")[0]), f"{key}值校验失败"
+                    response["fullDuplex"] = eval(jsonpath(response, "$..data")[-1])
+                assert (str(expect[key]) in str(jsonpath(response, f"$..{key}")[0])), f"{key}值校验失败"
         except Exception as e:
             result = e
             raise e

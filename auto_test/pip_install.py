@@ -9,3 +9,5 @@ import os
 
 # 安装依赖
 os.system("pip install -r  requirements.txt")
+
+

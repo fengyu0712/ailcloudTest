@@ -25,13 +25,11 @@ class Api(object):
             log.info("获取设备状态信息:{}".format(jsonvalue))
             return jsonvalue
 
-    def open_api(self, paramsdata):
-        # headers = {"Content-Type": "application/x-www-form-urlencoded"}
-
+    def open_api(self, paramsdata, headers):
         device_host = http_host + "/v1/base2pro/data/transmit"
         log.info(f"open_api测试,请求参数为:{paramsdata},地址:{device_host}")
         try:
-            response = requests.post(device_host, params=parse.urlencode(paramsdata))
+            response = requests.post(device_host, params=parse.urlencode(paramsdata),headers=headers)
             jsonvalue = response.json()
         except Exception as e:
             raise e
@@ -60,11 +58,13 @@ if __name__ == '__main__':
     #         "data": {"deviceId": 3298544982176, "fullDuplex": 1,
     #                  "fullDuplexSkillConfig": [{"skillId": "midea-deviceControl", "timeOut": "10"}]}}
     # data = {"serviceUrl": "/v1/tts/voice/set",
-    #         "data": {"deviceId":"3298544982176","voiceId":"xiyaof"}}
-    data0 = {'serviceUrl': '/v1/accent/set',
-             'data': {'deviceId': '160528698598412', 'accentId': 'cantonese', 'enableAccent': '1',
-                      'mixedResEnable': '1'}}
-    # r = Api().open_api(data)
+    #         "data": {"deviceId": "3298544982176", "voiceId": "xiyaof"}}
+    # data0 = {'serviceUrl': '/v1/accent/set',
+    #          'data': {'deviceId': '160528698598412', 'accentId': 'cantonese', 'enableAccent': '1',
+    #                   'mixedResEnable': '1'}}
+    # headers = {"Content-Type": "application/x-www-form-urlencoded"}
+    #
+    # r = Api().open_api(data,headers)
     # print(r)
-    n = Api().get_token("80920524eedef3574e64c3dab72dd0bd")
+    n = Api().get_token("bd958f4d63ce4509ab391565d5ab24b0")
     print(n)
