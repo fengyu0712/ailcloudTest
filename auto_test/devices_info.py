@@ -33,7 +33,7 @@ class Deviceset():
         status_data = {
             "version": "3.0",
             "topic": "cloud.report.status",
-            "mid": uuid.uuid1().hex,
+            "mid":uuid.uuid5(uuid.NAMESPACE_URL, str(time.time())+"mid"),
             "category": "AC",
             "id": "10995116462864",
             "clientId": self.clientid,
@@ -62,7 +62,7 @@ class Deviceset():
             online_data = {
                 "topic": "cloud.online",
                 "version": "3.0",
-                "mid": uuid.uuid1().hex,
+                "mid": uuid.uuid5(uuid.NAMESPACE_URL, str(time.time())+"mid"),
                 "request": {
                     "apiVer": "1.0.0",
                     "timestamp": self.get_time_stamp(),
@@ -83,7 +83,7 @@ class Deviceset():
             online_data = {
                 "topic": "cloud.online",
                 "version": "2.0",
-                "mid": uuid.uuid1().hex,
+                "mid": uuid.uuid5(uuid.NAMESPACE_URL, str(time.time())+"mid"),
                 "request": {
                     "apiVer": "1.0.0",
                     "timestamp": self.get_time_stamp()
@@ -100,7 +100,7 @@ class Deviceset():
         else:
             online_data = {
                 "topic": "cloud.online",
-                "mid": "%s" % uuid.uuid1().hex,
+                "mid": uuid.uuid5(uuid.NAMESPACE_URL, str(time.time())+"mid"),
                 "version": "3.0",
                 "request": {
                     "apiVer": "1.0.0",
@@ -124,13 +124,13 @@ class Deviceset():
             content_data = {
                 "version": "3.0",
                 "topic": "cloud.speech.trans",
-                "mid": uuid.uuid1().hex,
+                "mid": uuid.uuid5(uuid.NAMESPACE_URL, str(time.time())+"mid"),
                 "id": self.deviceId,
                 "category": "AC",
                 "request": {
                     "apiVer": "1.0.0",
-                    "sessionId": uuid.uuid1().hex,
-                    "recordId": uuid.uuid1().hex,
+                    "sessionId": uuid.uuid5(uuid.NAMESPACE_URL, str(time.time())+"sessionId"),
+                    "recordId": uuid.uuid5(uuid.NAMESPACE_URL, str(time.time())+"recordId"),
                     "isMore": False
                 },
                 "params": {
@@ -152,15 +152,15 @@ class Deviceset():
             content_data = {
                 "version": "3.0",
                 "topic": "cloud.speech.trans",
-                "mid": uuid.uuid1().hex,
+                "mid":uuid.uuid5(uuid.NAMESPACE_URL, str(time.time())+"mid"),
                 "id": self.deviceId,
                 "sn": self.sn,
                 "clientId": self.clientid,
                 "category": "AC",
                 "request": {
                     "apiVer": "1.0.0",
-                    "sessionId": uuid.uuid1().hex,
-                    "recordId": uuid.uuid1().hex,
+                    "sessionId": uuid.uuid5(uuid.NAMESPACE_URL, str(time.time())+"sessionId"),
+                    "recordId": uuid.uuid5(uuid.NAMESPACE_URL, str(time.time())+"recordId"),
                     "isMore": False
                 },
                 "params": {
@@ -182,12 +182,12 @@ class Deviceset():
         elif self.devicetype == "yuyintie_1":
             content_data = {
                 "topic": "cloud.speech.trans",
-                "mid": uuid.uuid1().hex,
+                "mid": uuid.uuid5(uuid.NAMESPACE_URL, str(time.time())+"mid"),
                 "version": "1.0",
                 "request": {
                     "timestamp": self.get_time_stamp(),
-                    "sessionId": uuid.uuid1().hex,
-                    "recordId": uuid.uuid1().hex,
+                    "sessionId": uuid.uuid5(uuid.NAMESPACE_URL, str(time.time())+"sessionId"),
+                    "recordId":  uuid.uuid5(uuid.NAMESPACE_URL, str(time.time())+"recordId"),
                 },
                 "params": {
                     "audio": {
@@ -201,12 +201,12 @@ class Deviceset():
         elif self.devicetype == "xf__halfDuplex":
             content_data = {
                 "topic": "cloud.speech.trans",
-                "mid": uuid.uuid1().hex,
+                "mid": uuid.uuid5(uuid.NAMESPACE_URL, str(time.time())+"mid"),
                 "version": "1.0",
                 "request": {
                     "timestamp": self.get_time_stamp(),
-                    "sessionId": uuid.uuid1().hex,
-                    "recordId": uuid.uuid1().hex,
+                    "sessionId": uuid.uuid5(uuid.NAMESPACE_URL, str(time.time())+"sessionId"),
+                    "recordId":  uuid.uuid5(uuid.NAMESPACE_URL, str(time.time())+"recordId"),
                 },
                 "params": {
                     "audio": {
@@ -224,15 +224,15 @@ class Deviceset():
             content_data = {
                 "version": "2.0",
                 "topic": "cloud.speech.trans",
-                "mid": uuid.uuid1().hex,
+                "mid": uuid.uuid5(uuid.NAMESPACE_URL, str(time.time())+"mid"),
                 "id": self.deviceId,
                 "sn": self.sn,
                 "clientId": self.clientid,
                 "category": "AC",
                 "request": {
                     "apiVer": "1.0.0",
-                    "sessionId": uuid.uuid1().hex,
-                    "recordId": uuid.uuid1().hex,
+                    "sessionId": uuid.uuid5(uuid.NAMESPACE_URL, str(time.time())+"sessionId"),
+                    "recordId": uuid.uuid5(uuid.NAMESPACE_URL, str(time.time())+"recordId"),
                     "isMore": False
                 },
                 "params": {
@@ -244,7 +244,5 @@ class Deviceset():
                     }
                 }
             }
-
-
 
         self.headers.append(content_data)
