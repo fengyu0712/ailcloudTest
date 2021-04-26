@@ -33,7 +33,7 @@ def retry(rerun_count):
                     if i == rerun_count - 1:
                         raise e
                     else:
-                        print(f"第{i}次请求失败")
+                        log.warning(f"第{i}次请求失败")
                 else:
                     return response
 
@@ -68,12 +68,11 @@ class AiCloud():
     def on_line(self):
         try:
             # 开始云端上线
-            print(Deviceset(self.terminal_type).online_data())
             self.ws.send(json.dumps(Deviceset(self.terminal_type).online_data()), ABNF.OPCODE_TEXT)
             # 开始上报设备音量信息
             self.ws.send(json.dumps(Deviceset(self.terminal_type).audio_staus_data()), ABNF.OPCODE_TEXT)
             # # 开始上报设备OTA信息
-            # self.ws.send(json.dumps(Deviceset(self.terminal_type).ota_check()), ABNF.OPCODE_TEXT)
+            self.ws.send(json.dumps(Deviceset(self.terminal_type).ota_check()), ABNF.OPCODE_TEXT)
         except Exception as e:
             self.ws.close()
             raise (f"错误信息信息为:{e}")
@@ -110,7 +109,6 @@ class AiCloud():
             raise ("发送音频数据异常,原因:{}".format(e))
         else:
             if jsonpath(result, "$..audio"):
-                # if "audio" in str(result):
                 volume = 50
                 nlg_volume = jsonpath(result, "$..volume")[-1]
                 if nlg_volume in list(volume_conf.keys()):
@@ -143,6 +141,9 @@ class AiCloud():
                 self.ws.send(json.dumps(Deviceset(self.terminal_type).send_play_status(status=playMode.lower())),
                              ABNF.OPCODE_TEXT)
                 time.sleep(1)
+            # 校验url是否可以正常访问
+            from scripts.common_assert import assert_url_status_code
+            assert_url_status_code(result)
         finally:
             return result
 
@@ -196,10 +197,15 @@ class AiCloud():
 
 
 if __name__ == '__main__':
-    aiyuncloud = AiCloud("3308_halfDuplex", iswait="1")
-    # aiyuncloud = AiCloud("328")
+    aiyuncloud = AiCloud("328_halfDuplex")
     aiyuncloud.on_line()
-    aiyuncloud.send_data('来一首歌')
+    aiyuncloud.send_data('美的空调售后怎么样')
+    # n = 1
+    # while True:
+    #     print(n)
+    #     aiyuncloud.send_data('关闭净化器')
+    #     aiyuncloud.send_data('明天的天气')
+    #     n += 1
     # result = aiyuncloud.send_data('打开卧室空调')
     # # b = jsonpath(result, "$..url")[1]
     # b = jsonpath(result, "$..order")

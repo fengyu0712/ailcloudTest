@@ -110,19 +110,6 @@ def assert_device_status(response, excepect_dict):
         for key in excepect_status:
             assert excepect_status[key] == jsonpath.jsonpath(device_status, f"$..{key}")[-1] \
                 , f'device_status错误！ 响应code：{device_status}，预期code：{excepect_status}'
-            # if key == "code":
-            #     assert response.get('device_status').get('code') == excepect_dict.get('device_status').get(
-            #         'code'), 'device_status错误！ 响应code：{}，预期code：{}'.format(response.get('device_status').get('code'),
-            #                                                                excepect_dict.get('device_status').get(
-            #                                                                    'code'))
-            # else:
-            #     print(response)
-            #     status_value = jsonpath.jsonpath(response, f"$..{key}")[0]
-            #     assert str(status_value) == str(excepect_dict.get('device_status').get(
-            #         key)), 'device_status错误！ 响应device_status：{}，预期device_status：{}'.format(status_value,
-            #                                                                                excepect_dict.get(
-            #                                                                                    'device_status').get(
-            #                                                                                    key))
 
 
 def getvalue(response, root_mark, node_mark):

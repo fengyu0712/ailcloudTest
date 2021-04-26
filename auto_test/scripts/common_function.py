@@ -97,9 +97,6 @@ class Commonfunction():
                                             result = aicloud_ws.send_data(params_value)
                                         except Exception as e:
                                             result = {"response_error": e}
-                                        else:
-                                            # 校验url是否可以正常访问
-                                            assert_url_status_code(result)
                                     if result == None: result = {"error": f"{devicetype}接口超时"}
                                     current_step['response'] = result
 
@@ -217,7 +214,7 @@ def cost_time(func):
 def run_main_case():
     ts = []
     main_devices = config.main_device_list
-    case_path = r"F:\git\Midea\auto_test\data\data_case.csv"
+    case_path = os.sep.join([os.path.dirname(os.path.dirname(__file__)), "data", "data_case.csv"])
 
     for i in range(len(main_devices)):
         device_type = main_devices[i]
@@ -249,7 +246,8 @@ def run_remote_devices(device_type, q):
             print(f"{device_type}控制设备{remote_device}")
             remote_devices_list.remove(remote_device)
             q.put(remote_devices_list)
-            case_path = os.path.join(r"F:\git\Midea\auto_test\data\remote", f"{remote_device}.csv")
+            case_path = os.sep.join(
+                [os.path.dirname(os.path.dirname(__file__)), "data", "remote", f"{remote_device}.csv"])
             # 读取excel的内容信息
             f = FileTool()
             cav_data = f.read_csv(case_path)

@@ -17,7 +17,7 @@ allure_report_path = os.path.join(config.base_path, "report")
 allure_result_path = os.path.join(result_path, "allure_result")
 
 test_env = config.test_env
-test_path = config.base_path + os.sep + "scripts" + os.sep + "test_case" + os.sep + "test_main_case.py"
+test_path = os.sep.join([config.base_path, "scripts", "test_case", "test_main_case.py"])
 
 
 def run_deviceControl():

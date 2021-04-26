@@ -76,7 +76,6 @@ class OrionApi():
         }
         response = requests.post(self.orion_url, json=http_body, headers=headers)
         jsonvalue = response.text
-        print("orion_nlu_post:" + jsonvalue)
         return {"mid": midvalue, "nlu": jsonvalue}
 
     def orion_invoke_post(self, midvalue):
@@ -180,7 +179,6 @@ class OrionApi():
 
     def orion_post(self):
         nlu_result = self.orion_nlu_post()
-        print(nlu_result)
         mid = nlu_result["mid"]
         resultinfo = self.orion_invoke_post(mid)
         result = {**resultinfo, **nlu_result}
@@ -188,6 +186,6 @@ class OrionApi():
 
 
 if __name__ == '__main__':
-    api = OrionApi("打开净化器")
+    api = OrionApi("美的空调强在什么地方")
     a = api.orion_post()
     print(a)

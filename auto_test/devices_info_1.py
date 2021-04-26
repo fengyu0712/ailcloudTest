@@ -231,14 +231,14 @@ class Deviceset:
             content_data = {
                 "version": self.version,
                 "topic": "cloud.speech.trans",
-                "mid": str(uuid.uuid5(uuid.NAMESPACE_URL, str(time.time())+"mid")),
+                "mid": str(uuid.uuid5(uuid.NAMESPACE_URL, str(time.time()) + "mid")),
                 "id": "%s" % self.deviceId,
                 "category": "AC",
                 "request": {
                     "apiVer": "1.0.0",
                     "sessionId":str(uuid.uuid5(uuid.NAMESPACE_URL, str(time.time())+"sessionId")),
                     "recordId":  str(uuid.uuid5(uuid.NAMESPACE_URL, str(time.time())+"recordId")),
-                    "isMore": False
+                    "isMore": True
                 },
                 "params": {
                     "audio": {

@@ -3,8 +3,9 @@
 # @Author : xx
 # @File : test_xf.py.py
 # @Software: PyCharm
-import requests
 import time
+
+import requests
 from urllib import parse
 import uuid
 from api.apis import Api
@@ -19,12 +20,12 @@ class Meijuapi():
         self.accessToken = Api().get_token(self.uid)
 
     def post(self, text):
-        uuid_value = uuid.uuid1().hex
+        uuid_value = str(uuid.uuid5(uuid.NAMESPACE_URL, str(time.time()) + "mid"))
         try:
-            url = http_host+"/v1/base2pro/data/transmit"
+            url = http_host + "/v1/base2pro/data/transmit"
             data = {
                 "data": {
-                    "mid": "%s" % uuid_value,
+                    "mid": str(uuid.uuid5(uuid.NAMESPACE_URL, str(time.time()) + "mid")),
                     "version": "v2",
                     "params": {"text": "%s" % text},
                     "device": {},
@@ -44,5 +45,7 @@ class Meijuapi():
 
 
 if __name__ == '__main__':
-    a=Meijuapi().post("空调开机")
+    # while True:
+    a = Meijuapi().post("帮我定个闹钟")
+    a = Meijuapi().post("晚上二十三点五十九分的")
     print(a)
