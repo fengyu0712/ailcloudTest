@@ -108,7 +108,7 @@ class Commonfunction():
                             release_devices(devicetype, case_lock_list)
                             raise e
                     else:
-                        log.info(f"当前{devicetype}入口执行时，设备{case_lock_list}正在使用中")
+                        log.info(f"当前{devicetype}入口执行用例{case_name}时，设备{case_lock_list}正在使用中")
                         time.sleep(1)
 
         log.info(f"{devicetype}入口测试用例已经运行完成")
