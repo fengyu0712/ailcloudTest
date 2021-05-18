@@ -83,11 +83,14 @@ def common_assert(device_type, response, excepect_dict):
 def assert_media(response, device_type):
     try:
         skillType = jsonpath.jsonpath(response, "$..skillType")[-1]
-        skill_url = jsonpath.jsonpath(response, "$..url")[-1]
     except:
-        log.error(f"进行【assert_media】时，response为：{response}，没有查找到skillType或者媒体链接信息")
-        raise ValueError(f"进行【assert_media】时，response为：{response}，没有查找到skillType或者媒体链接信息")
+        log.error(f"进行【assert_media】时，response为：{response}，没有查找到skillType信息")
+        raise ValueError(f"进行【assert_media】时，response为：{response}，没有查找到skillType信息")
     else:
+        try:
+            skill_url = jsonpath.jsonpath(response, "$..url")
+        except:
+            skill_url=""
         # 校验媒体技能
         if skillType == "music" and response.get("broadcast") == None:  # 音乐,且返回不属于推送(排除闹钟)
             if device_type == "328_halfDuplex":

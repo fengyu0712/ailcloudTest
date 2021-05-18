@@ -1,4 +1,7 @@
 # coding: utf-8
+from datetime import datetime
+
+from apscheduler.schedulers.blocking import BlockingScheduler
 from jsonpath import jsonpath
 from websocket import ABNF
 import websocket, time, json, gc
@@ -46,7 +49,7 @@ class AiCloud():
     # rootpath: 音频名称
     # termianl_type : 终端类型
     # is_need_devices_status : 表示为需要获取设备信息
-    def __init__(self, terminal_type, iswait=None):
+    def __init__(self, terminal_type, iswait=None, device_info=None):
         print("测试环境细腻系：", current_env)
         self.address = host
         # self.address = "wss://link-mock.aimidea.cn:10443/cloud/connect"
@@ -58,6 +61,7 @@ class AiCloud():
         else:
             self.iswait = int(iswait)
         self.ws = self.client_ws()
+        self.device_info = device_info
 
     def client_ws(self):
         log.info("开始ws的链接")
@@ -68,11 +72,14 @@ class AiCloud():
     def on_line(self):
         try:
             # 开始云端上线
-            self.ws.send(json.dumps(Deviceset(self.terminal_type).online_data()), ABNF.OPCODE_TEXT)
+            self.ws.send(json.dumps(Deviceset(self.terminal_type, device_info=self.device_info).online_data()),
+                         ABNF.OPCODE_TEXT)
             # 开始上报设备音量信息
-            self.ws.send(json.dumps(Deviceset(self.terminal_type).audio_staus_data()), ABNF.OPCODE_TEXT)
+            self.ws.send(json.dumps(Deviceset(self.terminal_type, device_info=self.device_info).audio_staus_data()),
+                         ABNF.OPCODE_TEXT)
             # # 开始上报设备OTA信息
-            self.ws.send(json.dumps(Deviceset(self.terminal_type).ota_check()), ABNF.OPCODE_TEXT)
+            self.ws.send(json.dumps(Deviceset(self.terminal_type, device_info=self.device_info).ota_check()),
+                         ABNF.OPCODE_TEXT)
         except Exception as e:
             self.ws.close()
             raise (f"错误信息信息为:{e}")
@@ -90,7 +97,8 @@ class AiCloud():
             audio_generation(audio_name)
         try:
             # 发送头部信息
-            self.ws.send(json.dumps(Deviceset(self.terminal_type).content_data()), ABNF.OPCODE_TEXT)
+            self.ws.send(json.dumps(Deviceset(self.terminal_type, device_info=self.device_info).content_data()),
+                         ABNF.OPCODE_TEXT)
             log.info("开始发送音频数据......................")
             with open(self.wavpath, 'rb') as f:
                 while True:
@@ -124,22 +132,25 @@ class AiCloud():
                     volume = int(nlg_volume)
                 if volume < 1: volume = 1
                 if volume > 100: volume = 100
-                self.ws.send(json.dumps(Deviceset(self.terminal_type).audio_staus_data(volume=volume)),
-                             ABNF.OPCODE_TEXT)
+                self.ws.send(json.dumps(
+                    Deviceset(self.terminal_type, device_info=self.device_info).audio_staus_data(volume=volume)),
+                    ABNF.OPCODE_TEXT)
                 time.sleep(1)
             elif jsonpath(result, "$..skillType")[-1] == "music":
-                self.ws.send(json.dumps(Deviceset(self.terminal_type).send_play_status()),
+                self.ws.send(json.dumps(Deviceset(self.terminal_type, device_info=self.device_info).send_play_status()),
                              ABNF.OPCODE_TEXT)
                 time.sleep(1)
             elif jsonpath(result, "$..player"):
                 player_status = jsonpath(result, "$..player")[-1]
-                self.ws.send(json.dumps(Deviceset(self.terminal_type).send_play_status(status=player_status.lower())),
-                             ABNF.OPCODE_TEXT)
+                self.ws.send(json.dumps(Deviceset(self.terminal_type, device_info=self.device_info).send_play_status(
+                    status=player_status.lower())),
+                    ABNF.OPCODE_TEXT)
                 time.sleep(1)
             elif jsonpath(result, "$..playMode"):
                 playMode = jsonpath(result, "$..mode")[-1]
-                self.ws.send(json.dumps(Deviceset(self.terminal_type).send_play_status(status=playMode.lower())),
-                             ABNF.OPCODE_TEXT)
+                self.ws.send(json.dumps(Deviceset(self.terminal_type, device_info=self.device_info).send_play_status(
+                    status=playMode.lower())),
+                    ABNF.OPCODE_TEXT)
                 time.sleep(1)
             # 校验url是否可以正常访问
             from scripts.common_assert import assert_url_status_code
@@ -197,9 +208,39 @@ class AiCloud():
 
 
 if __name__ == '__main__':
-    aiyuncloud = AiCloud("328_halfDuplex")
-    aiyuncloud.on_line()
-    aiyuncloud.send_data('美的空调售后怎么样')
+    info = {"sn": "000000211222L9992793008713470000", "clientid": "6a501441-5aa4-419f-8f72-69c63ea93432",
+            "deviceId": "3298544982176", "module_version": "07.03.01.01.f4.20.12.05.01.07"}
+    # aiyuncloud = AiCloud("328_fullDuplex")
+    # while True:
+    # aiyuncloud = AiCloud("328_halfDuplex")
+    # aiyuncloud.on_line()
+    # aiyuncloud.send_data('卧室空调开机')
+    # aiyuncloud.send_data('音量设为三档')
+    # time.sleep(5)
+    # n = 1
+    # while True:
+    #     print(n)
+    #     aiyuncloud.send_data('顺序播放')
+    #     n += 1
+    #     time.sleep(3)
+    def job():
+        aiyuncloud = AiCloud("328_halfDuplex")
+        aiyuncloud.on_line()
+        aiyuncloud.send_data('帮我订一个零点的二十的闹钟')
+    scheduler = BlockingScheduler()
+    scheduler.add_job(job, 'date', run_date='2021-05-18 0:25:00')
+    scheduler.start()
+    # while True:
+    #     now = datetime.now()
+    #     if now.hour == 0 and now.minute>20:
+    #         aiyuncloud = AiCloud("328_halfDuplex")
+    #         aiyuncloud.on_line()
+    #         aiyuncloud.send_data('帮我订一个零点的二十的闹钟')
+    #         break
+    #     else:
+    #         print(now.minute)
+    #         print(now)
+    #         time.sleep(300)
     # n = 1
     # while True:
     #     print(n)

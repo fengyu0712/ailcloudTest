@@ -5,21 +5,21 @@
 # @Software: PyCharm
 
 import requests
-import random
-import string
 import json
 import time
 import datetime
 import uuid
-import hashlib, base64
-import config
+import hashlib
 from api import apis
-from scripts.init_env import http_host, current_env, terminal_devices
+from scripts.init_env import http_host, terminal_devices
 
 
-class OrionApi():
-    def __init__(self, text):
-        self.device_info = terminal_devices["yinxiang"]
+class OrionApi(object):
+    def __init__(self, text, device_info=None):
+        if device_info is None:
+            self.device_info = terminal_devices["yinxiang"]
+        else:
+            self.device_info = device_info
         self.orion_url = http_host + "/v1/ai/speech/nlu"
         self.invoke_url = http_host + '/v1/orion/skill/invoke'
         self.asr_text = text
@@ -37,14 +37,13 @@ class OrionApi():
         b = sign_value.encode(encoding='utf-8')
         m.update(b)
         str_md5 = m.hexdigest()
-        # print(str_md5)
         return str_md5
 
     def orion_nlu_post(self):
         clientid = self.device_info["clientid"]
         clientKey = self.device_info["clientKey"]
         time_stamp = round(time.time() * 1000)
-        midvalue = uuid.uuid1().hex
+        midvalue = str(uuid.uuid5(uuid.NAMESPACE_URL, str(time.time()) + "mid"))
         http_body = {
             "clientId": clientid,
             "device": {
@@ -78,7 +77,7 @@ class OrionApi():
         jsonvalue = response.text
         return {"mid": midvalue, "nlu": jsonvalue}
 
-    def orion_invoke_post(self, midvalue):
+    def orion_invoke_post(self, mid):
         uid = self.device_info["uid"]
         third_access_token = apis.Api().get_token(uid)
         info = {
@@ -120,7 +119,7 @@ class OrionApi():
                 "attributes": {
 
                 },
-                "sessionId": midvalue,
+                "sessionId": mid,
                 "user": {
                     "isLogin": True,
                     "openId": "fcb5d68518a4e52f2b0f19a8b1ffbc7a",
@@ -186,6 +185,9 @@ class OrionApi():
 
 
 if __name__ == '__main__':
-    api = OrionApi("美的空调强在什么地方")
+    info = {"deviceid": "111000010213019304Z07", "uid": "beb4a1323b3994236069191e688ebc57",
+            "clientid": "0e215b2bc3f6cfa41cc3bfdc845b890c", "clientKey": "2cddc204b428ef114e29664704698dcd"}
+    api = OrionApi("音箱小一点")
+    # api = OrionApi("美的空调强在什么地方",device_info=info)
     a = api.orion_post()
     print(a)
