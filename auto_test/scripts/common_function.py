@@ -17,7 +17,6 @@ from api.orionapi import OrionApi
 import datetime
 import re
 import os
-from scripts.common_assert import assert_url_status_code
 from scripts.init_env import current_env
 from tools.file_tool import FileTool
 from tools.mylog import Logger
@@ -34,9 +33,19 @@ nowdate = datetime.datetime.now().strftime('%Y-%m-%d')
 class Commonfunction():
     def runcase(self, caselist, devicetype, remote_device=None):
         global all_caselist
+        case_num = len(caselist) + 1
+        run_case_num = 0
         log.info(f"开始{devicetype}测试,线程id:{threading.currentThread().ident}")
+
+        def job():
+            print("======================================================")
+            print(f"执行进度：入口设备{devicetype},已执行用例数量：【{run_case_num}】，剩余未执行数量：【{case_num - run_case_num}】")
+            print("======================================================")
+
+        strt_time = time.time()
         global device_user_list
         for case in caselist:
+            run_case_num += 1
             case_category = case.get('case_category')
             case["devicetype"] = devicetype
             case["remote_device"] = remote_device
@@ -110,7 +119,9 @@ class Commonfunction():
                     else:
                         log.info(f"当前{devicetype}入口执行用例{case_name}时，设备{case_lock_list}正在使用中")
                         time.sleep(1)
-
+            if time.time() - strt_time > 120 or run_case_num == case_num:
+                job()
+                strt_time = time.time()
         log.info(f"{devicetype}入口测试用例已经运行完成")
         all_caselist.append(caselist)
 
@@ -150,7 +161,7 @@ class Commonfunction():
                         result = "执行失败! 原因:{}".format(e)
                         log.error("执行失败!原因:{}".format(e))
                         if "ws_error" in result:
-                            error_type="链接异常"
+                            error_type = "链接异常"
                         elif "asr" in result:
                             error_type = "ASR错误"
                         elif "nlg" in result:
@@ -164,9 +175,9 @@ class Commonfunction():
                         elif "返回url为" in result:
                             error_type = "媒体技能返回异常"
                         elif "assert_url_status_code" in result:
-                            error_type="TTS或者媒体响应异常"
+                            error_type = "TTS或者媒体响应异常"
                         elif "assert_device_status" in result:
-                            error_type="设备状态校验错误"
+                            error_type = "设备状态校验错误"
                         else:
                             print(f"+++++++++++++{result}")
                             error_type = "链接异常"
