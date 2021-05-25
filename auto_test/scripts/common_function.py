@@ -140,22 +140,42 @@ class Commonfunction():
                         meiju_assert = {"nlg": {'isMideaDomain': False, 'errorCode': "0"}}
                         if case_category in publicskill and device_type == "yinxiang":
                             current_step['params'] = yinxiang_assert
-                        if case_category in publicskill and device_type == "meiju":
+                        elif case_category in publicskill and device_type == "meiju":
                             if case_category == "音量调节":
                                 current_step['params'] = {"nlg": {'text': "抱歉", 'errorCode': "0"}}
                             else:
                                 current_step['params'] = meiju_assert
                         common_assert.common_assert(device_type, response, current_step.get('params'))
-                        # r.write_onedata(w_tool, current_step.get("x_y"), "执行通过")
                     except Exception as e:
-                        # r.write_onedata(w_tool, current_step.get("x_y"), "执行失败! 原因:{}".format(e))
                         result = "执行失败! 原因:{}".format(e)
                         log.error("执行失败!原因:{}".format(e))
+                        if "ws_error" in result:
+                            error_type="链接异常"
+                        elif "asr" in result:
+                            error_type = "ASR错误"
+                        elif "nlg" in result:
+                            error_type = "NLG错误"
+                        elif "order_config" in result:
+                            error_type = "本机order_config异常"
+                        elif "闹钟" in result:
+                            error_type = "闹钟下发异常"
+                        elif "assert_media" in result:
+                            error_type = "NLG错误"
+                        elif "返回url为" in result:
+                            error_type = "媒体技能返回异常"
+                        elif "assert_url_status_code" in result:
+                            error_type="TTS或者媒体响应异常"
+                        elif "assert_device_status" in result:
+                            error_type="设备状态校验错误"
+                        else:
+                            print(f"+++++++++++++{result}")
+                            error_type = "链接异常"
                         raise e
                     else:
+                        error_type = "执行通过"
                         result = "执行通过"
-
                     finally:
+                        allure.dynamic.tag(error_type)
                         current_step["result"] = result
                         r.write_onlydata_new(w, index + i, 8, result, result_file, sheetname=sheetname)
                 else:
@@ -172,12 +192,13 @@ class Commonfunction():
                     except Exception as e:
                         result = "执行失败! 原因:{}".format(e)
                         log.error("执行失败!原因:{}".format(e))
+                        error_type = "设备状态获取异常"
+                        allure.dynamic.tag(error_type)
                         raise e
                     else:
                         result = "控制完成"
-
                     finally:
-                        print(result)
+                        allure.attach(str(response), f"step{i + 1}_respone", allure.attachment_type.TEXT)
                         current_step["result"] = result
                         r.write_onlydata_new(w, index + i, 8, result, result_file, sheetname=sheetname)
 
@@ -214,6 +235,7 @@ def cost_time(func):
 def run_main_case():
     ts = []
     main_devices = config.main_device_list
+    print(main_devices)
     case_path = os.sep.join([os.path.dirname(os.path.dirname(__file__)), "data", "data_case.csv"])
 
     for i in range(len(main_devices)):

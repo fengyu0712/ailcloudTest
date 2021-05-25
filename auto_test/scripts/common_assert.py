@@ -27,8 +27,8 @@ def common_assert(device_type, response, excepect_dict):
         try:
             result_asr = jsonpath.jsonpath(response, "$..asr")[-1]
         except:
-            log.error(f"进行【断言 asr】时,response为：{response}，没有查找到asr信息")
-            raise ValueError(f"进行【断言 asr】时,response为：{response}，没有查找到asr信息")
+            log.error(f"进行【断言asr】时,response为：{response}，没有查找到asr信息")
+            raise ValueError(f"进行【断言asr】时,response为：{response}，没有查找到asr信息")
         else:
             assert result_asr == excepect_asr, f'asr错误！ 响应asr：{result_asr}，预期asr：{excepect_asr}'
 
@@ -42,8 +42,8 @@ def common_assert(device_type, response, excepect_dict):
         try:
             nlg_value = jsonpath.jsonpath(response, f"$..{key}")[-1]
         except:
-            log.error(f"进行【断言 nlg】时，response为：{response}，没有查找到nlg相关键值信息")
-            raise ValueError(f"进行【断言 nlg】时，response为：{response}，没有查找到nlg相关键值信息")
+            log.error(f"进行【断言nlg】时，response为：{response}，没有查找到nlg相关键值信息")
+            raise ValueError(f"进行【断言nlg】时，response为：{response}，没有查找到nlg相关键值信息")
         else:
 
             if isinstance(excepect_nlg[key], str):
@@ -60,8 +60,8 @@ def common_assert(device_type, response, excepect_dict):
             try:
                 result_order = jsonpath.jsonpath(response, "$..order")[-1]
             except:
-                log.error(f"进行【断言 order_config】时，response为：{response}，没有查找到order信息")
-                raise ValueError(f"进行【断言 order_config】时，response为：{response}，没有查找到order信息")
+                log.error(f"进行【断言order_config】时，response为：{response}，没有查找到order信息")
+                raise ValueError(f"进行【断言order_config】时，response为：{response}，没有查找到order信息")
             else:
                 assert excepect_dict.get('order_config')['order'] == result_order, \
                     f"下发order_config错误！下发order为{result_order},预期order{excepect_dict.get('order_config')['order']}"
@@ -75,7 +75,6 @@ def common_assert(device_type, response, excepect_dict):
                 raise ValueError(f"进行【断言闹钟信息】时，response为：{response}，没有查找到闹钟url信息")
             else:
                 assert excepect_dict.get('clock').get('url') == clock_url, "闹钟接收异常"
-
         # 媒体技能校验
         assert_media(response, device_type)
 
@@ -84,13 +83,13 @@ def assert_media(response, device_type):
     try:
         skillType = jsonpath.jsonpath(response, "$..skillType")[-1]
     except:
-        log.error(f"进行【assert_media】时，response为：{response}，没有查找到skillType信息")
-        raise ValueError(f"进行【assert_media】时，response为：{response}，没有查找到skillType信息")
+        log.error(f"进行【断言assert_media】时，response为：{response}，没有查找到skillType信息")
+        raise ValueError(f"进行【断言assert_media】时，response为：{response}，没有查找到skillType信息")
     else:
         try:
             skill_url = jsonpath.jsonpath(response, "$..url")
         except:
-            skill_url=""
+            skill_url = ""
         # 校验媒体技能
         if skillType == "music" and response.get("broadcast") == None:  # 音乐,且返回不属于推送(排除闹钟)
             if device_type == "328_halfDuplex":
