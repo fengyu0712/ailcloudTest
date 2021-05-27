@@ -146,9 +146,9 @@ class Commonfunction():
                     try:
                         # 如果是小美音箱，对public技能进行特殊校验
                         publicskill = ["Public", "播放控制", "音量调节", "闹钟技能"]
-                        yinxiang_assert = {"nlg": {'status': 500,
-                                                   'nlu': '{"code":"200","data":{"nlu":{"classifier":"publicDomain"}},"message":"success"}'}}
-                        meiju_assert = {"nlg": {'isMideaDomain': False, 'errorCode': "0"}}
+                        yinxiang_assert = {"nlg": {
+                            'nlu': '{"code":"200","data":{"nlu":{"classifier":"publicDomain"}}'}}
+                        meiju_assert = {"nlg": {'code': 200, 'isMideaDomain': False, 'errorCode': "0"}}
                         if case_category in publicskill and device_type == "yinxiang":
                             current_step['params'] = yinxiang_assert
                         elif case_category in publicskill and device_type == "meiju":
@@ -176,7 +176,7 @@ class Commonfunction():
                             error_type = "媒体技能返回异常"
                         elif "assert_url_status_code" in result:
                             error_type = "TTS或者媒体响应异常"
-                        elif "assert_device_status" in result:
+                        elif "assert_device_status" or "device_status错误" in result:
                             error_type = "设备状态校验错误"
                         else:
                             print(f"+++++++++++++{result}")

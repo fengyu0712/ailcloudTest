@@ -40,7 +40,7 @@ def common_assert(device_type, response, excepect_dict):
     for key in list(excepect_nlg.keys()):
         print(key)
         try:
-            nlg_value = jsonpath.jsonpath(response, f"$..{key}")[-1]
+            nlg_value = jsonpath.jsonpath(response, f"$..{key}")[0]
         except:
             log.error(f"进行【断言nlg】时，response为：{response}，没有查找到nlg相关键值信息")
             raise ValueError(f"进行【断言nlg】时，response为：{response}，没有查找到nlg相关键值信息")
@@ -87,38 +87,29 @@ def assert_media(response, device_type):
         raise ValueError(f"进行【断言assert_media】时，response为：{response}，没有查找到skillType信息")
     else:
         try:
-            skill_url = jsonpath.jsonpath(response, "$..url")
+            skill_url = jsonpath.jsonpath(response, "$..url")[1]
         except:
             skill_url = ""
         # 校验媒体技能
         if skillType == "music" and response.get("broadcast") == None:  # 音乐,且返回不属于推送(排除闹钟)
-            if device_type == "328_halfDuplex":
-                assert "isure6.stream.qqmusic.qq.com" in skill_url, "返回qq音乐资源异常，返回url为：%s" % {
-                    jsonpath.jsonpath(response, "$..url")[1]}
-            elif device_type == "328_fullDuplex":
-                assert "fs.liebao.kugou.com" in skill_url, "返回酷狗音乐资源异常，返回url为：%s" % {
-                    jsonpath.jsonpath(response, "$..url")[1]}
+            if device_type == "328_fullDuplex":
+                assert "isure6.stream.qqmusic.qq.com" in skill_url, "返回qq音乐资源异常，返回url为：%s" % {skill_url}
+            elif device_type == "328_halfDuplex":
+                assert "fs.liebao.kugou.com" in skill_url, "返回酷狗音乐资源异常，返回url为：%s" % {skill_url}
             elif device_type == "3308_halfDuplex":
-                assert "audio-convert" in skill_url, "返回qq转码音乐资源异常，返回url为：%s" % {
-                    jsonpath.jsonpath(response, "$..url")[1]}
+                assert "audio-convert" in skill_url, "返回qq转码音乐资源异常，返回url为：%s" % {skill_url}
             else:
-                assert "mp3cdn.hifiok.com" in skill_url, "返回思必驰音乐链接异常，返回url为：%s" % {
-                    jsonpath.jsonpath(response, "$..url")[1]}
+                assert "mp3cdn.hifiok.com" in skill_url, "返回思必驰音乐链接异常，返回url为：%s" % {skill_url}
         elif skillType == "story":  # 故事
-            assert "aod.cos.tx.xmcdn.com" in skill_url, "返回喜马拉雅儿故事资源异常，返回url为：%s" % {
-                jsonpath.jsonpath(response, "$..url")[1]}
+            assert "aod.cos.tx.xmcdn.com" in skill_url, "返回喜马拉雅儿故事资源异常，返回url为：%s" % {skill_url}
         elif skillType == "joke":  # 笑话
-            assert "aod.cos.tx.xmcdn.com" in skill_url, "返回喜马拉雅笑话资源异常，返回url为：%s" % {
-                jsonpath.jsonpath(response, "$..url")[1]}
+            assert "aod.cos.tx.xmcdn.com" in skill_url, "返回喜马拉雅笑话资源异常，返回url为：%s" % {skill_url}
         elif skillType == "opera":  # 戏曲
-            assert "aod.cos.tx.xmcdn.com" in skill_url, "返回喜马拉雅戏曲资源异常，返回url为：%s" % {
-                jsonpath.jsonpath(response, "$..url")[1]}
+            assert "aod.cos.tx.xmcdn.com" in skill_url, "返回喜马拉雅戏曲资源异常，返回url为：%s" % {skill_url}
         elif skillType == "crosstalk":  # 相声
-            assert "aod.cos.tx.xmcdn.com" in skill_url, "返回喜马拉雅相声资源异常，返回url为：%s" % {
-                jsonpath.jsonpath(response, "$..url")[1]}
+            assert "aod.cos.tx.xmcdn.com" in skill_url, "返回喜马拉雅相声资源异常，返回url为：%s" % {skill_url}
         elif skillType == "otherAudio":  # 儿歌
-            assert "aod.cos.tx.xmcdn.com" in skill_url, "返回喜马拉雅儿歌资源异常，返回url为：%s" % {
-                jsonpath.jsonpath(response, "$..url")[1]}
+            assert "aod.cos.tx.xmcdn.com" in skill_url, "返回喜马拉雅儿歌资源异常，返回url为：%s" % {skill_url}
 
 
 def assert_url_status_code(response):
