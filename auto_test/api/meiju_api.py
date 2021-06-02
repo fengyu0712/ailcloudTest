@@ -56,7 +56,7 @@ if __name__ == '__main__':
     # a = Meijuapi().post("你是谁")
     # a = Meijuapi().post("室内空气质量怎么样")
     # print(a)
-    b = Meijuapi().post("晾衣架上升")
+    b = Meijuapi().post("打开净化器")
     # c = Meijuapi().post("晚上二十三点五十九分的")
     print(b)
     # print(c)

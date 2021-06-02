@@ -156,7 +156,7 @@ device_user_list = {"AC1": 0, "AC2": 0, "FC1": 0, "DB1": 0, "CA": 0}
 # main_device_list = ["328_halfDuplex", "328_fullDuplex", "3308_halfDuplex", "meiju", "yinxiang"]
 # main_device_list = ["328_fullDuplex"]
 main_device_list = [ "meiju"]
-test_env = "uat"
+test_env = "pro"
 
 # test_category = ["多设备控制", "设备继承", "免设备名", "场景控制", "跨机控制", "查询类", "通用技能", "Public", "rasa", "故障码问询", "冰箱食材", "播放控制",
 #                  "音量调节", "闹钟技能", "自定义设备名"]
