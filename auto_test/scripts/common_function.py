@@ -28,14 +28,18 @@ from api import clock_time
 
 log = Logger()
 device_user_list = config.device_user_list
-# remote_devices = config.remote_devices
+case_path = os.sep.join([os.path.dirname(os.path.dirname(__file__)), "data", "data_case.csv"])
+f = FileTool()
+cav_data = f.read_csv(case_path)
+testcaseinfo = f.dict_info(cav_data, isindex=True)
+
 all_caselist = list()
 nowdate = datetime.datetime.now().strftime('%Y-%m-%d')
 
 run_case_nums = {}
 for devicetype in config.main_device_list:
     run_case_nums[devicetype] = 0
-case_num = 143
+case_num = len(testcaseinfo) + 1
 
 
 def job():
@@ -261,13 +265,9 @@ def run_main_case():
     ts = []
     main_devices = config.main_device_list
     print(main_devices)
-    case_path = os.sep.join([os.path.dirname(os.path.dirname(__file__)), "data", "data_case.csv"])
 
     for i in range(len(main_devices)):
         device_type = main_devices[i]
-        f = FileTool()
-        cav_data = f.read_csv(case_path)
-        testcaseinfo = f.dict_info(cav_data, isindex=True)
         # # 打乱用例顺序，减少设备锁定时设备排队等待问题
         random.shuffle(testcaseinfo)
         t0 = threading.Thread(target=Commonfunction().runcase, args=(testcaseinfo, device_type,),

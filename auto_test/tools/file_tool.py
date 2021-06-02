@@ -20,7 +20,6 @@ class FileTool():
             # print(header)
             for row in reader:
                 data.append(row)
-        print(data)
         return data
 
     def dict_info(self, data, devicetype=None, isindex=False, remote_device=None):
