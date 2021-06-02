@@ -1,3 +1,4 @@
+# coding: utf-8
 import sys
 import os
 
@@ -43,5 +44,6 @@ if __name__ == '__main__':
     run_testcase()
     print("allure generate %s -o %s --clean" % (allure_result_path, allure_report_path))
     print("allure open  %s" % allure_report_path)
+    os.system("65001")
     os.system("allure generate %s -o %s --clean" % (allure_result_path, allure_report_path))
     os.system("allure open  %s" % allure_report_path)

@@ -1,5 +1,5 @@
 # coding: utf-8
-from scripts.init_env import http_host
+from scripts.init_env import api_host, device_status_host
 import requests
 from tools.mylog import Logger
 from urllib import parse
@@ -14,7 +14,7 @@ class Api(object):
         try:
             headers = {"Content-Type": "application/json "}
             params = {"mid": "%s" % mid}
-            device_host = http_host + "/v1/common/device/getDeviceStatus"
+            device_host = device_status_host + "/v1/common/device/getDeviceStatus"
             log.info("获取设备状态,请求参数为:{},地址:{}".format(params, device_host))
             jsonvalue = requests.post(device_host, json=params, headers=headers).json()
 
@@ -26,10 +26,10 @@ class Api(object):
             return jsonvalue
 
     def open_api(self, paramsdata, headers):
-        device_host = http_host + "/v1/base2pro/data/transmit"
+        device_host = api_host + "/v1/base2pro/data/transmit"
         log.info(f"open_api测试,请求参数为:{paramsdata},地址:{device_host}")
         try:
-            response = requests.post(device_host, params=parse.urlencode(paramsdata),headers=headers)
+            response = requests.post(device_host, params=parse.urlencode(paramsdata), headers=headers)
             jsonvalue = response.json()
         except Exception as e:
             raise e
@@ -39,7 +39,7 @@ class Api(object):
 
     # 获取token信息
     def get_token(self, uid):
-        device_host = http_host + "/v1/user/token/getToken"
+        device_host = api_host + "/v1/user/token/getToken"
         data = {"clientId": "e256482c-2b93-4f79-bda5-c76da8de2129", "uid": uid, "permission": "AutomationTest"}
         try:
             a = requests.get(device_host, params=parse.urlencode(data)).json()
@@ -52,19 +52,18 @@ class Api(object):
 
 
 if __name__ == '__main__':
-    # jsonvalue = Api().post("b41572f563e011ebb48598e7f4f1e716")
-    # print(jsonvalue)
-    # data = {"serviceUrl": "/v1/device/speech/fullDuplex",
-    #         "data": {"deviceId": 3298544982176, "fullDuplex": 1,
-    #                  "fullDuplexSkillConfig": [{"skillId": "midea-deviceControl", "timeOut": "10"}]}}
+    jsonvalue = Api().post("d3177a21-8b99-5089-9b11-476ce56d495b")
+    print(jsonvalue)
+    data = {"serviceUrl": "/v1/device/speech/fullDuplex",
+            "data": {"deviceId": 3298544982176, "fullDuplex": 0}}
     # data = {"serviceUrl": "/v1/tts/voice/set",
     #         "data": {"deviceId": "3298544982176", "voiceId": "xiyaof"}}
     # data0 = {'serviceUrl': '/v1/accent/set',
     #          'data': {'deviceId': '160528698598412', 'accentId': 'cantonese', 'enableAccent': '1',
     #                   'mixedResEnable': '1'}}
     # headers = {"Content-Type": "application/x-www-form-urlencoded"}
-    #
-    # r = Api().open_api(data,headers)
+    # #
+    # r = Api().open_api(data, headers)
     # print(r)
-    n = Api().get_token("bd958f4d63ce4509ab391565d5ab24b0")
-    print(n)
+    # n = Api().get_token("5668a004b73f4aa89ec5c3a19dc5defd")
+    # print(n)

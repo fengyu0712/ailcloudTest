@@ -3,11 +3,14 @@
 # @Author : xx
 # @File : common_function.py 
 # @Software: PyCharm
+
 import threading
 import random
 import queue
 import allure
 import jsonpath
+from apscheduler.schedulers.blocking import BlockingScheduler
+
 from api.meiju_api import Meijuapi
 from scripts import common_assert
 from api.webscoket_api import AiCloud
@@ -29,23 +32,34 @@ device_user_list = config.device_user_list
 all_caselist = list()
 nowdate = datetime.datetime.now().strftime('%Y-%m-%d')
 
+run_case_nums = {}
+for devicetype in config.main_device_list:
+    run_case_nums[devicetype] = 0
+case_num = 143
+
+
+def job():
+    test_progress = f"================================\n********************************\n"
+    for key in run_case_nums.keys():
+        test_progress += f"执行进度：入口设备{key},\n已执行用例数量：【{run_case_nums[key]}】,\n剩余未执行数量：【{case_num - run_case_nums[key]}】\n"
+    test_progress += f"********************************\n================================"
+    print(test_progress)
+
+
+# scheduler = BlockingScheduler()
+# scheduler.add_job(job, 'interval', seconds=10)
+# scheduler.start()
+
 
 class Commonfunction():
     def runcase(self, caselist, devicetype, remote_device=None):
         global all_caselist
         case_num = len(caselist) + 1
-        run_case_num = 0
         log.info(f"开始{devicetype}测试,线程id:{threading.currentThread().ident}")
-
-        def job():
-            print("======================================================")
-            print(f"执行进度：入口设备{devicetype},已执行用例数量：【{run_case_num}】，剩余未执行数量：【{case_num - run_case_num}】")
-            print("======================================================")
-
         strt_time = time.time()
-        global device_user_list
+        global device_user_list, run_case_nums
         for case in caselist:
-            run_case_num += 1
+            run_case_nums[devicetype] += 1
             case_category = case.get('case_category')
             case["devicetype"] = devicetype
             case["remote_device"] = remote_device
@@ -119,7 +133,7 @@ class Commonfunction():
                     else:
                         log.info(f"当前{devicetype}入口执行用例{case_name}时，设备{case_lock_list}正在使用中")
                         time.sleep(1)
-            if time.time() - strt_time > 120 or run_case_num == case_num:
+            if time.time() - strt_time > 120 or run_case_nums[devicetype] == case_num:
                 job()
                 strt_time = time.time()
         log.info(f"{devicetype}入口测试用例已经运行完成")

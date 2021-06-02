@@ -11,7 +11,7 @@ import datetime
 import uuid
 import hashlib
 from api import apis
-from scripts.init_env import http_host, terminal_devices
+from scripts.init_env import yinxiang_host, terminal_devices
 
 
 class OrionApi(object):
@@ -20,8 +20,8 @@ class OrionApi(object):
             self.device_info = terminal_devices["yinxiang"]
         else:
             self.device_info = device_info
-        self.orion_url = http_host + "/v1/ai/speech/nlu"
-        self.invoke_url = http_host + '/v1/orion/skill/invoke'
+        self.orion_url = yinxiang_host + "/v1/ai/speech/nlu"
+        self.invoke_url = yinxiang_host + '/v1/orion/skill/invoke'
         self.asr_text = text
         self.deviceid = self.device_info["deviceid"]
 
@@ -63,7 +63,7 @@ class OrionApi(object):
         ran_value = self.gen_ranvalue()
         sign_value = str_http_body + ran_value + clientKey
         token_key = self.get_token(sign_value)
-        self.header_host = http_host.split("//")[-1]
+        self.header_host = yinxiang_host.split("//")[-1]
         headers = {
             "host": self.header_host,
             "remoteip": '218.13.14.225',
@@ -187,7 +187,7 @@ class OrionApi(object):
 if __name__ == '__main__':
     info = {"deviceid": "111000010213019304Z07", "uid": "beb4a1323b3994236069191e688ebc57",
             "clientid": "0e215b2bc3f6cfa41cc3bfdc845b890c", "clientKey": "2cddc204b428ef114e29664704698dcd"}
-    api = OrionApi("音箱小一点")
+    api = OrionApi("我有几台智能家电")
     # api = OrionApi("美的空调强在什么地方",device_info=info)
     a = api.orion_post()
     print(a)

@@ -270,6 +270,8 @@ class Deviceset:
                     "apiVer": "1.0.0",
                     "sessionId": str(uuid.uuid5(uuid.NAMESPACE_URL, str(time.time()) + "sessionId")),
                     "recordId": str(uuid.uuid5(uuid.NAMESPACE_URL, str(time.time()) + "recordId")),
+                    # "sessionId": "0fc39a8e-beb2-11eb-9c77-9fbf258fc02bb",
+                    # "recordId": "0fc39a8e-beb2-11eb-9c77-9fbf258fc02bb",
                     "isMore": False
                 },
                 "params": {

@@ -65,7 +65,6 @@ def common_assert(device_type, response, excepect_dict):
             else:
                 assert excepect_dict.get('order_config')['order'] == result_order, \
                     f"下发order_config错误！下发order为{result_order},预期order{excepect_dict.get('order_config')['order']}"
-
         # 断言闹钟信息
         if excepect_dict.get('clock'):
             try:
@@ -142,8 +141,8 @@ def assert_device_status(response, excepect_dict):
                     log.error(f"进行【assert_device_status】时，response为：{response}，没有查找到{key}信息")
                     raise ValueError(f"进行【assert_device_status】时，response为：{response}，没有查找到{key}信息")
                 else:
-                    assert excepect_status[key] == status_key_value, f'device_status错误！ 响应code：' \
-                                                                     f'{device_status}，预期code：{excepect_status}'
+                    assert excepect_status[key] == status_key_value, f'device_status错误！ 响应device_status：' \
+                                                                     f'{device_status}，预期device_status：{excepect_status}'
 
 
 def getvalue(response, root_mark, node_mark):

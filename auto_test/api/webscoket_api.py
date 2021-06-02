@@ -11,7 +11,7 @@ from config import base_path
 from devices_info_1 import Deviceset
 import os
 from tools.mylog import Logger
-from scripts.init_env import host, current_env
+from scripts.init_env import ws_host, current_env
 
 log = Logger()  # 初始化日志对象
 
@@ -51,9 +51,9 @@ class AiCloud():
     # is_need_devices_status : 表示为需要获取设备信息
     def __init__(self, terminal_type, iswait=None, device_info=None):
         print("测试环境细腻系：", current_env)
-        self.address = host
+        self.address = ws_host
         # self.address = "wss://link-mock.aimidea.cn:10443/cloud/connect"
-        print("当前测试环境为:", host)
+        print("当前测试环境为:", ws_host)
         self.step = 3200
         self.terminal_type = terminal_type
         if not iswait:
@@ -65,6 +65,7 @@ class AiCloud():
 
     def client_ws(self):
         log.info("开始ws的链接")
+        # ws = websocket.create_connection(self.address, timeout=15)
         ws = websocket.create_connection(self.address, timeout=15 + self.iswait * 60)
         log.info("建立ws的链接成功")
         return ws
@@ -83,6 +84,10 @@ class AiCloud():
         except Exception as e:
             self.ws.close()
             raise (f"错误信息信息为:{e}")
+        # if self.terminal_type=="328_fullDuplex":
+        #     # 发送头部信息
+        #     self.ws.send(json.dumps(Deviceset(self.terminal_type, device_info=self.device_info).content_data()),
+        #                  ABNF.OPCODE_TEXT)
         # else:
         #     return self.ws
 
@@ -96,6 +101,7 @@ class AiCloud():
             log.info("未找到音频文件，开始重新生成音频...")
             audio_generation(audio_name)
         try:
+            # if self.terminal_type != "328_fullDuplex":
             # 发送头部信息
             self.ws.send(json.dumps(Deviceset(self.terminal_type, device_info=self.device_info).content_data()),
                          ABNF.OPCODE_TEXT)
@@ -208,14 +214,18 @@ class AiCloud():
 
 
 if __name__ == '__main__':
-    info = {"sn": "000000211222L9992793008713470000", "clientid": "6a501441-5aa4-419f-8f72-69c63ea93432",
+    info = {"sn": "00000021122251157813008987000000", "clientid": "test",
             "deviceId": "3298544982176", "module_version": "07.03.01.01.f4.20.12.05.01.07"}
     # aiyuncloud = AiCloud("328_fullDuplex")
-    # while True:
+    aiyuncloud = AiCloud("3308_halfDuplex")
+    aiyuncloud.on_line()
+    aiyuncloud.send_data('晾衣架上升')
+    # aiyuncloud.send_data('关闭卧室空调')
     # aiyuncloud = AiCloud("328_halfDuplex")
     # aiyuncloud.on_line()
-    # aiyuncloud.send_data('卧室空调开机')
-    # aiyuncloud.send_data('音量设为三档')
+    # aiyuncloud.send_data('室内空气质量怎么样')
+    # aiyuncloud.send_data('晚上八点')
+    # aiyuncloud.send_data('明天呢')
     # time.sleep(5)
     # n = 1
     # while True:
@@ -223,13 +233,13 @@ if __name__ == '__main__':
     #     aiyuncloud.send_data('顺序播放')
     #     n += 1
     #     time.sleep(3)
-    def job():
-        aiyuncloud = AiCloud("328_halfDuplex")
-        aiyuncloud.on_line()
-        aiyuncloud.send_data('帮我订一个零点的二十的闹钟')
-    scheduler = BlockingScheduler()
-    scheduler.add_job(job, 'date', run_date='2021-05-18 0:25:00')
-    scheduler.start()
+    # def job():
+    #     aiyuncloud = AiCloud("328_halfDuplex")
+    #     aiyuncloud.on_line()
+    #     aiyuncloud.send_data('帮我订一个零点的二十的闹钟')
+    # scheduler = BlockingScheduler()
+    # scheduler.add_job(job, 'date', run_date='2021-05-18 0:25:00')
+    # scheduler.start()
     # while True:
     #     now = datetime.now()
     #     if now.hour == 0 and now.minute>20:

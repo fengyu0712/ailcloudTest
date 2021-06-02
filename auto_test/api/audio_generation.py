@@ -5,23 +5,18 @@
 
 import sys
 import os
+import uuid
+import requests
+from pydub import AudioSegment
+from config import base_path
 
 curPath = os.path.abspath(os.path.dirname(__file__))
 rootPath = os.path.split(curPath)[0]
 sys.path.append(rootPath)
 
-import os
-import uuid
-import requests
-from pydub import AudioSegment
-
-from config import base_path
-
 
 # 电脑还需安装ffmpeg，进行音频转码
 # AudioSegment.ffmpeg = os.getcwd()+"\\ffmpeg\\bin\\ffmpeg.exe"
-
-
 
 
 def audio_generation(audio_name):
@@ -52,10 +47,11 @@ def audio_generation(audio_name):
     with open(audio_path, "wb") as code:
         code.write(requests.get(tts_url).content)
     song = AudioSegment.from_mp3(audio_path)
-    song.export(result_path, format='wav',bitrate="16k")
+    song.export(result_path, format='wav', bitrate="16k")
+    # song.export(result_path, format='opus', bitrate="16k")
     print(f"生成音频文件{result_path}")
     os.remove(audio_path)
 
 
 if __name__ == '__main__':
-    audio_generation("帮我定个一分钟之后的闹钟")
+    audio_generation("明天天气怎么样")
